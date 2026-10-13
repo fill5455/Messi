@@ -99,5 +99,32 @@
     "licenseUrl": "https://commons.wikimedia.org/wiki/File:Argentine_Football_Association_logo.svg",
     "title": "Argentina Logo",
     "file": "assets/images/argentina-logo.svg"
+  },
+  {
+    "key": "copa-2021",
+    "sourceUrl": "https://messi.com/leo-campeon-y-mvp-de-la-copa-america/",
+    "originalUrl": "https://static.messi.com/wp-content/uploads/2021/07/WhatsApp-Image-2021-07-11-at-10.26.48.jpeg",
+    "author": "Fotografo non indicato",
+    "license": "Diritti riservati; licenza di riuso non dichiarata",
+    "licenseUrl": "https://messi.com/terminos-y-condiciones/",
+    "width": 1280,
+    "height": 853,
+    "note": "Official messi.com photograph. Photographer and reuse license not stated. Site footer credits Leo Messi Management S.L.U.; no Creative Commons or public-domain claim. Preserve source attribution and existing watermark.",
+    "title": "Il bacio alla Coppa.",
+    "tag": "ARGENTINA · 2021",
+    "caption": "Messi bacia la Copa América dopo la vittoria dell’Argentina al Maracanã.",
+    "alt": "Messi bacia la Copa América dopo la vittoria dell’Argentina al Maracanã.",
+    "position": "50% 35%",
+    "file": "assets/images/copa-2021.webp"
+  },
+  {
+    "key": "champions-selected",
+    "title": "Messi con la Champions League · Londra 2011",
+    "sourceUrl": "https://github.com/fill5455/Messi/blob/5f51e70bd23db6f08f3567a4bf722eed920ed737/assets/images/champions-selected.webp",
+    "author": "Fotografo non indicato nel materiale originale",
+    "license": "Diritti riservati; licenza di riuso non verificata",
+    "note": "Didascalia corretta dopo verifica della fotografia: sulla maglia è indicata la finale di Londra 2011.",
+    "file": "assets/images/champions-selected.webp",
+    "previousSourceUrl": "https://static.messi.com/wp-content/uploads/2019/12/copa_champions2009_amb_senyera-scaled.jpeg"
   }
 ]

@@ -3,21 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#f2f2f7">
+  <meta name="theme-color" content="#ffffff">
   <title>Messi — Carriera, trofei e record</title>
   <meta name="description" content="La storia di Lionel Messi in tre sezioni semplici: carriera, trofei e record.">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="https://aiuxplayground.com/kits/ios-26/v1/ios.css">
-  <link rel="stylesheet" href="assets/css/site.css?v=390a31a4ce">
-  <script src="assets/js/tabs.js?v=259ef5a58a" defer></script>
-<script src="assets/js/motion.mjs?v=832d529058" type="module"></script>
+  <link rel="stylesheet" href="assets/css/site.css?v=46706d4fb0">
+  <script type="module" src="assets/js/app.mjs?v=bb26c835b9"></script>
 </head>
 <body>
 <div class="ios-surface">
   <a class="skip" href="#contenuto">Salta al contenuto</a>
   <header class="app-header"><a class="brand" href="index.html" aria-label="Messi, homepage">Messi<span>10</span></a><span class="current-page">Home</span></header>
   <div class="screen-scroll" tabindex="0" aria-label="Contenuto della pagina">
-    <main id="contenuto" tabindex="-1">
+    <main id="contenuto" tabindex="-1" aria-labelledby="profile-title">
 <section class="profile" aria-labelledby="profile-title">
   <div>
 <h1 id="profile-title">Lionel Messi</h1>
@@ -48,7 +47,8 @@
 </div>
 </dl>
 </section>
-    </main>
+    <section class="page-section" aria-labelledby="home-reading"><h2 class="section-label" id="home-reading">Da leggere</h2>
+<a class="story-link" href="argentina.html#lusail"><img src="assets/images/worldcup-selected.webp" alt="" aria-hidden="true" width="88" height="108" loading="lazy" decoding="async"><span><small>ARGENTINA · 2022</small><strong>Il Mondiale di Messi</strong><span>La finale, i gol e la coppa di Lusail.</span></span><svg viewbox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"></path></svg></a></section></main>
     <footer class="app-footer">
       <a href="credits.html">Fonti e crediti</a>
       <p>Progetto indipendente su Lionel Messi.</p>
@@ -63,6 +63,8 @@
     </div>
   </nav>
   <noscript><nav class="tab-fallback" aria-label="Navigazione senza JavaScript"><a href="index.html" aria-current="page">Home</a><a href="carriera.html">Carriera</a><a href="trofei.html">Trofei</a><a href="record.html">Record</a></nav></noscript>
+<p class="navigation-status sr-only" aria-live="polite"></p>
+<div class="toast" role="status" aria-live="polite"></div>
 </div>
 </body>
 </html>

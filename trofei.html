@@ -3,23 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#f2f2f7">
+  <meta name="theme-color" content="#ffffff">
   <title>Trofei — Messi</title>
   <meta name="description" content="Il palmarès di Messi per club, Argentina e premi individuali, con gli anni delle vittorie.">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="https://aiuxplayground.com/kits/ios-26/v1/ios.css">
-  <link rel="stylesheet" href="assets/css/site.css?v=390a31a4ce">
-  <script src="assets/js/tabs.js?v=259ef5a58a" defer></script>
-<script src="assets/js/motion.mjs?v=832d529058" type="module"></script>
+  <link rel="stylesheet" href="assets/css/site.css?v=46706d4fb0">
+  <script type="module" src="assets/js/app.mjs?v=bb26c835b9"></script>
 </head>
 <body>
 <div class="ios-surface">
   <a class="skip" href="#contenuto">Salta al contenuto</a>
   <header class="app-header"><a class="brand" href="index.html" aria-label="Messi, homepage">Messi<span>10</span></a><span class="current-page">Trofei</span></header>
   <div class="screen-scroll" tabindex="0" aria-label="Contenuto della pagina">
-    <main id="contenuto" tabindex="-1">
+    <main id="contenuto" tabindex="-1" aria-labelledby="page-title">
 <div class="page-heading">
-<h1>Trofei</h1>
+<h1 id="page-title">Trofei</h1>
 <p>I titoli vinti e i principali premi individuali.</p>
 </div>
 <section class="page-section" aria-labelledby="trophy-categories"><h2 class="section-label" id="trophy-categories">Scegli una categoria</h2>
@@ -176,10 +175,15 @@
 <dd class="competition-years">2014 · 2022</dd>
 </div>
 </dl></section></div></details>
-</div></section><p class="data-note page-note">Palmarès consultato il 13 ottobre 2026. I premi individuali sono una selezione.</p>
-<details class="source-details"><summary>Fonti dei contenuti<svg viewbox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"></path></svg></summary><ul>
+</div></section><section class="page-section" aria-labelledby="wembley-heading"><h2 class="section-label" id="wembley-heading">Una vittoria da ricordare</h2>
+<div class="detail-list"><details class="content-detail" name="moments" id="wembley-2011"><summary><span class="summary-copy"><strong>Champions League 2011</strong><span>Wembley · Barcellona–Manchester United</span></span><svg viewbox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"></path></svg></summary><div class="detail-body">
+<p>Il Barcellona vince 3–1 a Wembley. Messi segna il secondo gol della squadra, fra le reti di Pedro e David Villa.</p>
+<figure class="story-picture"><a href="assets/images/champions-selected.webp" class="photo-link" data-photo-open="" aria-label="Ingrandisci: Messi con la Champions League dopo la finale di Londra del 2011"><img src="assets/images/champions-selected.webp" alt="Messi con la Champions League dopo la finale di Londra del 2011" width="1600" height="2400" loading="lazy" decoding="async"><span class="photo-zoom" aria-hidden="true"><svg viewbox="0 0 24 24"><path d="M9 3H3v6m12-6h6v6M3 15v6h6m12-6v6h-6"></path></svg></span></a><figcaption>Londra, 2011. Messi con il trofeo della Champions League. Tocca la foto per ingrandirla.</figcaption></figure>
+</div></details></div></section><p class="data-note page-note">Palmarès consultato il 13 ottobre 2026. I premi individuali sono una selezione.</p>
+<details class="source-details" id="trofei-detail-4"><summary>Fonti dei contenuti<svg viewbox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"></path></svg></summary><ul>
 <li><a href="https://messi.com/palmares/" target="_blank" rel="noopener noreferrer">Palmarès ufficiale <span aria-hidden="true">↗</span></a></li>
 <li><a href="https://www.fcbarcelona.com/en/football/first-team/news/2208549/the-most-decorated-player-in-barca-history" target="_blank" rel="noopener noreferrer">FC Barcelona: i titoli blaugrana <span aria-hidden="true">↗</span></a></li>
+<li><a href="https://www.uefa.com/uefachampionsleague/match/2003352/" target="_blank" rel="noopener noreferrer">UEFA: la finale di Wembley 2011 ↗</a></li>
 </ul></details>
     </main>
     <footer class="app-footer">
@@ -196,6 +200,8 @@
     </div>
   </nav>
   <noscript><nav class="tab-fallback" aria-label="Navigazione senza JavaScript"><a href="index.html">Home</a><a href="carriera.html">Carriera</a><a href="trofei.html" aria-current="page">Trofei</a><a href="record.html">Record</a></nav></noscript>
+<p class="navigation-status sr-only" aria-live="polite"></p>
+<div class="toast" role="status" aria-live="polite"></div>
 </div>
 </body>
 </html>

@@ -1,53 +1,26 @@
-# Messi — chiarezza mobile
-
-## Obiettivo
-L’utente deve riconoscere il soggetto e scegliere dove andare prima di incontrare racconti lunghi o fotografie. Ogni pagina ha un titolo che descrive il contenuto. I dati hanno sempre etichetta e contesto.
+# Messi — bianco, stile iOS 18
 
 ## Gerarchia
-- Livello 1: titolo pagina, 32px / 1.25.
-- Livello 2: sezioni, 22px / 1.25; etichette di gruppo 18px.
-- Livello 3: titoli dei controlli e dei record, 18px.
-- Lettura: 16px / 1.65. Descrizioni: 15–17px. Note e crediti: almeno 14px.
-- Font di sistema. Nessuna etichetta tutta maiuscola, slogan, numerazione decorativa o titolo spezzato.
+Home breve → destinazioni → sintesi → approfondimento. Carriera: tappe prima del profilo. Trofei: categorie prima del racconto. Record: ricerca, filtri, dati con periodo e spiegazione. Nessuna griglia fotografica o titolo decorativo.
 
 ## Fondamenti
-- Fondo #f2f2f7, superfici #fff, testo #1c1c1e, secondario #52525b, azioni #005fc9.
-- Margini 20px; gruppi 20px di raggio; separatori leggeri.
-- Tre livelli di distanza: 4–8px per label, 12–20px per gruppi, 24–28px per sezioni.
-- Nessuna ombra sulle carte informative, nessun testo su fotografie.
+Canvas #ffffff, superfici #f6f7f9, testo #1c1c1e, secondario #52525b, accento #005fc9. Font di sistema, pesi 400/600/700. Titoli pagina 32px, titoli riga 18px, testo 16px, descrizioni 15–17px, note 14px. Margini 20px, raggio gruppi 20px, frame identità 48px, glyph 22px.
 
-## Composizione
-- Home: ritratto in cornice 72×88px + testo → destinazioni → dati di sintesi.
-- Carriera: quattro righe espandibili, una aperta alla volta.
-- Trofei: Club / Argentina / Premi individuali; categorie senza annidamenti.
-- Record: valore, nome, periodo, spiegazione nello stesso blocco.
-- Fotografie: cinque file pertinenti, nessun archivio o galleria.
-- Header unico; niente indici sticky che competono con la tab bar.
+## Motion
+- Pressione: feedback cromatico immediato; icona scale 1↔0.92 o pulsante 1↔0.97, response nominale .18s.
+- Chevron: 0↔90°, response .22s.
+- Accordion: altezza reale, response .3s; callback di riposo e resize observer. Apertura/chiusura dal valore e dalla velocità correnti. Contenuto chiuso inert, focus restituito al summary quando necessario.
+- Dialoghi: scale .96↔1 e opacity 0↔1, response .3s; chiusura sullo stesso percorso.
+- Feedback: opacity e translateY 6↔0, response .22s.
+- Pagine e filtri: View Transitions native, 180–280ms, opacity e scale .995↔1. Overlay delle transizioni non intercetta i puntatori; nuove navigazioni saltano le transizioni precedenti e annullano richieste superate.
+- Nessun rimbalzo decorativo, autoplay o animazione delle fotografie durante la lettura.
+- Reduced motion: aggiornamenti istantanei, nessuna scala animata, nessuno scorrimento artificiale.
 
-## Interazioni
-- Kit iOS 26 esterno invariato; quattro input radio, una selezione per pagina.
-- Superficie 402px/max-width100%; scorrimento interno e safe-area.
-- Details nativi con summary ampio; feedback di pressione immediato sui controlli dell’app.
-- Link a categorie: apertura automatica del details di destinazione.
-- Focus visibile, target ampi, fallback senza JavaScript, reduced motion.
+## Materiali
+Header bianco leggermente traslucido. Carte informative solide. Tab bar del kit fornito invariata. Dialoghi bianchi con scrim scuro e blur statico leggero. Nessuna sovrapposizione di carte di vetro chiare.
 
-## Verifica visiva ancora da eseguire
-320/375/390/402px, Safari iOS, kit esterno, testo ingrandito, safe-area, focus e lettura con VoiceOver. La verifica statica non dimostra la qualità del rendering.
+## Funzioni e stati
+Ricerca Records etichettata, filtri esclusivi con aria-pressed, stato vuoto contestuale, pulsanti Salva/Salvato e Condividi. Feedback sul tipo di persistenza. Condivisione con fallback. Zoom delle immagini contestuale, con caption e crediti. Cronologia browser, scroll e sezioni aperte conservati.
 
-## Identità e precisione
-- Cinque stemmi in una colonna da 48px; nei titoli del palmarès cornice da 36px. Object-fit:contain, nessuna deformazione.
-- Summary con tre colonne: identità / nome e periodo / indicatore. Testo flessibile, stemma e chevron non comprimibili.
-- Icone principali identiche a quelle della tab bar: book-open, star, arrow-up.
-- Fotografie di Barcellona, PSG e Miami all’interno del rispettivo capitolo, dopo il testo. Composizioni integrali e rapporto intrinseco corretto.
-- Record: titolo e periodo a sinistra, valore allineato a destra; spiegazione separata sotto.
-
-## Precisione finale
-- Pesi di lettura normalizzati: 400 / 600 / 700. Titoli pagina 32px; titoli di riga 18px; testo 16px; descrizioni 15–17px; note 14px.
-- Colonna iniziale comune da 48px per icone e stemmi. Glyph della famiglia iOS da 22px.
-- Raggio dei gruppi centralizzato in --radius. Pivot dei chevron sul centro del viewBox.
-- Cornice del ritratto 72×88px; composizioni complete nelle foto dei capitoli.
-- Feedback spring solo transform: scala delle icone 1↔0.92, rotazione dei chevron 0↔90. Nessuna animazione di layout che ritardi la lettura.
-- Spring critically damped, valore e velocità conservati al cambio target; nessuna transizione CSS sulle proprietà controllate.
-- Reduced motion: nessuna scala animata; cambio di stato istantaneo.
-- Spazio sotto la pagina e scroll-padding-bottom derivati dalla misura della tab bar, compresa safe-area.
-- Focus inset nelle liste con overflow:hidden; gestione del focus sopra la barra flottante.
+## QA ancora necessaria
+Safari su iPhone, View Transitions e fallback, tastiera/VoiceOver, zoom testo, tastiera virtuale, storage/clipboard/share reali, riapertura durante chiusura, performance degli accordion lunghi. La verifica del codice non equivale a una misurazione della fluidità sul dispositivo.

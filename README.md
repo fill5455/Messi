@@ -1,31 +1,28 @@
-# Messi — mobile leggibile
+# Messi — esperienza mobile, tema bianco
 
-La home identifica il soggetto e porta subito a Carriera, Trofei e Record. Un ritratto in una cornice da 72×88px precede le azioni. I dati di sintesi vengono dopo la navigazione.
+Sito statico dedicato a Lionel Messi, con tema bianco ispirato a iOS 18. Home, Carriera, Trofei e Record rimangono le quattro destinazioni principali. Argentina e Crediti sono approfondimenti.
 
-## Pagine
-- Home: profilo breve, tre destinazioni e tre dati di sintesi.
-- Carriera: quattro tappe espandibili; una tappa aperta alla volta; Argentina come approfondimento.
-- Trofei: tre categorie espandibili, senza ulteriori accordion annidati.
-- Record: numeri sempre accompagnati da titolo, periodo e spiegazione.
-- Argentina: vittorie in ordine cronologico e approfondimento su Qatar 2022.
-- Fonti e crediti: provenienza delle cinque fotografie e dei cinque stemmi utilizzati.
+## Contenuti
+Profilo e tappe della carriera, cronologia degli anni al Barcellona, 22 voci del palmarès, sette record contestualizzati, racconti di Wembley 2011, Copa América 2021 e Qatar 2022. Sette fotografie e cinque stemmi, con provenienza in `credits.json`. Nessun archivio fotografico.
 
-## Design
-Sistema di font nativo, testo 16px, descrizioni 15–17px, note 14px. Titoli pagina 32px. Nessun titolo spezzato manualmente nelle pagine, nessun testo sovrapposto a immagini, nessuna immagine grande prima delle azioni della home. Un header e la tab bar, senza altre barre sticky nel contenuto.
+## Funzioni
+- Navigazione interna progressiva: header e tab bar persistono; la pagina viene caricata e aggiornata senza ricaricare il documento.
+- Richieste annullabili e controllo delle risposte superate, cache delle pagine visitate, cronologia browser e stato di scorrimento per pagina.
+- Record: ricerca per testo/anno, filtri Gol/Premi/Salvati, salvataggi sul dispositivo tramite localStorage. Se lo storage è bloccato, il salvataggio resta nella sessione ed è dichiarato nel feedback.
+- Condivisione tramite Web Share, copia negli appunti o dialogo con link selezionabile.
+- Visualizzatore contestuale delle fotografie, con chiusura animata, Escape e gestione del focus nativa.
+- Accordion spring reversibili; una sezione per gruppo; apertura corretta dei link diretti.
 
-## Kit e navigazione
-Superficie iOS chiara da 402px, adattabile agli schermi più piccoli. Il kit esterno è incluso una volta per pagina tramite `https://aiuxplayground.com/kits/ios-26/v1/ios.css`; non è letto, copiato o riscritto. Quattro schede: Home, Carriera, Trofei, Record. JavaScript apre le destinazioni e rivela le categorie dei link diretti. La navigazione alternativa noscript conserva l’accesso alle pagine senza JavaScript.
+## Animazioni
+Spring critiche su pressioni, chevron, altezze dei pannelli, dialoghi e feedback. Valore e velocità sono conservati quando cambia il target. Cambio pagina e filtri con View Transitions quando disponibili; fallback con feedback spring. Nessuna attesa forzata o blocco delle schede. `prefers-reduced-motion` applicato in CSS e JavaScript.
 
-## Pubblicazione
-HTML statico, un CSS, un controller JS e un modulo di feedback. Nessun build. Servire la radice; percorsi relativi compatibili con `/Messi/`. `.nojekyll` preservato. Fonti e fatti storici già verificati nell’edizione precedente; palmarès consultato il 13 ottobre 2026.
+## Implementazione
+HTML statico, un CSS e tre moduli JavaScript: `app.mjs`, `features.mjs`, `motion.mjs`. Nessun framework, backend o build richiesto. Gli URL degli asset applicativi sono versionati. Percorsi relativi compatibili con GitHub Pages sotto `/Messi/`; `.nojekyll` preservato.
+
+Il componente tab bar richiesto rimane collegato a `https://aiuxplayground.com/kits/ios-26/v1/ios.css`, senza leggere, copiare o riscrivere quel foglio. Il tema e le superfici dell’applicazione sono bianchi. La superficie è 402px nominali e si adatta ai dispositivi più stretti.
+
+## Accessibilità e fallback
+Contenuti e destinazioni sono disponibili anche senza JavaScript. Ricerca e pulsanti delle funzioni avanzate vengono mostrati dopo l’inizializzazione. Gli accordion restano nativi nel fallback. Focus visibile, spazio della tab bar misurato, gestione del viewport e dei link diretti, contatori live, dialogo nativo e immagini con dimensioni intrinseche.
 
 ## Verifica
-Controllati struttura HTML, tab bar, link, ancore, apertura dei link diretti, copertura delle immagini nei crediti, contrasto della palette e stato delle schede. Browser QA e verifica di leggibilità su dispositivo reale non eseguiti nell’ambiente disponibile.
-
-## Rifinitura degli asset e della gerarchia
-Stemmi originali del repository per Newell’s Old Boys, FC Barcelona, PSG, Inter Miami e Argentina, normalizzati con object-fit:contain. Ritratto verificato visivamente per il profilo; fotografie dei capitoli selezionate e ispezionate singolarmente, con dimensioni intrinseche corrette e senza tagliare firme o watermark. Icone delle destinazioni allineate alla famiglia del kit. Nei record: nome → periodo → valore → spiegazione. Link ai trofei di un club aprono il gruppo corrispondente. Questi controlli sugli asset non sostituiscono la verifica del rendering in browser.
-
-## Dettagli di interazione
-Feedback cromatico immediato su pressione; spring critiche su icone (response nominale 0,18s) e chevron (0,22s), senza rimbalzi. Il movimento oltre 10px annulla il feedback, senza intercettare lo scorrimento nativo. Reduced motion conserva il solo feedback cromatico e la rotazione istantanea di stato. Il modulo motion.mjs non modifica il kit esterno.
-La tab bar viene misurata a runtime per riservare spazio corretto nel contenuto e proteggere il focus. Outline interni alle liste arrotondate. Gli URL degli asset applicativi hanno fingerprint per evitare la combinazione di HTML aggiornato con CSS o controller precedenti.
-Verifiche aggiuntive: spring, retargeting, velocità conservata, prima risposta al frame, pointercancel, pagehide, focus ownership e spazio misurato della barra in harness Node. Il rendering e le prestazioni su dispositivo reale restano da verificare.
+Controllati sintassi, HTML, ancore, asset/crediti, dati del palmarès, filtri, persistenza dei salvataggi, errori storage, richieste annullate e navigazioni concorrenti, callback spring e retargeting. Le immagini aggiunte sono state ispezionate individualmente. Rendering, fluidità e prestazioni su dispositivo reale non verificati nell’ambiente disponibile.
