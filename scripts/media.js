@@ -19,6 +19,8 @@ window.MESSI_MEDIA = {
   "messi-portrait": "assets/images/messi-portrait.jpg",
   hero: "assets/images/hero.jpg",
   "trophy-champions-detail": "assets/images/champions-selected.jpg",
+  "worldcup-natural-photo": "assets/images/worldcup-natural-photo.jpg",
+  "champions-photo": "assets/images/champions-photo.jpg",
   "trophy-ballon-detail": "assets/images/trophy-ballon-detail.jpg",
   "gallery-miami-revolution": "assets/images/gallery-miami-revolution.jpg",
   "gallery-miami-nycfc": "assets/images/hero.jpg",
@@ -271,15 +273,6 @@ window.MESSI_CREDITS = [
     title: "Qatar 2022 · Immagine ufficiale di Messi",
   },
   {
-    key: "trophy-champions-photo",
-    sourceUrl:
-      "https://commons.wikimedia.org/wiki/File:Trofeo_UEFA_Champions_League.jpg",
-    author: "David Flores",
-    license: "CC BY 2.0",
-    licenseUrl: "https://creativecommons.org/licenses/by/2.0",
-    title: "Fotografia del trofeo · trophy-champions-photo",
-  },
-  {
     key: "gallery-miami-revolution",
     sourceUrl:
       "https://commons.wikimedia.org/wiki/File:Lionel_Messi_NE_Revolution_Inter_Miami_7.9.25-143.jpg",
@@ -472,4 +465,5 @@ window.MESSI_CREDITS = [
     position: "50% 35%",
   },
 ];
+
 

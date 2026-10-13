@@ -309,7 +309,7 @@ window.MESSI_SNAPSHOT = {
   }
   placeNavigation();
   touchLayout.addEventListener("change", placeNavigation);
-  // The archive intentionally uses one permanent dark theme.
+  // The archive keeps one editorial theme across phone and desktop layouts.
   let menuRevision = 0;
   async function closeMenu(animateExit = false) {
     const revision = ++menuRevision;
@@ -878,7 +878,7 @@ window.MESSI_SNAPSHOT = {
         else play();
       }
     }, {threshold: .12, rootMargin: "0px 0px -32px 0px"});
-    document.querySelectorAll(".chapter-stage > img, .trophy-card, .world-cup-section > img, .world-cup-content, .story-image > img, .story-timeline article, .moment-context img, .bio-context img, .news-context-image").forEach(element => revealObserver.observe(element));
+    document.querySelectorAll(".chapter-stage > img, .trophy-card, .world-cup-section > img, .world-cup-content, .story-image > img, .story-timeline article, .moment-context img, .bio-context img, .news-context-image, .gallery-card img").forEach(element => revealObserver.observe(element));
   }
   // Native disclosures keep their semantics and respond immediately before the content settles.
   document.querySelectorAll("details").forEach(disclosure => {
@@ -899,3 +899,4 @@ window.MESSI_SNAPSHOT = {
     $("#data-status").textContent =
       "Archivio locale: ultima lettura valida inclusa.";
 })();
+
