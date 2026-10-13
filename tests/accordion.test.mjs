@@ -20,3 +20,15 @@ hostEvents.get('pointercancel')();assert.equal(classes.size,0);
 listeners.get('pointerdown')({isPrimary:true,button:0,target:{closest:()=>control}});
 feedback.refresh();assert.equal(classes.size,0);
 console.log('PASS native disclosure behavior, ancestor reveal, press cancellation and refresh cleanup');
+// Motion must stop immediately when the user's preference changes.
+let preferenceChange,started=0,cancelled=0;
+const preference={matches:false,addEventListener:(name,callback)=>{preferenceChange=callback;}};
+const heading={animate:()=>{started++;return {finished:new Promise(()=>{}),cancel:()=>cancelled++};}};
+const motionRoot={addEventListener:()=>{},querySelector:selector=>selector.includes('profile')?heading:null,querySelectorAll:()=>[]};
+const motionHost={matchMedia:()=>preference,addEventListener:()=>{}};
+const motion=installFeedback(motionRoot,motionHost);
+motion.refresh();assert.equal(started,1);
+preference.matches=true;preferenceChange();assert.equal(cancelled,1);
+motion.refresh();assert.equal(started,1,'reduced motion must prevent new animations');
+motion.settle();assert.equal(cancelled,1,'settling must not cancel already released motion twice');
+console.log('PASS reduced-motion changes cancel active motion and prevent new motion');
