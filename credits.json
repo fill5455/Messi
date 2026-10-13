@@ -1,22 +1,5 @@
 [
   {
-    "key": "argentina-training-2023",
-    "sourceUrl": "https://messi.com/en/galeria/",
-    "originalUrl": "https://static.messi.com/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-14-at-14.03.29.jpeg",
-    "author": "Fotografo non indicato",
-    "license": "Diritti riservati; licenza di riuso non dichiarata",
-    "licenseUrl": "https://messi.com/terminos-y-condiciones/",
-    "width": 2048,
-    "height": 1366,
-    "note": "Official messi.com photograph. Photographer and reuse license not stated. Site footer credits Leo Messi Management S.L.U.; no Creative Commons or public-domain claim. Preserve source attribution and existing watermark.",
-    "title": "Prima del fischio.",
-    "tag": "PECHINO · 2023",
-    "caption": "Con i compagni dell’Argentina, verso una seduta di allenamento.",
-    "alt": "Con i compagni dell’Argentina, verso una seduta di allenamento.",
-    "position": "50% 35%",
-    "file": "assets/images/argentina-training-2023.webp"
-  },
-  {
     "key": "barcelona-2011",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gran_Messi,_Bar%C3%A7a_Mallorca.jpg",
     "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Gran_Messi%2C_Bar%C3%A7a_Mallorca.jpg",
@@ -32,15 +15,6 @@
     "alt": "La celebrazione con Abidal e Dani Alves contro il Mallorca.",
     "position": "50% 35%",
     "file": "assets/images/barcelona-2011.webp"
-  },
-  {
-    "key": "photo-barcelona-official",
-    "sourceUrl": "https://static.messi.com/wp-content/uploads/2019/12/STATS.jpg",
-    "author": "Leo Messi official website; individual photographer/designer not specified",
-    "license": "Materiale ufficiale protetto da copyright; licenza pubblica di riuso non verificata",
-    "licenseUrl": "https://messi.com/",
-    "title": "Barcellona · Composizione fotografica ufficiale",
-    "file": "assets/images/barcelona-celebration.webp"
   },
   {
     "key": "champions-selected",
@@ -99,15 +73,6 @@
     "file": "assets/images/messi-argentina.webp"
   },
   {
-    "key": "messi-portrait",
-    "title": "Messi · Argentina a Qatar 2022",
-    "author": "Hossein Zohrevand / Tasnim News Agency",
-    "license": "CC BY 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lionel_Messi_WC2022.jpg",
-    "file": "assets/images/messi-portrait.webp"
-  },
-  {
     "key": "psg-crisp",
     "sourceUrl": "https://messi.com/en/galeria/?mgi_45=16230%2Fpsg-v-nantes",
     "author": "Leo Messi official website; individual photographer not identified",
@@ -116,40 +81,6 @@
     "caption": "PSG–Nantes · 2021",
     "title": "PSG–Nantes · 2021",
     "file": "assets/images/messi-psg.webp"
-  },
-  {
-    "key": "miami-leagues-2023",
-    "sourceUrl": "https://messi.com/en/galeria/",
-    "originalUrl": "https://static.messi.com/wp-content/uploads/2023/08/WhatsApp-Image-2023-08-20-at-07.11.23.jpeg",
-    "author": "Fotografo non indicato",
-    "license": "Diritti riservati; licenza di riuso non dichiarata",
-    "licenseUrl": "https://messi.com/terminos-y-condiciones/",
-    "width": 2048,
-    "height": 1366,
-    "note": "Official messi.com photograph. Photographer and reuse license not stated. Site footer credits Leo Messi Management S.L.U.; no Creative Commons or public-domain claim. Preserve source attribution and existing watermark.",
-    "title": "Il primo trionfo americano.",
-    "tag": "LEAGUES CUP · 2023",
-    "caption": "L’esultanza dopo il gol nella finale contro Nashville.",
-    "alt": "L’esultanza dopo il gol nella finale contro Nashville.",
-    "position": "50% 35%",
-    "file": "assets/images/miami-leagues-2023.webp"
-  },
-  {
-    "key": "miami-trophy-2023",
-    "sourceUrl": "https://messi.com/un-gol-de-leo-da-el-primer-titulo-de-la-historia-al-inter-miami/",
-    "originalUrl": "https://static.messi.com/wp-content/uploads/2023/08/WhatsApp-Image-2023-08-20-at-07.11.26-1.jpeg",
-    "author": "Fotografo non indicato",
-    "license": "Diritti riservati; licenza di riuso non dichiarata",
-    "licenseUrl": "https://messi.com/terminos-y-condiciones/",
-    "width": 2048,
-    "height": 1366,
-    "note": "Official messi.com photograph. Photographer and reuse license not stated. Site footer credits Leo Messi Management S.L.U.; no Creative Commons or public-domain claim. Preserve source attribution and existing watermark.",
-    "title": "Una squadra, una prima volta.",
-    "tag": "INTER MIAMI · 2023",
-    "caption": "La squadra festeggia la Leagues Cup, primo titolo della sua storia.",
-    "alt": "La squadra festeggia la Leagues Cup, primo titolo della sua storia.",
-    "position": "50% 35%",
-    "file": "assets/images/miami-trophy-2023.webp"
   },
   {
     "key": "worldcup-selected",
