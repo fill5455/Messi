@@ -1,42 +1,59 @@
-# Sistema visivo
+# Sistema visivo mobile
 
-## Intento
+## Obiettivo
 
-Archivio editoriale sportivo con lettura lineare, gerarchie nette e fotografie documentali. Il layout mobile è stato ridisegnato come interfaccia autonoma: contenuti raggruppati, navigazione raggiungibile col pollice e superfici essenziali. La versione desktop usa il proprio foglio di stile.
+Raccontare la carriera di Lionel Messi in una pagina editoriale mobile che si legge e si naviga senza sforzo. Una gerarchia principale per volta: introduzione, capitoli, numeri, palmarès, storie e archivio fotografico. Le sezioni desktop restano nel foglio separato.
 
-## Colori mobile
+## Fondazioni
 
-- Sfondo pagina: #f7f7f3
-- Superficie: #ffffff
-- Testo principale: #17242b
-- Testo secondario: #58666d
-- Linee: #d8dfe0
-- Accento: #176b7d
-- Accento tenue: #e8f1f2
-- Accento caldo: #a94f39
-- Superficie scura: #10242d
+- Stile: flat, editoriale, fotografico; superfici piane, bordi sottili, nessuna ombra decorativa.
+- Palette mobile:
+  - Pagina `--paper`: #f5f7fa
+  - Superficie `--surface`: #ffffff
+  - Testo `--ink`: #142235
+  - Secondario `--muted`: #566579
+  - Bordo `--line`: #d9e0e8
+  - Accento `--blue`: #2459d3
+  - Accento scuro `--blue-dark`: #1945aa
+  - Accento morbido `--blue-soft`: #eaf0ff
+  - Dettaglio `--gold`: #e3b64d
+- Tipografia: Manrope locale; corpo 16 px / 1,55, metadati da 10–12 px, titoli con scala fluida e interlinea stretta.
+- Spazi: griglia di 4 px; passi comuni 8, 12, 16, 20, 24, 32, 48 e 72 px. Spazi interni più stretti di quelli tra gruppi e sezioni.
+- Forme: angoli 6–8 px per contenuti e controlli; pillola solo per filtri.
+- Movimento: transizioni brevi e funzionali; scorrimento orizzontale con snap; rispetto di `prefers-reduced-motion`.
 
-Il contrasto usa l’accento scuro su superfici chiare. Le superfici scure sono riservate alle aree di racconto e dati.
+## Layout e breakpoint
 
-## Tipografia e spazi
+- 320–679 px: foglio dedicato in `styles/mobile.css`, contenuto centrato e largo al massimo 720 px, margine laterale 20 px (16 px sotto i 360 px), sezioni in colonna.
+- Da 680 px: `styles/desktop.css`, caricato da `styles/site.css`.
+- Barra d’azione flottante con area sicura per notch e menu a comparsa sopra la barra.
+- Immagini a larghezza piena nel racconto; archivio a due colonne con una copertina a tutta larghezza.
+- Carosello dei trofei con scorrimento a scatto e controlli espliciti.
 
-Manrope locale per interfaccia e dati; titoli e contenuti seguono una scala tipografica compatta e leggibile. Il testo base è 16 px con interlinea 1,55. Il margine mobile è 20 px, le sezioni hanno 56 px di respiro, i bordi sono contenuti (6–8 px) e le superfici restano piatte.
+## Interazione e accessibilità
 
-## Layout e responsive
+- Ogni controllo touch deve avere area minima 44 × 44 px e separazione visibile.
+- Stati attivi distinguibili con testo/forma oltre al colore; focus da tastiera sempre evidente.
+- Un’azione primaria per volta; navigazione secondaria raccolta nel menu.
+- Filtri con stato `aria-pressed`; immagini apribili con pulsanti; dialoghi chiudibili da tastiera.
+- Testo alternativo descrittivo, proporzioni immagine dichiarate, messaggi di errore leggibili.
+- Nessuna animazione necessaria per comprendere il contenuto; motion ridotto supportato.
 
-- Da 320 a 679 px: foglio mobile dedicato, indice flottante inferiore, dati organizzati in blocchi leggibili e galleria a due colonne (una sotto i 360 px).
-- Da 680 px: il foglio desktop seleziona la composizione ampia preesistente.
-- Entrambi i fogli sono selezionati da styles/site.css; le regole mobile non si mescolano a quelle desktop.
+## Componenti principali
 
-## Interazioni e accessibilità
+- **Apertura:** titolo, descrizione breve, una fotografia, credito e invito alla carriera.
+- **Capitoli:** selettore etichettato, fotografia, descrizione e tre numeri.
+- **Statistiche:** cinque filtri scorrevoli, quattro valori principali e dati secondari raggruppati.
+- **Trofei:** card fotografiche orizzontali; il dettaglio si apre solo su richiesta.
+- **Cronologia:** storie ordinate per squadra e data, in schede compatte.
+- **Archivio:** 24 immagini filtrabili; scorrimento naturale, anteprima a schermo intero.
+- **Fonti:** attribuzioni e licenze raccolte in una disclosure.
 
-- Navigazione mobile ancorata in basso con area sicura per i dispositivi con notch.
-- Controlli touch con dimensioni comode e stati di focus visibili.
-- Galleria filtrabile e visualizzatore con frecce e chiusura da tastiera.
-- Dettagli dei trofei in dialogo nativo.
-- Scorrimento fluido, disattivato per chi preferisce movimento ridotto.
-- Immagini con caricamento differito e dimensioni dichiarate per ridurre gli spostamenti di layout.
+## Verifiche prima del rilascio
 
-## Asset
+- Controllare larghezze 320, 360, 390 e 430 px, oltre alla soglia 679/680.
+- Nessuno scorrimento orizzontale della pagina; overflow limitato a caroselli e filtri.
+- Tutti i controlli raggiungibili con tastiera e comodi al tocco.
+- Filtri, capitoli, statistiche, trofei, menu e galleria continuano a funzionare.
+- Contrasto, focus visibile e movimento ridotto verificati.
 
-Sono mantenuti solo asset riferiti da markup o script. Le coppie JPG/WebP ancora presenti supportano il fallback dei browser; percorsi, attribuzioni e licenze sono raccolti in scripts/media.js. Il font Manrope è locale e la sua licenza si trova in licenses/.
