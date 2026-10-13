@@ -1,39 +1,46 @@
-# Messi — bianco, stile iOS 18
+# Messi — sistema di design
 
-## Gerarchia
-Home breve → destinazioni → sintesi → approfondimento. Carriera: tappe prima del profilo. Trofei: categorie prima del racconto. Record: ricerca, filtri, dati con periodo e spiegazione. Nessuna griglia fotografica o titolo decorativo.
+## Identità e gerarchia
+
+Bianco, accento blu, tipografia di sistema e fotografie originali. La Home introduce il giocatore e offre tre prospettive; le altre pagine alternano introduzione, gruppi leggibili, approfondimenti e fonti. I numeri sono prominenti e sempre accompagnati da periodo e significato. Argentina e Crediti mantengono lo stesso linguaggio delle quattro destinazioni principali.
 
 ## Fondamenti
-Canvas #ffffff, superfici #f6f7f9, testo #1c1c1e, secondario #52525b, accento #005fc9. Font di sistema, pesi 400/600/700. Titoli pagina 32px, titoli riga 18px, testo 16px, descrizioni 15–17px, note 14px. Margini 20px, raggio gruppi 20px, frame identità 48px, glyph 22px.
 
-## Motion
-- Pressione: feedback cromatico immediato; icona scale 1↔0.92 o pulsante 1↔0.97, response nominale .18s.
-- Chevron: 0↔90°, response .22s.
-- Accordion: altezza reale, response .3s; callback di riposo e resize observer. Apertura/chiusura dal valore e dalla velocità correnti. Contenuto chiuso inert, focus restituito al summary quando necessario.
-- Dialoghi: scale .96↔1 e opacity 0↔1, response .3s; chiusura sullo stesso percorso.
-- Feedback: opacity e translateY 6↔0, response .22s.
-- Pagine e filtri: View Transitions native, 180–280ms, opacity e scale .995↔1. Overlay delle transizioni non intercetta i puntatori; nuove navigazioni saltano le transizioni precedenti e annullano richieste superate.
-- Nessun rimbalzo decorativo, autoplay o animazione delle fotografie durante la lettura.
-- Reduced motion: aggiornamenti istantanei, nessuna scala animata, nessuno scorrimento artificiale.
+| Elemento | Regola |
+| --- | --- |
+| Canvas | `#ffffff` |
+| Superficie | `#f6f8fb` |
+| Testo | `#1c1c1e` |
+| Testo secondario | `#52525b` |
+| Accento | `#005fc9` |
+| Separatore | `#dde3ed`; rafforzato con maggiore contrasto |
+| Caratteri | Stack di sistema, nessuna richiesta a font remoti |
+| Titoli | 32–48 px nelle pagine; 32–72 px nella Home; dimensioni espresse in rem/clamp |
+| Corpo | 16–20 px secondo il contesto; interlinea 1.55–1.65 |
+| Margini | `clamp(20px, 4vw, 48px)` |
+| Gruppi | Raggio 22 px; superfici solide; separatori leggeri |
+| Superficie applicativa | 100% fino a 1200 px |
+| Colonna di lettura | Fino a 880 px; Home fino a 1100 px |
+| Navigazione | Barra inferiore persistente fino a 460 px; spazio libero misurato |
 
-## Materiali
-Header bianco leggermente traslucido. Carte informative solide. Tab bar del kit fornito invariata. Dialoghi bianchi con scrim scuro e blur statico leggero. Nessuna sovrapposizione di carte di vetro chiare.
+## Componenti e reflow
 
-## Funzioni e stati
-Ricerca Records etichettata, filtri esclusivi con aria-pressed, stato vuoto contestuale, pulsanti Salva/Salvato e Condividi. Feedback sul tipo di persistenza. Condivisione con fallback. Zoom delle immagini contestuale, con caption e crediti. Cronologia browser, scroll e sezioni aperte conservati.
+Destinazioni a elenco su mobile e tre carte su desktop da 700 px. Il profilo passa da ritratto compatto a immagine 240×280; le statistiche passano dalle righe a tre colonne. Gli approfondimenti conservano ampiezza di lettura e fotografie intere. I record usano titoli, periodo, numero tabulare, spiegazione e azioni.
 
-## QA ancora necessaria
-Safari su iPhone, View Transitions e fallback, tastiera/VoiceOver, zoom testo, tastiera virtuale, storage/clipboard/share reali, riapertura durante chiusura, performance degli accordion lunghi. La verifica del codice non equivale a una misurazione della fluidità sul dispositivo.
+Gli elementi flex possono restringersi. Dati lunghi e azioni possono andare a capo, senza contenuto troncato. A viewport stretti i filtri usano due righe; la lente misura anche quota verticale e altezza. Le etichette della navigazione possono rifluire con testo ingrandito. Il fallback senza script riserva spazio conservativo alla barra.
 
-## Lente Liquid Glass
-- Lente separata dai contenuti: gli elementi semantici e le etichette restano fermi; si anima solo il materiale dietro.
-- Tab bar: trascinamento orizzontale con cattura dopo 10px, offset conservato, resistenza ai bordi e proiezione di 120ms; nessun blocco degli input.
-- Damping 1 / .4s per spostamenti; .8 solo per release con velocità reale >120px/s. Width .32s, contatto .2s, modal .3s.
-- Stretch da velocità limitato al 16%; contatto: primo frame compresso, espansione 12% × 20%, ricomposizione con damping .72 / risposta .2s. Spring analitiche; nessun keyframe per i gesti.
-- Filtri: una sola lente con geometria misurata, radio e pulsanti nativi conservati.
-- Dialogo foto: trasformazione dal centro della sorgente, ritorno sullo stesso percorso; Escape e focus nativi.
-- Il kit iOS resta esterno. `.liquid-tab-lane`, `.liquid-item`, `.liquid-lens` sono strati applicativi originali.
-- Contenuti solidi bianchi; materiale su tab bar e piccoli controlli, blur statico 16–22px. Riduzione movimento, maggiore contrasto e fallback opaco.
-- Riferimento verificato il 13 ottobre 2026: https://github.com/GetStream/awesome-liquid-glass/blob/main/README.md. Adattamento web, non equivalenza ottica al renderer iOS.
+## Interazione e stati
 
-Il pointer-down fa reagire il controllo toccato, anche sulla scheda attiva; non si attende il click. Nei filtri la lente ha lo stesso contatto. Riflesso localizzato sulla pressione, bordo illuminato, icona sollevata massimo 1,5px; riduzione del movimento elimina deformazioni e sollevamento.
+Ricerca etichettata, filtri esclusivi con `aria-pressed`, stato vuoto contestuale e pulsanti Salva/Salvato. Il feedback specifica quando la persistenza è solo di sessione. Focus visibile blu da 3 px; i controlli nascosti non conservano il focus. Escape chiude le foto; il dialogo nativo restituisce il focus al collegamento iniziale.
+
+Navigazione con richieste annullabili e controllo delle risposte superate; cronologia e stato delle pagine mantenuti. I target dei link diversi da `_self` mantengono il comportamento nativo. Fonti esterne restano link ordinari.
+
+## Movimento e materiali
+
+Spring analitiche reversibili con posizione e velocità conservate. Accordion da altezza reale, con ResizeObserver; al termine sono `height:auto` e `overflow:visible`, evitando il taglio dei focus ring. Chiusura inert e restituzione del focus al summary. Lente originale applicativa sotto etichette e radio; presa orizzontale dopo 10 px, annullamento verticale, resistenza ai bordi e snap. View Transitions con fallback. Con movimento ridotto, aggiornamenti istantanei e nessuna deformazione decorativa.
+
+Contenuti e dialoghi solidi bianchi; traslucenza confinata a navigazione e piccoli controlli. Fallback opaco, contrasto aumentato e forced colors. Il kit esterno resta un’integrazione opzionale per il rendering: geometria e icone locali non dipendono dal suo caricamento.
+
+## Verifica
+
+[QA_REPORT.md](QA_REPORT.md) documenta scenari browser effettivi, test di logica e limiti. Nessuna equivalenza ottica dichiarata con il renderer nativo iOS, nessuna promessa di WCAG completa o fluidità misurata su dispositivi non testati.

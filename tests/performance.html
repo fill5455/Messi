@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="it">
 <head><base href="../"><script>
-history.replaceState(null,'','../index.html?qa=performance');
+history.replaceState(null,'',new URL('../index.html?qa=performance',location.href).href);
 const qaMetrics={fcp:null,lcp:null,cls:0,shifts:[]};
 const qaLcp=new PerformanceObserver(list=>{for(const e of list.getEntries())qaMetrics.lcp=e.startTime});qaLcp.observe({type:'largest-contentful-paint',buffered:true});
 const qaCls=new PerformanceObserver(list=>{qaMetrics.shifts.push(...list.getEntries().filter(e=>!e.hadRecentInput).map(e=>({value:e.value,time:e.startTime,nodes:e.sources?.map(s=>s.node?.tagName+'.'+s.node?.className)})))});qaCls.observe({type:'layout-shift',buffered:true});

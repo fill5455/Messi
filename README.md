@@ -1,44 +1,42 @@
-# Messi — esperienza mobile, tema bianco
+# Messi — carriera, trofei e record
 
-Sito statico dedicato a Lionel Messi, con tema bianco ispirato a iOS 18. Home, Carriera, Trofei e Record rimangono le quattro destinazioni principali. Argentina e Crediti sono approfondimenti.
+Sito statico indipendente dedicato a Lionel Messi. Sei pagine, un sistema visivo bianco con accento blu e navigazione persistente. HTML, CSS e moduli JavaScript nativi: nessun framework, backend o build obbligatorio.
 
-## Contenuti
-Profilo e tappe della carriera, cronologia degli anni al Barcellona, 22 voci del palmarès, sette record contestualizzati, racconti di Wembley 2011, Copa América 2021 e Qatar 2022. Sette fotografie e cinque stemmi, con provenienza in `credits.json`. Nessun archivio fotografico.
+## Esperienza
 
-## Funzioni
-- Navigazione interna progressiva: header e tab bar persistono; la pagina viene caricata e aggiornata senza ricaricare il documento.
-- Richieste annullabili e controllo delle risposte superate, cache delle pagine visitate, cronologia browser e stato di scorrimento per pagina.
-- Record: ricerca per testo/anno, filtri Gol/Premi/Salvati, salvataggi sul dispositivo tramite localStorage. Se lo storage è bloccato, il salvataggio resta nella sessione ed è dichiarato nel feedback.
-- Condivisione tramite Web Share, copia negli appunti o dialogo con link selezionabile.
-- Visualizzatore contestuale delle fotografie, con chiusura animata, Escape e gestione del focus nativa.
-- Accordion spring reversibili; una sezione per gruppo; apertura corretta dei link diretti.
+- Home con profilo, tre percorsi editoriali, traguardi e approfondimento sul Mondiale.
+- Carriera e Trofei con approfondimenti progressivi; Argentina e Crediti completi.
+- Layout adattivo: elenco su mobile, destinazioni e dati in colonne su desktop. Superficie fino a 1200 px; lettura fino a 880 px e homepage fino a 1100 px.
+- Navigazione progressiva con cache, richieste annullabili, cronologia, scorrimento e stato per pagina. I documenti HTML rimangono disponibili senza JavaScript.
+- Record con ricerca per testo/anno, filtri e salvataggi sul dispositivo; fallback di sessione se lo storage è bloccato.
+- Condivisione tramite Web Share, appunti o dialogo con link selezionabile. Foto contestuali con dialogo nativo, Escape e restituzione del focus.
+- Spring reversibili per pannelli e controlli; lente della tab bar trascinabile. Movimento ridotto supportato. Nessuna animazione fotografica automatica.
 
-## Animazioni
-Spring critiche su pressioni, chevron, altezze dei pannelli, dialoghi e feedback. Valore e velocità sono conservati quando cambia il target. Cambio pagina e filtri con View Transitions quando disponibili; fallback con feedback spring. Nessuna attesa forzata o blocco delle schede. `prefers-reduced-motion` applicato in CSS e JavaScript.
+## Affidabilità e accessibilità
 
-## Implementazione
-HTML statico, un CSS e quattro moduli JavaScript: `app.mjs`, `features.mjs`, `motion.mjs`, `liquid.mjs`. Nessun framework, backend o build richiesto. Gli URL degli asset applicativi sono versionati. Percorsi relativi compatibili con GitHub Pages sotto `/Messi/`; `.nojekyll` preservato.
+Focus visibile, skip link, descrizioni dei controlli, contatori live, pannelli chiusi inert, dialoghi nativi e controlli touch ampi. La rimozione di un record dal filtro Salvati restituisce il focus a un controllo visibile. I link diretti rivelano e focalizzano la destinazione durante la navigazione da tastiera. Gli aggiornamenti dello storage, incluso `clear()`, sincronizzano i salvataggi.
 
-Il componente tab bar richiesto rimane collegato a `https://aiuxplayground.com/kits/ios-26/v1/ios.css`, senza leggere, copiare o riscrivere quel foglio. Il tema e le superfici dell’applicazione sono bianchi. La superficie è 402px nominali e si adatta ai dispositivi più stretti.
+La tab bar mantiene il kit esterno `https://aiuxplayground.com/kits/ios-26/v1/ios.css`. Stili di base e icone originali locali consentono di usarla anche senza quel CSS. Il foglio esterno non è copiato nel progetto. Il fallback senza JavaScript usa link nativi e nasconde i radio inattivi. La lente segue anche filtri disposti su più righe.
 
-## Accessibilità e fallback
-Contenuti e destinazioni sono disponibili anche senza JavaScript. Ricerca e pulsanti delle funzioni avanzate vengono mostrati dopo l’inizializzazione. Gli accordion restano nativi nel fallback. Focus visibile, spazio della tab bar misurato, gestione del viewport e dei link diretti, contatori live, dialogo nativo e immagini con dimensioni intrinseche.
+Le immagini originali e le attribuzioni sono conservate in `credits.json`. La sola miniatura del Mondiale sulla Home è ridotta a 26.544 byte, rispetto ai 393.450 della foto completa; l’immagine completa resta nel capitolo Argentina. Nessuna nuova dipendenza di produzione. CSS e tutti i moduli importati hanno versioni derivate dal contenuto.
 
-## Verifica
-Controllati sintassi, HTML, ancore, asset/crediti, dati del palmarès, filtri, persistenza dei salvataggi, errori storage, richieste annullate e navigazioni concorrenti, callback spring e retargeting. Le immagini aggiunte sono state ispezionate individualmente. Rendering, fluidità e prestazioni su dispositivo reale non verificati nell’ambiente disponibile.
+## Avvio e verifica
 
-## Liquid Glass · 13 ottobre 2026
-Riferimento: [GetStream/awesome-liquid-glass](https://github.com/GetStream/awesome-liquid-glass/blob/main/README.md), in particolare `LiquidGlassTabBar.swift`. Implementazione web originale: il materiale e la rifrazione nativa SwiftUI/iOS 26 non sono riproducibili in modo identico tramite CSS.
+```sh
+python3 -m http.server 8080
+```
 
-La tab bar usa una lente applicativa che conserva i radio e il kit esterno; nessuna copia di `ios.css`. Al tocco si comprime; dopo 10px orizzontali cattura il puntatore, mantiene l'offset di presa e segue il dito. Il movimento verticale annulla la presa. Resistenza oltre i bordi (64px di limite asintotico), proiezione di 120ms, velocità limitata a 1800px/s e snap alla scheda più vicina. Damping 1 / risposta .4s di default; damping .8 solo al rilascio con velocità superiore a 120px/s. Stretch da velocità massimo 16%; contatto con compressione iniziale e crescita della lente del 12% in larghezza / 20% in altezza. Le etichette restano leggibili; l’icona della scheda premuta si solleva di massimo 1,5px. L'interfaccia resta interattiva durante il caricamento.
+Aprire `http://localhost:8080/`. I percorsi relativi funzionano anche sotto `/Messi/`; `.nojekyll` resta presente.
 
-Filtri Record: lente condivisa che scorre tra i pulsanti senza trascinamento. Foto: apertura e chiusura spring ancorate alla foto originale. Materiali traslucidi solo sui controlli; contenuti e dialogo bianchi. Fallback opaco senza backdrop-filter, più contrasto, trasparenza ridotta e animazioni istantanee con reduced motion. Nessuna dipendenza nuova.
+```sh
+python3 tests/site_test.py
+node tests/navigation.test.mjs
+node tests/accordion.test.mjs
+node tests/liquid.test.mjs
+```
 
-Verificati: formule di resistenza/proiezione, limiti di deformazione, continuità di posizione/velocità, retargeting, equivalenza numerica degli step a diversi frame rate e completamento istantaneo. Questa verifica matematica non misura i frame effettivi del browser; il rendering su dispositivo reale resta da verificare.
+Per la verifica del renderer, aprire `tests/browser.html`: selezione pagina, viewport 320/390/768/1440 px, testo 100/200%, assenza del kit esterno, scripting disabilitato, matrice completa e apertura di tutti gli approfondimenti. Il solo strumento QA carica axe-core 4.10.3 da jsDelivr; il sito pubblico non lo carica. Eseguire una suite alla volta e attendere il rapporto JSON.
 
-Test ripetibili, senza dipendenze: `node tests/liquid.test.mjs`. I test di lifecycle usano doppi di eventi/geometrie e non costituiscono una verifica del renderer del browser.
+`tests/performance.html` riproduce la Home in una finestra principale con osservatori di FCP, LCP e CLS; il pannello diagnostico compare dopo la misura. Rigenerare il fixture con `python3 tests/generate_performance.py` quando cambia la Home. Le metriche raccolte negli iframe possono includere artefatti del contenitore e non vanno trattate come Web Vitals di produzione.
 
-### Correzione della risposta al tocco · 13 ottobre 2026
-La precedente implementazione reagiva quasi solo al trascinamento: pressione del 4% sulla lente attiva, nessuna risposta al contatto nei filtri. Ora pointer-down modifica subito la presentazione, sposta la lente verso il controllo premuto prima del click, avvia la compressione/espansione e posiziona il riflesso sul punto di contatto. Il release conserva il moto della spring e ricompone la lente. Lo stesso tab reagisce senza avviare una navigazione aggiuntiva. Filtri e tastiera hanno un lifecycle di pressione; annullamenti verticali restano nativi. I pulsanti applicativi hanno compressione anisotropa e ritorno spring invece del solo ridimensionamento dell’icona.
-
-Sono stati aggiunti test per feedback immediato sulla scheda già selezionata, scelta al rilascio e soppressione del click duplicato. Non è stata verificata l'identità visiva rispetto al GIF: il connettore non ha restituito il contenuto binario dell'anteprima e il rendering mobile non è disponibile in questo ambiente.
+Risultati, problemi corretti e limiti: [QA_REPORT.md](QA_REPORT.md). La verifica automatica non costituisce certificazione WCAG né verifica di fluidità su iPhone reale.
