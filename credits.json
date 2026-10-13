@@ -32,8 +32,11 @@
     "author": "WallPaperAccess; fotografo non indicato",
     "license": "Copyright; licenza pubblica di riuso non dichiarata",
     "licenseUrl": "https://wallpaperaccess.com/full/14139924.jpg",
-    "note": "Fotografia scelta dal committente. Ridimensionamento e compressione WebP; colori originali.",
-    "file": "assets/images/worldcup-selected.webp"
+    "note": "Fotografia scelta dal committente. Ridimensionamento e compressione WebP; colori originali. Anteprima 240×360 per la homepage; il capitolo conserva la fotografia completa.",
+    "file": "assets/images/worldcup-selected.webp",
+    "derivatives": [
+      "assets/images/worldcup-preview.webp"
+    ]
   },
   {
     "key": "psg-crisp",
