@@ -2,43 +2,41 @@
 
 ## Intento
 
-Un archivio editoriale sportivo: immagini documentali, gerarchia tipografica forte, lettura lineare. La pagina usa un solo tema chiaro e colori misurati; le sezioni scure sono riservate ai dati e al racconto della Coppa del Mondo. Niente cornici decorative ripetute o superfici sfocate.
+Archivio editoriale sportivo con lettura lineare, gerarchie nette e fotografie documentali. Il layout mobile è stato ridisegnato come interfaccia autonoma: contenuti raggruppati, navigazione raggiungibile col pollice e superfici essenziali. La versione desktop usa il proprio foglio di stile.
 
-## Colori
+## Colori mobile
 
-- Carta: #f4f2ec
-- Superficie: #fffefa
-- Inchiostro: #152127
-- Testo secondario: #5f6b6c
-- Blu cielo: #85c9de
-- Blu accessibile: #176578
-- Terracotta: #ba5a40
-- Fondo scuro: #122027
-- Linea chiara: #d9ded9
-- Linea scura: #35444b
+- Sfondo pagina: #f7f7f3
+- Superficie: #ffffff
+- Testo principale: #17242b
+- Testo secondario: #58666d
+- Linee: #d8dfe0
+- Accento: #176b7d
+- Accento tenue: #e8f1f2
+- Accento caldo: #a94f39
+- Superficie scura: #10242d
 
-Il blu chiaro è usato come accento su fondi scuri; su fondi chiari link e stati attivi usano il blu più scuro.
+Il contrasto usa l’accento scuro su superfici chiare. Le superfici scure sono riservate alle aree di racconto e dati.
 
-## Tipografia e spaziatura
+## Tipografia e spazi
 
-Manrope locale per interfaccia e dati; Georgia di sistema per titoli e didascalie editoriali. Corpo minimo 16 px. Spaziatura basata su passi di 4 e 8 px; contenuto centrato in una larghezza massima di 1240 px. Il margine laterale cresce da 20 px su telefoni a 42 px sui grandi schermi.
+Manrope locale per interfaccia e dati; titoli e contenuti seguono una scala tipografica compatta e leggibile. Il testo base è 16 px con interlinea 1,55. Il margine mobile è 20 px, le sezioni hanno 56 px di respiro, i bordi sono contenuti (6–8 px) e le superfici restano piatte.
 
-## Responsive
+## Layout e responsive
 
-- Sotto 680 px: selettori nativi, numeri in griglia 2×2 e galleria in due colonne.
-- Da 680 px: più spazio per testi, record in quattro colonne e galleria in tre.
-- Da 1025 px: navigazione orizzontale, indice dei capitoli, statistiche filtrabili e galleria in quattro colonne.
-- Fotografie con rapporto controllato dal layout, caricamento differito sotto la prima schermata e dimensioni dichiarate per ridurre gli spostamenti.
+- Da 320 a 679 px: foglio mobile dedicato, indice flottante inferiore, dati organizzati in blocchi leggibili e galleria a due colonne (una sotto i 360 px).
+- Da 680 px: il foglio desktop seleziona la composizione ampia preesistente.
+- Entrambi i fogli sono selezionati da styles/site.css; le regole mobile non si mescolano a quelle desktop.
 
-## Interazioni
+## Interazioni e accessibilità
 
-- Filtri di carriera e statistiche con stato aria-pressed.
-- Galleria fotografica filtrabile e visualizzatore con frecce, tasti freccia e chiusura con Esc.
+- Navigazione mobile ancorata in basso con area sicura per i dispositivi con notch.
+- Controlli touch con dimensioni comode e stati di focus visibili.
+- Galleria filtrabile e visualizzatore con frecce e chiusura da tastiera.
 - Dettagli dei trofei in dialogo nativo.
-- Progressione di lettura e menu mobile con pulsanti da almeno 44 px.
-- Movimento ridotto rispettato in CSS e JavaScript.
+- Scorrimento fluido, disattivato per chi preferisce movimento ridotto.
+- Immagini con caricamento differito e dimensioni dichiarate per ridurre gli spostamenti di layout.
 
 ## Asset
 
-Le immagini restano locali. Percorsi e metadati delle fonti sono mantenuti in scripts/media.js; le licenze dei font sono nella cartella licenses/. Consultare la sezione crediti del sito prima di riutilizzare un’immagine.
-
+Sono mantenuti solo asset riferiti da markup o script. Le coppie JPG/WebP ancora presenti supportano il fallback dei browser; percorsi, attribuzioni e licenze sono raccolti in scripts/media.js. Il font Manrope è locale e la sua licenza si trova in licenses/.
