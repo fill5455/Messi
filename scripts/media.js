@@ -6,16 +6,19 @@ window.MESSI_MEDIA = {
   "miami-logo": "assets/images/miami-logo.svg",
   "argentina-logo": "assets/images/argentina-logo.svg",
   "messi-barcelona": "assets/images/messi-barcelona.jpg",
+  "messi-psg": "assets/images/messi-psg.jpg",
   "messi-miami": "assets/images/messi-miami.jpg",
   "messi-worldcup": "assets/images/worldcup-selected.jpg",
   "trophy-worldcup": "assets/images/worldcup-selected.jpg",
   "trophy-ballon": "assets/images/trophy-ballon.jpg",
   "trophy-champions": "assets/images/champions-selected.jpg",
+  "trophy-copa": "assets/images/copa-2021.jpg",
   "trophy-liga": "assets/images/laliga-selected.jpg",
   "trophy-boot": "assets/images/golden-shoe-photo.jpg",
   "messi-argentina": "assets/images/messi-argentina.jpg",
   "messi-portrait": "assets/images/messi-portrait.jpg",
   hero: "assets/images/hero.jpg",
+  "trophy-champions-detail": "assets/images/champions-selected.jpg",
   "worldcup-natural-photo": "assets/images/worldcup-natural-photo.jpg",
   "champions-photo": "assets/images/champions-photo.jpg",
   "trophy-ballon-detail": "assets/images/trophy-ballon-detail.jpg",
@@ -23,7 +26,9 @@ window.MESSI_MEDIA = {
   "gallery-miami-nycfc": "assets/images/hero.jpg",
   "psg-crisp": "assets/images/messi-psg.jpg",
   "psg-action-crisp": "assets/images/psg-action-crisp.jpg",
+  "ballon-2023": "assets/images/trophy-ballon-detail.jpg",
   "argentina-farewell-2026": "assets/images/argentina-farewell-2026.jpg",
+  "trophy-worldcup-detail": "assets/images/worldcup-selected.jpg",
   "barcelona-celebration": "assets/images/barcelona-celebration.jpg",
   "copa-2021": "assets/images/copa-2021.jpg",
   "final-loss-2014": "assets/images/final-loss-2014.jpg",
@@ -33,9 +38,8 @@ window.MESSI_MEDIA = {
   "miami-trophy-2023": "assets/images/miami-trophy-2023.jpg",
 };
 
-
 window.MESSI_CREDITS = [
-  {
+{
   "key": "laliga-selected",
   "title": "Messi solleva il trofeo LaLiga",
   "sourceUrl": "https://assets.goal.com/images/v3/blt35111b8b8b46699a/b4178487b0b223762672dd950ea2af4833f8662e.jpg?auto=webp&format=pjpg&width=3840&quality=60",
@@ -44,7 +48,7 @@ window.MESSI_CREDITS = [
   "licenseUrl": "https://assets.goal.com/images/v3/blt35111b8b8b46699a/b4178487b0b223762672dd950ea2af4833f8662e.jpg?auto=webp&format=pjpg&width=3840&quality=60",
   "note": "Fotografia scelta dal committente. Ridimensionamento e compressione WebP; colori originali."
 },
-  {
+{
   "key": "champions-selected",
   "title": "Messi con la Champions League · Roma 2009",
   "sourceUrl": "https://static.messi.com/wp-content/uploads/2019/12/copa_champions2009_amb_senyera-scaled.jpeg",
@@ -53,7 +57,7 @@ window.MESSI_CREDITS = [
   "licenseUrl": "https://static.messi.com/wp-content/uploads/2019/12/copa_champions2009_amb_senyera-scaled.jpeg",
   "note": "Fotografia scelta dal committente. Ridimensionamento e compressione WebP; colori originali."
 },
-  {
+{
   "key": "worldcup-selected",
   "title": "Messi alza la Coppa del Mondo · Qatar 2022",
   "sourceUrl": "https://wallpaperaccess.com/full/14139924.jpg",
@@ -62,7 +66,7 @@ window.MESSI_CREDITS = [
   "licenseUrl": "https://wallpaperaccess.com/full/14139924.jpg",
   "note": "Fotografia scelta dal committente. Ridimensionamento e compressione WebP; colori originali."
 },
-  {
+{
   "key": "worldcup-natural-photo",
   "title": "Campione del mondo — Qatar 2022",
   "sourceUrl": "https://messi.com/en/galeria/",
@@ -71,7 +75,7 @@ window.MESSI_CREDITS = [
   "licenseUrl": "https://messi.com/en/galeria/",
   "note": "Official messi.com photograph. Photographer and reuse license not stated. Site footer credits Leo Messi Management S.L.U.; no Creative Commons or public-domain claim. Natural color retained; no blue tint or composition. Ridimensionamento e compressione WebP."
 },
-  {
+{
   "key": "golden-shoe-photo",
   "title": "Le sei Scarpe d’Oro di Messi",
   "sourceUrl": "https://www.fcbarcelona.com/en/news/1453566/messi-receives-his-sixth-golden-shoe",
@@ -80,7 +84,16 @@ window.MESSI_CREDITS = [
   "licenseUrl": "https://www.fcbarcelona.com/en/news/1453566/messi-receives-his-sixth-golden-shoe",
   "note": "Official FC Barcelona photograph, photographer and reuse license not stated on source. No Creative Commons or public-domain claim. Ridimensionamento e compressione WebP."
 },
-  {
+{
+  "key": "laliga-photo",
+  "title": "LaLiga",
+  "sourceUrl": "https://commons.wikimedia.org/wiki/File:Col%C2%B7leccions_del_Museu_del_FC_Barcelona_16.jpg",
+  "author": "Nicholas Frisardi / Nicholas Gemini",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "note": "Credit Nicholas Gemini (Nicholas Frisardi), Commons source and license. Adapted versions retain compatible ShareAlike terms. EXIF orientation normalized. Ridimensionamento e compressione WebP."
+},
+{
   "key": "champions-photo",
   "title": "Champions League",
   "sourceUrl": "https://commons.wikimedia.org/wiki/File:2006_Champions_League_Trophy.jpg",
@@ -165,6 +178,17 @@ window.MESSI_CREDITS = [
     title: "Messi Miami",
   },
   {
+    key: "trophy-worldcup",
+    sourceUrl:
+      "https://static.messi.com/wp-content/uploads/2020/03/mundial-futbol.png",
+    author:
+      "Leo Messi official website; individual photographer/designer not specified",
+    license:
+      "Materiale ufficiale protetto da copyright; licenza pubblica di riuso non verificata",
+    licenseUrl: "https://messi.com/",
+    title: "Trophy Worldcup",
+  },
+  {
     key: "trophy-ballon",
     sourceUrl:
       "https://static.messi.com/wp-content/uploads/2020/03/balon-de-oro.png",
@@ -174,6 +198,49 @@ window.MESSI_CREDITS = [
       "Materiale ufficiale protetto da copyright; licenza pubblica di riuso non verificata",
     licenseUrl: "https://messi.com/",
     title: "Trophy Ballon",
+  },
+  {
+    key: "trophy-champions",
+    sourceUrl:
+      "https://static.messi.com/wp-content/uploads/2020/03/champions.png",
+    author:
+      "Leo Messi official website; individual photographer/designer not specified",
+    license:
+      "Materiale ufficiale protetto da copyright; licenza pubblica di riuso non verificata",
+    licenseUrl: "https://messi.com/",
+    title: "Trophy Champions",
+  },
+  {
+    key: "trophy-copa",
+    sourceUrl:
+      "https://static.messi.com/wp-content/uploads/2021/07/Copa-america.png",
+    author:
+      "Leo Messi official website; individual photographer/designer not specified",
+    license:
+      "Materiale ufficiale protetto da copyright; licenza pubblica di riuso non verificata",
+    licenseUrl: "https://messi.com/",
+    title: "Trophy Copa",
+  },
+  {
+    key: "trophy-laliga",
+    sourceUrl: "https://static.messi.com/wp-content/uploads/2020/03/liga.png",
+    author:
+      "Leo Messi official website; individual photographer/designer not specified",
+    license:
+      "Materiale ufficiale protetto da copyright; licenza pubblica di riuso non verificata",
+    licenseUrl: "https://messi.com/",
+    title: "Trophy Liga",
+  },
+  {
+    key: "trophy-golden-shoe-official",
+    sourceUrl:
+      "https://static.messi.com/wp-content/uploads/2020/03/boat-d_or.png",
+    author:
+      "Leo Messi official website; individual photographer/designer not specified",
+    license:
+      "Materiale ufficiale protetto da copyright; licenza pubblica di riuso non verificata",
+    licenseUrl: "https://messi.com/",
+    title: "Trophy Boot",
   },
   {
     key: "messi-argentina",
@@ -194,6 +261,17 @@ window.MESSI_CREDITS = [
       "https://commons.wikimedia.org/wiki/File:Lionel_Messi_WC2022.jpg",
   },
   {
+    key: "photo-argentina-official",
+    sourceUrl:
+      "https://static.messi.com/wp-content/uploads/2022/12/MESSI-Stats-COPA.jpg",
+    author:
+      "Leo Messi official website; individual photographer/designer not specified",
+    license:
+      "Materiale ufficiale protetto da copyright; licenza pubblica di riuso non verificata",
+    licenseUrl: "https://messi.com/",
+    title: "Qatar 2022 · Immagine ufficiale di Messi",
+  },
+  {
     key: "gallery-miami-revolution",
     sourceUrl:
       "https://commons.wikimedia.org/wiki/File:Lionel_Messi_NE_Revolution_Inter_Miami_7.9.25-143.jpg",
@@ -212,6 +290,16 @@ window.MESSI_CREDITS = [
     licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
     caption: "New York City FC–Inter Miami — 24 settembre 2025",
     title: "Un nuovo orizzonte.",
+  },
+  {
+    key: "competition-champions",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:UEFA_Champions_League_logo.svg",
+    author: "UEFA",
+    license: "Public domain",
+    licenseUrl:
+      "https://commons.wikimedia.org/wiki/File:UEFA_Champions_League_logo.svg",
+    title: "Marchio della competizione · UEFA",
   },
   {
     key: "psg-crisp",
@@ -257,6 +345,16 @@ window.MESSI_CREDITS = [
     licenseUrl: "https://messi.com/terminos-y-condiciones/",
     caption: "Il saluto all’Argentina · fonte ufficiale, 7 ottobre 2026",
     title: "Il saluto all’Argentina · fonte ufficiale, 7 ottobre 2026",
+  },
+  {
+    key: "photo-barcelona-official",
+    sourceUrl: "https://static.messi.com/wp-content/uploads/2019/12/STATS.jpg",
+    author:
+      "Leo Messi official website; individual photographer/designer not specified",
+    license:
+      "Materiale ufficiale protetto da copyright; licenza pubblica di riuso non verificata",
+    licenseUrl: "https://messi.com/",
+    title: "Barcellona · Composizione fotografica ufficiale",
   },
   {
     key: "copa-2021",
@@ -364,7 +462,7 @@ window.MESSI_CREDITS = [
       "La squadra festeggia la Leagues Cup, primo titolo della sua storia.",
     alt: "La squadra festeggia la Leagues Cup, primo titolo della sua storia.",
     position: "50% 35%",
-  }
+  },
 ];
 
 

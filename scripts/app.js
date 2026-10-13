@@ -315,7 +315,7 @@ window.MESSI_SNAPSHOT = {
     const revision = ++menuRevision;
     const nav = $("#main-nav");
     $("#menu").setAttribute("aria-expanded", "false");
-    $("#menu").setAttribute("aria-label", "Apri menu");
+    $("#menu").setAttribute("aria-label", "Apri altre sezioni");
     if (animateExit === true && nav.classList.contains("open") && !keyboardInput && !motionPreference.matches && nav.animate) {
       await motion(nav, [{ opacity: 1, transform: "scale(1)" }, { opacity: 0, transform: "scale(.96)" }], 160);
     } else motionByElement.get(nav)?.cancel();
@@ -329,7 +329,7 @@ window.MESSI_SNAPSHOT = {
     ++menuRevision;
     $("#main-nav").classList.add("open");
     $("#menu").setAttribute("aria-expanded", "true");
-    $("#menu").setAttribute("aria-label", "Chiudi menu");
+    $("#menu").setAttribute("aria-label", "Chiudi altre sezioni");
     motion($("#main-nav"), [{ opacity: 0, transform: "scale(.96)" }, { opacity: 1, transform: "scale(1)" }], 200, "cubic-bezier(.32,.72,0,1)");
     $("#main-nav a")?.focus();
   });
@@ -361,6 +361,23 @@ window.MESSI_SNAPSHOT = {
     document
       .querySelectorAll("main section[id]")
       .forEach((s) => navObserver.observe(s));
+  }
+  const mobileLinks = [...document.querySelectorAll(".mobile-tabs a[href^='#']")];
+  const mobileTargets = mobileLinks
+    .map((link) => ({ link, section: document.querySelector(link.hash) }))
+    .filter((item) => item.section);
+  function updateMobileNavigation() {
+    if (!mobileTargets.length) return;
+    const marker = window.scrollY + window.innerHeight * 0.32;
+    let active = mobileTargets[0];
+    for (const item of mobileTargets) {
+      if (item.section.getBoundingClientRect().top + window.scrollY <= marker) active = item;
+      else break;
+    }
+    mobileTargets.forEach(({ link }) => {
+      if (link === active.link) link.setAttribute("aria-current", "location");
+      else link.removeAttribute("aria-current");
+    });
   }
   const trophyData = {
     worldcup: {
@@ -835,6 +852,7 @@ window.MESSI_SNAPSHOT = {
       (range > 0 ? Math.min(1, Math.max(0, window.scrollY / range)) : 0) +
       ")";
     progressPending = false;
+    updateMobileNavigation();
   }
   window.addEventListener(
     "scroll",
@@ -847,6 +865,7 @@ window.MESSI_SNAPSHOT = {
     { passive: true },
   );
   window.addEventListener("resize", updateProgress);
+  updateProgress();
   // First-time narrative motion: distinct photographic and reading entrances, never hidden defaults.
   if ("IntersectionObserver" in window) {
     const revealObserver = new IntersectionObserver((entries, observer) => {

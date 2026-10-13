@@ -2,86 +2,80 @@
 <html lang="it">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="color-scheme" content="light">
-  <meta name="theme-color" content="#f5f7fa">
-  <title>Lionel Messi — La storia del dieci</title>
-  <meta name="description" content="Un archivio editoriale indipendente su Lionel Messi: carriera, numeri, trofei e fotografie.">
-  <meta property="og:title" content="Lionel Messi — La storia del dieci">
-  <meta property="og:description" content="La carriera, i traguardi e le immagini di Lionel Messi, in un archivio editoriale indipendente.">
+  <meta name="theme-color" content="#f4f7f8">
+  <title>Lionel Messi — Il dieci, la sua storia</title>
+  <meta name="description" content="Un archivio fotografico e narrativo sulla carriera di Lionel Messi: capitoli, numeri, trofei e storie.">
+  <meta property="og:title" content="Lionel Messi — Il dieci, la sua storia">
+  <meta property="og:description" content="La carriera di Messi, raccolta in immagini, numeri e momenti chiave.">
   <meta property="og:type" content="website">
   <meta name="author" content="Filippo Girolami, Alex Amadio e Stefano Amadio">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23e3b64d'/%3E%3Ctext x='32' y='45' fill='%23142235' text-anchor='middle' font-size='40' font-family='sans-serif' font-weight='bold'%3E10%3C/text%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%238fd1ec'/%3E%3Ctext x='32' y='45' fill='%2314232d' text-anchor='middle' font-size='40' font-family='sans-serif' font-weight='bold'%3E10%3C/text%3E%3C/svg%3E">
   <link rel="preload" as="image" href="assets/images/hero.jpg" fetchpriority="high">
   <link rel="preload" as="font" href="assets/fonts/manrope-400.woff" type="font/woff" crossorigin>
   <link rel="preload" as="font" href="assets/fonts/manrope-700.woff" type="font/woff" crossorigin>
-  <link rel="stylesheet" href="styles/site.css?v=20">
-  <script defer src="scripts/media.js?v=18"></script>
-  <script defer src="scripts/app.js?v=18"></script>
-  <script defer src="scripts/gallery.js?v=18"></script>
+  <link rel="stylesheet" href="styles/site.css?v=22">
+  <script defer src="scripts/media.js?v=20"></script>
+  <script defer src="scripts/app.js?v=20"></script>
+  <script defer src="scripts/gallery.js?v=19"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Vai al contenuto</a>
   <header class="site-header">
     <div class="header-inner">
-      <a class="brand" href="#inizio" aria-label="Messi, inizio">
+      <a class="brand" href="#inizio" aria-label="Archivio Messi, inizio">
         <img src="assets/images/messi-logo.png" data-media="messi-logo" width="425" height="521" alt="" decoding="async">
         <span class="brand-name">ARCHIVIO <strong>MESSI</strong></span>
       </a>
-      <nav id="main-nav" aria-label="Navigazione principale">
-        <a href="#carriera">Capitoli</a>
-        <a href="#numeri">Numeri</a>
-        <a href="#trofei">Trofei</a>
-        <a href="#momenti">Storie</a>
-        <a href="#fotografie">Fotografie</a>
-      </nav>
-      <div class="header-tools">
-        <a href="#crediti">Fonti e crediti <span aria-hidden="true">↗</span></a>
-      </div>
+      <div class="header-tools"><span>ROSARIO · 1987—</span></div>
     </div>
+    <nav id="main-nav" aria-label="Altre sezioni">
+      <a href="#trofei">Trofei</a>
+      <a href="#momenti">Storie</a>
+      <a href="#persona">Fuori dal campo</a>
+      <a href="#aggiornamenti">Aggiornamenti</a>
+      <a href="#crediti">Fonti e crediti</a>
+    </nav>
     <div class="reading-progress" aria-hidden="true"><span id="reading-progress"></span></div>
   </header>
 
   <main id="main">
     <section class="hero container" id="inizio" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="eyebrow-mark"></span> UN ARCHIVIO EDITORIALE INDIPENDENTE</p>
-        <h1 id="hero-title">Messi.<br><em>La storia del dieci.</em></h1>
-        <p class="hero-intro">Una carriera raccontata per capitoli: le squadre, i numeri e le immagini che hanno segnato il percorso.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" id="hero-action" href="#carriera">Ripercorri la carriera <span aria-hidden="true">↘</span></a>
-          <a class="text-link" href="#fotografie">Sfoglia le fotografie <span aria-hidden="true">→</span></a>
-        </div>
+        <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"></span> UN ARCHIVIO PER IMMAGINI</p>
+        <h1 id="hero-title">Il dieci.<br><em>La sua storia.</em></h1>
+        <p class="hero-intro">Una carriera raccontata per capitoli: le squadre, i numeri e i momenti che hanno segnato il percorso.</p>
+        <a class="button button-primary" id="hero-action" href="#carriera">Esplora la carriera <span aria-hidden="true">↓</span></a>
         <div class="hero-footnote">
           <span class="hero-number">10</span>
-          <p><strong>Lionel Andrés Messi</strong><br>Rosario, Argentina · 1987</p>
+          <p><strong>Lionel Andrés Messi</strong><br>Rosario, Argentina · 24 giugno 1987</p>
         </div>
       </div>
       <figure class="hero-figure">
-        <img class="hero-photo" src="assets/images/hero.jpg" data-media="hero" width="2400" height="1600" alt="Lionel Messi con Inter Miami contro New York City FC, 24 settembre 2025" decoding="async" fetchpriority="high">
+        <img class="hero-photo" src="assets/images/hero.jpg" data-media="hero" width="2400" height="1600" alt="Lionel Messi con l’Inter Miami contro New York City FC, 24 settembre 2025" decoding="async" fetchpriority="high">
         <figcaption><span>NEW YORK · 24 SETTEMBRE 2025</span><span>Bryan Berlin · CC BY-SA 4.0</span></figcaption>
       </figure>
-      <span class="hero-index" aria-hidden="true">01 / 07</span>
     </section>
 
-    <div class="club-ribbon container" aria-label="Le squadre della carriera">
-      <div class="club-item"><img src="assets/images/newells-logo.png" data-media="newells-logo" width="512" height="512" alt="Newell’s Old Boys" decoding="async"><span>Newell’s Old Boys<small>Rosario</small></span></div>
-      <div class="club-item"><img src="assets/images/barcelona-logo.svg" data-media="barcelona-logo" width="44" height="44" alt="" decoding="async"><span>FC Barcelona<small>2004–2021</small></span></div>
+    <div class="club-ribbon container" aria-label="Squadre della carriera">
+      <div class="club-item"><img src="assets/images/newells-logo.png" data-media="newells-logo" width="512" height="512" alt="" decoding="async"><span>Newell’s Old Boys<small>Rosario</small></span></div>
+      <div class="club-item"><img src="assets/images/barcelona-logo.svg" data-media="barcelona-logo" width="44" height="44" alt="" decoding="async"><span>Barcelona<small>2004–2021</small></span></div>
       <div class="club-item"><img src="assets/images/psg-logo.svg" data-media="psg-logo" width="44" height="44" alt="" decoding="async"><span>Paris Saint-Germain<small>2021–2023</small></span></div>
-      <div class="club-item"><img src="assets/images/miami-logo.svg" data-media="miami-logo" width="44" height="44" alt="" decoding="async"><span>Inter Miami<small>Dal 2023</small></span></div>
+      <div class="club-item"><img src="assets/images/miami-logo.svg" data-media="miami-logo" width="44" height="44" alt="" decoding="async"><span>Inter Miami<small>dal 2023</small></span></div>
       <div class="club-item"><img src="assets/images/argentina-logo.svg" data-media="argentina-logo" width="44" height="44" alt="" decoding="async"><span>Argentina<small>2005–2026</small></span></div>
     </div>
 
     <section class="section career-section" id="carriera" aria-labelledby="career-title">
       <div class="container">
         <div class="section-heading">
-          <div><p class="eyebrow">01 — I CAPITOLI</p><h2 id="career-title">Quattro maglie.<br><em>Una sola firma.</em></h2></div>
-          <p>Ogni squadra è un capitolo diverso. Scegline uno per ritrovare le immagini, i numeri e il contesto.</p>
+          <div><p class="eyebrow">01 · CAPITOLI</p><h2 id="career-title">Quattro tappe.<br><em>Una carriera.</em></h2></div>
+          <p>Scegli una maglia per vedere il periodo, i risultati e un’immagine di quella fase.</p>
         </div>
         <div class="chapter-layout">
           <div class="chapter-rail">
             <div class="mobile-selector">
-              <label for="chapter-selector">Capitolo della carriera</label>
+              <label for="chapter-selector">Squadra</label>
               <select id="chapter-selector">
                 <option value="barcelona">FC Barcelona · 2004–2021</option>
                 <option value="psg">Paris Saint-Germain · 2021–2023</option>
@@ -89,25 +83,25 @@
                 <option value="argentina">Argentina · 2005–2026</option>
               </select>
             </div>
-            <div class="chapter-tabs" role="group" aria-label="Scegli un capitolo della carriera">
-              <button class="chapter-tab" type="button" data-chapter="barcelona" aria-pressed="true"><img src="assets/images/barcelona-logo.svg" width="36" height="36" alt="" decoding="async"><span><b>Barcelona</b><small>2004–2021</small></span><span class="tab-arrow" aria-hidden="true">↗</span></button>
-              <button class="chapter-tab" type="button" data-chapter="psg" aria-pressed="false"><img src="assets/images/psg-logo.svg" width="36" height="36" alt="" decoding="async"><span><b>Paris Saint-Germain</b><small>2021–2023</small></span><span class="tab-arrow" aria-hidden="true">↗</span></button>
-              <button class="chapter-tab" type="button" data-chapter="miami" aria-pressed="false"><img src="assets/images/miami-logo.svg" width="36" height="36" alt="" decoding="async"><span><b>Inter Miami</b><small>Dal 2023</small></span><span class="tab-arrow" aria-hidden="true">↗</span></button>
-              <button class="chapter-tab" type="button" data-chapter="argentina" aria-pressed="false"><img src="assets/images/argentina-logo.svg" width="36" height="36" alt="" decoding="async"><span><b>Argentina</b><small>2005–2026</small></span><span class="tab-arrow" aria-hidden="true">↗</span></button>
+            <div class="chapter-tabs" role="group" aria-label="Scegli una squadra">
+              <button class="chapter-tab" type="button" data-chapter="barcelona" aria-pressed="true"><img src="assets/images/barcelona-logo.svg" width="32" height="32" alt=""><span><b>Barcelona</b><small>2004–2021</small></span></button>
+              <button class="chapter-tab" type="button" data-chapter="psg" aria-pressed="false"><img src="assets/images/psg-logo.svg" width="32" height="32" alt=""><span><b>PSG</b><small>2021–2023</small></span></button>
+              <button class="chapter-tab" type="button" data-chapter="miami" aria-pressed="false"><img src="assets/images/miami-logo.svg" width="32" height="32" alt=""><span><b>Inter Miami</b><small>dal 2023</small></span></button>
+              <button class="chapter-tab" type="button" data-chapter="argentina" aria-pressed="false"><img src="assets/images/argentina-logo.svg" width="32" height="32" alt=""><span><b>Argentina</b><small>2005–2026</small></span></button>
             </div>
           </div>
           <article class="chapter-stage" data-chapter="barcelona" aria-labelledby="chapter-title">
-            <img id="chapter-image" src="assets/images/barcelona-2011.jpg" data-media="barcelona-2011" width="2200" height="1525" alt="Messi celebra con Abidal e Dani Alves al Camp Nou nel 2011" decoding="async" loading="lazy">
+            <img id="chapter-image" src="assets/images/barcelona-2011.jpg" data-media="barcelona-2011" width="2200" height="1525" alt="Messi esulta con Abidal e Dani Alves al Camp Nou nel 2011" decoding="async" loading="lazy">
             <div class="chapter-copy" id="chapter-copy">
-              <div class="chapter-overline"><img id="chapter-crest" src="assets/images/barcelona-logo.svg" width="60" height="60" alt="FC Barcelona" decoding="async"><span id="chapter-period">2004–2021</span></div>
-              <h3 id="chapter-title" aria-live="polite">La casa.<br>La storia.</h3>
+              <div class="chapter-overline"><img id="chapter-crest" src="assets/images/barcelona-logo.svg" width="44" height="44" alt="FC Barcelona" decoding="async"><span id="chapter-period">2004–2021</span></div>
+              <h3 id="chapter-title" aria-live="polite">La casa. La storia.</h3>
               <p id="chapter-description">Diciassette stagioni. Dal primo gol al Camp Nou a un’eredità che cambia il calcio d’attacco.</p>
               <div class="chapter-metrics">
                 <div><strong id="chapter-goals">672</strong><span>Gol</span></div>
                 <div><strong id="chapter-assists">269</strong><span>Assist</span></div>
                 <div><strong id="chapter-titles">35</strong><span>Titoli</span></div>
               </div>
-              <p class="chapter-photo-credit" id="chapter-photo-credit">Barcellona · Gli anni che hanno cambiato il calcio.</p>
+              <p class="chapter-photo-credit" id="chapter-photo-credit">Barcelona · 2004–2021</p>
             </div>
           </article>
         </div>
@@ -118,34 +112,32 @@
     <section class="section stats-section" id="numeri" aria-labelledby="stats-title">
       <div class="container">
         <div class="section-heading">
-          <div><p class="eyebrow">02 — I NUMERI</p><h2 id="stats-title">Una carriera.<br><em>Numeri irripetibili.</em></h2></div>
-          <p>Le statistiche seguono i dati ufficiali disponibili. Seleziona una squadra per esplorare il dettaglio.</p>
+          <div><p class="eyebrow">02 · STATISTICHE</p><h2 id="stats-title">La carriera,<br><em>in numeri.</em></h2></div>
+          <p>Seleziona una squadra. I valori mostrano la fonte e la data dell’ultimo aggiornamento.</p>
         </div>
         <div class="stat-controls">
-          <div class="mobile-selector">
-            <label for="team-selector">Statistiche per squadra</label>
-            <select id="team-selector">
-              <option value="total">Tutta la carriera</option>
-              <option value="barcelona">FC Barcelona</option>
-              <option value="argentina">Argentina</option>
-              <option value="psg">Paris Saint-Germain</option>
-              <option value="miami">Inter Miami</option>
-            </select>
-          </div>
-          <div class="team-tabs" role="group" aria-label="Seleziona squadra per le statistiche">
-            <button type="button" data-team="total" aria-pressed="true">Carriera</button>
-            <button type="button" data-team="barcelona" aria-pressed="false"><img src="assets/images/barcelona-logo.svg" data-media="barcelona-logo" width="24" height="24" alt="" decoding="async">Barcelona</button>
-            <button type="button" data-team="argentina" aria-pressed="false"><img src="assets/images/argentina-logo.svg" data-media="argentina-logo" width="24" height="24" alt="" decoding="async">Argentina</button>
-            <button type="button" data-team="psg" aria-pressed="false"><img src="assets/images/psg-logo.svg" data-media="psg-logo" width="24" height="24" alt="" decoding="async">PSG</button>
-            <button type="button" data-team="miami" aria-pressed="false"><img src="assets/images/miami-logo.svg" data-media="miami-logo" width="24" height="24" alt="" decoding="async">Inter Miami</button>
+          <label class="sr-only" for="team-selector">Filtra le statistiche per squadra</label>
+          <select id="team-selector" class="team-select">
+            <option value="total">Tutta la carriera</option>
+            <option value="barcelona">FC Barcelona</option>
+            <option value="argentina">Argentina</option>
+            <option value="psg">Paris Saint-Germain</option>
+            <option value="miami">Inter Miami</option>
+          </select>
+          <div class="team-tabs" role="group" aria-label="Filtra statistiche per squadra">
+            <button type="button" data-team="total" aria-pressed="true">Tutta la carriera</button>
+            <button type="button" data-team="barcelona" aria-pressed="false"><img src="assets/images/barcelona-logo.svg" data-media="barcelona-logo" width="24" height="24" alt="">Barcelona</button>
+            <button type="button" data-team="argentina" aria-pressed="false"><img src="assets/images/argentina-logo.svg" data-media="argentina-logo" width="24" height="24" alt="">Argentina</button>
+            <button type="button" data-team="psg" aria-pressed="false"><img src="assets/images/psg-logo.svg" data-media="psg-logo" width="24" height="24" alt="">PSG</button>
+            <button type="button" data-team="miami" aria-pressed="false"><img src="assets/images/miami-logo.svg" data-media="miami-logo" width="24" height="24" alt="">Miami</button>
           </div>
         </div>
         <div class="stat-context"><h3 id="team-name">Tutta la carriera</h3><span id="team-period">Partite ufficiali</span></div>
-        <div class="stats-grid" aria-live="polite" aria-busy="false">
+        <div class="stats-grid">
           <div class="stat"><span>Gol</span><strong id="stat-goals">932</strong><small>Partite ufficiali</small></div>
           <div class="stat"><span>Assist</span><strong id="stat-assists">431</strong><small>Fonte ufficiale</small></div>
           <div class="stat"><span>Presenze</span><strong id="stat-appearances">1.178</strong><small>Club e nazionale</small></div>
-          <div class="stat"><span>Titoli collettivi</span><strong id="stat-trophies">48</strong><small>Club e nazionale</small></div>
+          <div class="stat"><span>Titoli</span><strong id="stat-trophies">48</strong><small>Club e nazionale</small></div>
         </div>
         <div class="stats-extra">
           <div><strong id="stat-ratio">0,79</strong><span>Gol per partita</span></div>
@@ -155,8 +147,8 @@
           <div><strong id="stat-fiveGoals">2</strong><span>Cinque gol in una partita</span></div>
         </div>
         <div class="data-caption">
-          <p id="data-status" role="status">Archivio locale: ultima lettura valida inclusa.</p>
-          <p>Ultima acquisizione: <time id="data-time" datetime="2026-10-09T10:42:07Z">09/10/2026, 12:42 UTC+2</time></p>
+          <p id="data-status" role="status">Archivio locale: ultimo dato disponibile.</p>
+          <p>Ultimo aggiornamento: <time id="data-time" datetime="2026-10-09T10:42:07Z">09/10/2026, 12:42 UTC+2</time></p>
         </div>
       </div>
     </section>
@@ -164,59 +156,59 @@
     <section class="section trophies-section" id="trofei" aria-labelledby="trophies-title">
       <div class="container">
         <div class="section-heading">
-          <div><p class="eyebrow">03 — IL PALMARÈS</p><h2 id="trophies-title">La bacheca<br><em>del numero dieci.</em></h2></div>
-          <p>Trofei di squadra e riconoscimenti individuali raccontano stagioni, compagni e finali.</p>
+          <div><p class="eyebrow">03 · PALMARÈS</p><h2 id="trophies-title">Una bacheca<br><em>senza eguali.</em></h2></div>
+          <p>Scorri le vittorie e apri una scheda per date e contesto.</p>
         </div>
         <div class="carousel-tools">
-          <span class="quiet-label">Selezione in evidenza</span>
-          <div><button class="carousel-arrow" id="trophies-prev" type="button" aria-label="Mostra i trofei precedenti">←</button><button class="carousel-arrow" id="trophies-next" type="button" aria-label="Mostra i trofei successivi">→</button></div>
+          <span class="quiet-label">6 traguardi in evidenza</span>
+          <div><button class="carousel-arrow" id="trophies-prev" type="button" aria-label="Trofei precedenti">←</button><button class="carousel-arrow" id="trophies-next" type="button" aria-label="Trofei successivi">→</button></div>
         </div>
-        <div class="trophy-track" id="trophy-track" aria-label="Trofei e premi">
-          <button class="trophy-card" data-trophy="worldcup" type="button" aria-label="Dettagli: Coppa del Mondo">
-            <span class="trophy-art"><img src="assets/images/worldcup-selected.jpg" data-media="messi-worldcup" width="1365" height="2048" alt="Messi con la Coppa del Mondo a Qatar 2022" decoding="async" loading="lazy"></span><span class="trophy-copy"><span class="trophy-overline">01 · ARGENTINA</span><strong>Coppa del Mondo</strong><span class="trophy-meta">1 titolo · 2022</span><span class="trophy-link">Apri il dettaglio <b aria-hidden="true">↗</b></span></span>
+        <div class="trophy-track" id="trophy-track" aria-label="Trofei e riconoscimenti">
+          <button class="trophy-card" data-trophy="worldcup" type="button" aria-label="Apri i dettagli della Coppa del Mondo">
+            <span class="trophy-art"><img src="assets/images/worldcup-selected.jpg" data-media="trophy-worldcup" width="1365" height="2048" alt="Messi con la Coppa del Mondo a Qatar 2022" loading="lazy"></span><span class="trophy-copy"><span class="trophy-overline">ARGENTINA · 2022</span><strong>Coppa del Mondo</strong><span class="trophy-meta">Il traguardo più atteso</span><span class="trophy-link">Vedi il dettaglio →</span></span>
           </button>
-          <button class="trophy-card" data-trophy="ballon" type="button" aria-label="Dettagli: Pallone d’Oro">
-            <span class="trophy-art"><img src="assets/images/trophy-ballon-detail.jpg" data-media="trophy-ballon-detail" width="1024" height="683" alt="Messi con il suo ottavo Pallone d’Oro, Parigi 2023" decoding="async" loading="lazy"></span><span class="trophy-copy"><span class="trophy-overline">02 · PREMIO INDIVIDUALE</span><strong>Pallone d’Oro</strong><span class="trophy-meta">8 riconoscimenti · 2009–2023</span><span class="trophy-link">Apri il dettaglio <b aria-hidden="true">↗</b></span></span>
+          <button class="trophy-card" data-trophy="ballon" type="button" aria-label="Apri i dettagli del Pallone d’Oro">
+            <span class="trophy-art"><img src="assets/images/trophy-ballon-detail.jpg" data-media="trophy-ballon-detail" width="1024" height="683" alt="Messi con l’ottavo Pallone d’Oro, Parigi 2023" loading="lazy"></span><span class="trophy-copy"><span class="trophy-overline">INDIVIDUALE · 2009–2023</span><strong>Pallone d’Oro</strong><span class="trophy-meta">Otto riconoscimenti</span><span class="trophy-link">Vedi il dettaglio →</span></span>
           </button>
-          <button class="trophy-card" data-trophy="champions" type="button" aria-label="Dettagli: Champions League">
-            <span class="trophy-art"><img src="assets/images/champions-selected.jpg" data-media="trophy-champions" width="1600" height="2400" alt="Messi con la Champions League vinta a Roma nel 2009" decoding="async" loading="lazy"></span><span class="trophy-copy"><span class="trophy-overline">03 · FC BARCELONA</span><strong>Champions League</strong><span class="trophy-meta">4 titoli · 2006, 2009, 2011, 2015</span><span class="trophy-link">Apri il dettaglio <b aria-hidden="true">↗</b></span></span>
+          <button class="trophy-card" data-trophy="champions" type="button" aria-label="Apri i dettagli della Champions League">
+            <span class="trophy-art"><img src="assets/images/champions-selected.jpg" data-media="trophy-champions" width="1600" height="2400" alt="Messi con la Champions League vinta a Roma nel 2009" loading="lazy"></span><span class="trophy-copy"><span class="trophy-overline">FC BARCELONA</span><strong>Champions League</strong><span class="trophy-meta">Quattro vittorie</span><span class="trophy-link">Vedi il dettaglio →</span></span>
           </button>
-          <button class="trophy-card" data-trophy="copa" type="button" aria-label="Dettagli: Copa América">
-            <span class="trophy-art"><img src="assets/images/copa-2021.jpg" data-media="copa-2021" width="1280" height="853" alt="Messi bacia la Copa América dopo la vittoria dell’Argentina al Maracanã" decoding="async" loading="lazy"></span><span class="trophy-copy"><span class="trophy-overline">04 · ARGENTINA</span><strong>Copa América</strong><span class="trophy-meta">2 titoli · 2021, 2024</span><span class="trophy-link">Apri il dettaglio <b aria-hidden="true">↗</b></span></span>
+          <button class="trophy-card" data-trophy="copa" type="button" aria-label="Apri i dettagli della Copa América">
+            <span class="trophy-art"><img src="assets/images/copa-2021.jpg" data-media="copa-2021" width="1280" height="853" alt="Messi bacia la Copa América dopo la vittoria al Maracanã" loading="lazy"></span><span class="trophy-copy"><span class="trophy-overline">ARGENTINA</span><strong>Copa América</strong><span class="trophy-meta">2021 · 2024</span><span class="trophy-link">Vedi il dettaglio →</span></span>
           </button>
-          <button class="trophy-card" data-trophy="liga" type="button" aria-label="Dettagli: LaLiga">
-            <span class="trophy-art"><img src="assets/images/laliga-selected.jpg" data-media="trophy-liga" width="2400" height="1350" alt="Messi solleva il trofeo LaLiga con il FC Barcelona" decoding="async" loading="lazy"></span><span class="trophy-copy"><span class="trophy-overline">05 · FC BARCELONA</span><strong>LaLiga</strong><span class="trophy-meta">10 titoli · 2005–2019</span><span class="trophy-link">Apri il dettaglio <b aria-hidden="true">↗</b></span></span>
+          <button class="trophy-card" data-trophy="liga" type="button" aria-label="Apri i dettagli de LaLiga">
+            <span class="trophy-art"><img src="assets/images/laliga-selected.jpg" data-media="trophy-liga" width="2400" height="1350" alt="Messi solleva il trofeo de LaLiga" loading="lazy"></span><span class="trophy-copy"><span class="trophy-overline">FC BARCELONA</span><strong>LaLiga</strong><span class="trophy-meta">Dieci campionati</span><span class="trophy-link">Vedi il dettaglio →</span></span>
           </button>
-          <button class="trophy-card" data-trophy="boot" type="button" aria-label="Dettagli: Scarpa d’Oro europea">
-            <span class="trophy-art"><img src="assets/images/golden-shoe-photo.jpg" data-media="trophy-boot" width="2000" height="1251" alt="Messi con le sue sei Scarpe d’Oro europee, 2019" decoding="async" loading="lazy"></span><span class="trophy-copy"><span class="trophy-overline">06 · PREMIO INDIVIDUALE</span><strong>Scarpa d’Oro europea</strong><span class="trophy-meta">6 riconoscimenti · 2010–2019</span><span class="trophy-link">Apri il dettaglio <b aria-hidden="true">↗</b></span></span>
+          <button class="trophy-card" data-trophy="boot" type="button" aria-label="Apri i dettagli della Scarpa d’Oro">
+            <span class="trophy-art"><img src="assets/images/golden-shoe-photo.jpg" data-media="trophy-boot" width="2000" height="1251" alt="Messi con le sei Scarpe d’Oro europee" loading="lazy"></span><span class="trophy-copy"><span class="trophy-overline">INDIVIDUALE</span><strong>Scarpa d’Oro</strong><span class="trophy-meta">Sei riconoscimenti</span><span class="trophy-link">Vedi il dettaglio →</span></span>
           </button>
         </div>
-        <p class="section-footnote">Le competizioni sono elencate in base ai risultati documentati. Apri una scheda per vedere date e contesto.</p>
+        <p class="section-footnote">Tocca una scheda per aprire il dettaglio dei titoli e delle stagioni.</p>
       </div>
     </section>
 
     <section class="world-cup-section" id="mondiale" aria-labelledby="world-cup-title">
-      <img src="assets/images/worldcup-selected.jpg" data-media="messi-worldcup" width="1365" height="2048" alt="Lionel Messi con la Coppa del Mondo dopo la finale di Qatar 2022" decoding="async" loading="lazy">
+      <img src="assets/images/worldcup-selected.jpg" data-media="trophy-worldcup" width="1365" height="2048" alt="Messi alza la Coppa del Mondo dopo la finale di Qatar 2022" loading="lazy">
       <div class="world-cup-content">
-        <p class="eyebrow">BUENOS AIRES · 18 DICEMBRE 2022</p>
-        <h2 id="world-cup-title">Una coppa.<br><em>Un intero Paese.</em></h2>
-        <p>La finale con la Francia, i rigori, l’abbraccio con la Coppa. L’Argentina conquista il terzo Mondiale e Messi chiude il cerchio più atteso.</p>
-        <p class="world-cup-credit" id="worldcup-credit">Qatar 2022 · Immagine ufficiale.</p>
-        <a class="button button-light" href="#momenti">Rivedi i momenti <span aria-hidden="true">↘</span></a>
+        <p class="eyebrow">18 DICEMBRE 2022 · LUSAIL</p>
+        <h2 id="world-cup-title">La notte<br><em>di una nazione.</em></h2>
+        <p>Due gol in finale, i rigori e il terzo titolo mondiale dell’Argentina. Una pagina che chiude un’attesa lunga generazioni.</p>
+        <p class="world-cup-credit" id="worldcup-credit">Qatar 2022 · Il sogno diventato realtà.</p>
+        <a class="button button-light" href="#momenti">Rivedi le storie <span aria-hidden="true">↓</span></a>
       </div>
     </section>
 
-    <section class="section records-section" aria-labelledby="records-title">
+    <section class="section records-section" id="record" aria-labelledby="records-title">
       <div class="container">
         <div class="section-heading">
-          <div><p class="eyebrow">04 — I RECORD</p><h2 id="records-title">Numeri che<br><em>restano nella storia.</em></h2></div>
-          <p>Traguardi individuali, legati a stagioni e tornei precisi.</p>
+          <div><p class="eyebrow">04 · RECORD</p><h2 id="records-title">Numeri che<br><em>restano.</em></h2></div>
+          <p>Alcuni traguardi che attraversano stagioni e tornei.</p>
         </div>
         <div class="record-grid">
-          <article class="record-card"><span>ANNO SOLARE · 2012</span><strong>91</strong><h3>gol in un anno</h3><p>Il record realizzato tra club e nazionale nell’arco di dodici mesi.</p></article>
-          <article class="record-card"><span>LA LIGA · 2011/12</span><strong>50</strong><h3>reti in campionato</h3><p>Il primato di gol in una singola stagione del massimo campionato spagnolo.</p></article>
-          <article class="record-card"><span>FC BARCELONA</span><strong>672</strong><h3>gol con il club</h3><p>Il miglior marcatore nella storia della prima squadra blaugrana.</p></article>
-          <article class="record-card"><span>MONDIALI · FINO AL 2022</span><strong>26</strong><h3>presenze alla Coppa del Mondo</h3><p>Un record di partecipazioni lungo cinque edizioni, dal 2006 al 2022.</p></article>
+          <article class="record-card"><span>ANNO SOLARE · 2012</span><strong>91</strong><h3>gol in un anno</h3><p>Tra club e nazionale nell’arco di dodici mesi.</p></article>
+          <article class="record-card"><span>LA LIGA · 2011/12</span><strong>50</strong><h3>reti in campionato</h3><p>Il primato in una singola stagione del campionato spagnolo.</p></article>
+          <article class="record-card"><span>FC BARCELONA</span><strong>672</strong><h3>gol con il club</h3><p>Il miglior marcatore nella storia della prima squadra.</p></article>
+          <article class="record-card"><span>COPPA DEL MONDO</span><strong>26</strong><h3>presenze in cinque edizioni</h3><p>Dal debutto del 2006 alla vittoria del 2022.</p></article>
         </div>
       </div>
     </section>
@@ -224,17 +216,17 @@
     <section class="section moments-section" id="momenti" aria-labelledby="moments-title">
       <div class="container">
         <div class="section-heading">
-          <div><p class="eyebrow">05 — LA CRONOLOGIA</p><h2 id="moments-title">Le immagini<br><em>che fanno una storia.</em></h2></div>
-          <p>Una selezione di svolte e ricordi, dal primo grande palcoscenico all’ultimo saluto in nazionale.</p>
+          <div><p class="eyebrow">05 · CRONOLOGIA</p><h2 id="moments-title">Le svolte<br><em>di una carriera.</em></h2></div>
+          <p>Un percorso fatto di prime volte, addii e nuove partenze.</p>
         </div>
         <div class="story-grid">
-          <article class="story-card"><div class="story-image"><img src="assets/images/barcelona-celebration.jpg" data-media="barcelona-celebration" width="1800" height="1200" alt="Messi festeggia un gol con il FC Barcelona" decoding="async" loading="lazy"></div><div class="story-copy"><span>BARCELLONA · 2005</span><h3>Il primo gol.</h3><p>Una stagione dopo l’esordio in prima squadra, Messi segna la prima rete al Camp Nou.</p></div></article>
-          <article class="story-card"><div class="story-image"><img src="assets/images/final-loss-2014.jpg" data-media="final-loss-2014" width="2200" height="1380" alt="Messi dopo la finale mondiale persa dall’Argentina nel 2014" decoding="async" loading="lazy"></div><div class="story-copy"><span>MARACANÃ · 2014</span><h3>Una ferita aperta.</h3><p>La finale mondiale con la Germania si decide nei tempi supplementari.</p></div></article>
-          <article class="story-card"><div class="story-image"><img src="assets/images/copa-2021.jpg" data-media="copa-2021" width="1280" height="853" alt="Messi bacia la Copa América dopo il successo del 2021" decoding="async" loading="lazy"></div><div class="story-copy"><span>RIO DE JANEIRO · 2021</span><h3>L’attesa finisce.</h3><p>L’Argentina vince la Copa América al Maracanã. È il primo titolo maggiore con la nazionale maggiore.</p></div></article>
-          <article class="story-card"><div class="story-image"><img src="assets/images/messi-psg.jpg" data-media="psg-crisp" width="1536" height="1024" alt="Messi con il Paris Saint-Germain nel 2021" decoding="async" loading="lazy"></div><div class="story-copy"><span>PARIGI · 2021</span><h3>Un nuovo capitolo.</h3><p>Il trasferimento a Parigi apre una fase inattesa dopo l’addio al Barcellona.</p></div></article>
-          <article class="story-card"><div class="story-image"><img src="assets/images/worldcup-selected.jpg" data-media="messi-worldcup" width="1365" height="2048" alt="Messi con la Coppa del Mondo dopo la finale del 2022" decoding="async" loading="lazy"></div><div class="story-copy"><span>LUSAIL · 2022</span><h3>La notte che resta.</h3><p>Due gol nella finale e la vittoria ai rigori contro la Francia.</p></div></article>
-          <article class="story-card"><div class="story-image"><img src="assets/images/miami-trophy-2023.jpg" data-media="miami-trophy-2023" width="2048" height="1366" alt="Inter Miami festeggia la Leagues Cup del 2023" decoding="async" loading="lazy"></div><div class="story-copy"><span>MIAMI · 2023</span><h3>La prima volta in rosa.</h3><p>La Leagues Cup è il primo trofeo nella storia dell’Inter Miami.</p></div></article>
-          <article class="story-card"><div class="story-image"><img src="assets/images/argentina-farewell-2026.jpg" data-media="argentina-farewell-2026" width="1600" height="1070" alt="Il saluto all’Argentina, nell’annuncio ufficiale del 7 ottobre 2026" decoding="async" loading="lazy"></div><div class="story-copy"><span>BUENOS AIRES · 2026</span><h3>L’ultimo saluto.</h3><p>Un gol e due assist accompagnano l’omaggio del Monumental alla maglia albiceleste.</p></div></article>
+          <article class="story-card"><div class="story-image"><img src="assets/images/barcelona-celebration.jpg" data-media="barcelona-celebration" width="1800" height="1200" alt="Messi festeggia con i compagni del Barcelona" loading="lazy"></div><div class="story-copy"><span>BARCELLONA · 2005</span><h3>Il primo gol.</h3><p>Una stagione dopo l’esordio in prima squadra, Messi segna la prima rete al Camp Nou.</p></div></article>
+          <article class="story-card"><div class="story-image"><img src="assets/images/final-loss-2014.jpg" data-media="final-loss-2014" width="2200" height="1380" alt="Messi dopo la finale mondiale del 2014" loading="lazy"></div><div class="story-copy"><span>RIO · 2014</span><h3>Una ferita aperta.</h3><p>La finale mondiale con la Germania si decide nei tempi supplementari.</p></div></article>
+          <article class="story-card"><div class="story-image"><img src="assets/images/copa-2021.jpg" data-media="copa-2021" width="1280" height="853" alt="Messi bacia la Copa América dopo la vittoria del 2021" loading="lazy"></div><div class="story-copy"><span>RIO · 2021</span><h3>L’attesa finisce.</h3><p>L’Argentina vince la Copa América al Maracanã, il primo titolo maggiore con la nazionale maggiore.</p></div></article>
+          <article class="story-card"><div class="story-image"><img src="assets/images/messi-psg.jpg" data-media="psg-crisp" width="1536" height="1024" alt="Messi con il Paris Saint-Germain nel 2021" loading="lazy"></div><div class="story-copy"><span>PARIGI · 2021</span><h3>Un’altra maglia.</h3><p>Una nuova squadra e una fase inattesa dopo l’addio al Barcelona.</p></div></article>
+          <article class="story-card"><div class="story-image"><img src="assets/images/worldcup-natural-photo.jpg" data-media="worldcup-natural-photo" width="1600" height="1067" alt="Messi con la Coppa del Mondo dopo la vittoria del 2022" loading="lazy"></div><div class="story-copy"><span>LUSAIL · 2022</span><h3>La notte che resta.</h3><p>Due gol nella finale e la vittoria ai rigori contro la Francia.</p></div></article>
+          <article class="story-card"><div class="story-image"><img src="assets/images/miami-trophy-2023.jpg" data-media="miami-trophy-2023" width="2048" height="1366" alt="Inter Miami festeggia la Leagues Cup del 2023" loading="lazy"></div><div class="story-copy"><span>MIAMI · 2023</span><h3>Un nuovo inizio.</h3><p>La Leagues Cup diventa il primo trofeo della storia dell’Inter Miami.</p></div></article>
+          <article class="story-card"><div class="story-image"><img src="assets/images/argentina-farewell-2026.jpg" data-media="argentina-farewell-2026" width="1600" height="1070" alt="Messi saluta il pubblico del Monumental nel 2026" loading="lazy"></div><div class="story-copy"><span>BUENOS AIRES · 2026</span><h3>L’ultimo saluto.</h3><p>Un gol e due assist accompagnano l’omaggio del Monumental alla maglia albiceleste.</p></div></article>
         </div>
       </div>
     </section>
@@ -242,8 +234,8 @@
     <section class="section photo-section" id="fotografie" aria-labelledby="photos-title">
       <div class="container">
         <div class="section-heading">
-          <div><p class="eyebrow">06 — L’ARCHIVIO FOTOGRAFICO</p><h2 id="photos-title">La carriera,<br><em>vista da vicino.</em></h2></div>
-          <p>Una selezione di immagini dai club e dalla nazionale. Filtra per capitolo e apri una foto per vederla a tutto schermo.</p>
+          <div><p class="eyebrow">06 · ARCHIVIO FOTOGRAFICO</p><h2 id="photos-title">Ventiquattro<br><em>istanti.</em></h2></div>
+          <p>Filtra per squadra o scorri l’intera raccolta. Tocca una foto per ingrandirla.</p>
         </div>
         <div class="gallery-toolbar">
           <div class="gallery-filters" role="group" aria-label="Filtra le fotografie">
@@ -256,7 +248,7 @@
           <p class="gallery-count" id="gallery-count" role="status" aria-live="polite">24 fotografie</p>
         </div>
         <div class="gallery-grid">
-          <figure class="gallery-card gallery-feature" data-gallery-item data-category="all">
+<figure class="gallery-card gallery-feature" data-gallery-item data-category="all">
             <button class="gallery-open" type="button" aria-label="Apri: Il numero dieci">
               <img src="assets/images/messi-portrait.jpg" data-media="messi-portrait" width="1200" height="1800" alt="Ritratto di Lionel Messi" decoding="async" loading="lazy">
             </button><figcaption><span>IL NUMERO DIECI</span><strong>Una carriera, uno sguardo.</strong></figcaption>
@@ -377,24 +369,23 @@
             </button><figcaption><span>PREMIO INDIVIDUALE</span><strong>Un premio, otto volte.</strong></figcaption>
           </figure>
         </div>
-        <p class="gallery-note">Ogni fotografia resta collegata alla propria fonte e ai crediti. I dettagli completi sono disponibili in fondo alla pagina.</p>
+        <p class="gallery-note">Ogni immagine mantiene fonte e attribuzione. I dettagli sono raccolti alla fine dell’archivio.</p>
       </div>
     </section>
 
     <section class="section person-section" id="persona" aria-labelledby="person-title">
       <div class="container person-layout">
         <div class="person-intro">
-          <p class="eyebrow">07 — OLTRE IL CAMPO</p>
-          <h2 id="person-title">Lionel, prima di Messi.<br><em>Le radici del talento.</em></h2>
-          <p>La storia comincia a Rosario: una famiglia, un pallone e una città che resta casa anche dopo ogni trasferta.</p>
-          <img src="assets/images/argentina-training-2023.jpg" data-media="argentina-training-2023" width="2048" height="1366" alt="Messi si allena con i compagni dell’Argentina a Pechino nel 2023" decoding="async" loading="lazy">
-          <span class="image-note">Un allenamento con la nazionale · Pechino, 2023</span>
+          <p class="eyebrow">07 · FUORI DAL CAMPO</p>
+          <h2 id="person-title">Prima di Messi,<br><em>c’era Rosario.</em></h2>
+          <p>Una città, una famiglia e i primi campi da gioco: il percorso comincia lontano dai riflettori.</p>
+          <img src="assets/images/argentina-training-2023.jpg" data-media="argentina-training-2023" width="2048" height="1366" alt="Messi si allena con i compagni dell’Argentina a Pechino nel 2023" loading="lazy">
+          <span class="image-note">Con la nazionale · Pechino, 2023</span>
         </div>
         <div class="person-stories">
-          <article><span>01 / ROSARIO</span><h3>Le radici non si perdono.</h3><p>Nato il 24 giugno 1987, cresce nel quartiere di Las Heras e gioca nelle giovanili del Newell’s Old Boys.</p></article>
-          <article><span>02 / BARCELLONA</span><h3>Il talento ha avuto bisogno di cura.</h3><p>A tredici anni si trasferisce in Catalogna. Il club sostiene il trattamento per la crescita e lo accompagna nel passaggio al calcio professionistico.</p></article>
-          <article><span>03 / FUORI DAL CAMPO</span><h3>La vita, oltre il pallone.</h3><p>Nel 2007 nasce la Fundación Leo Messi, impegnata in progetti legati a salute, istruzione e inclusione.</p></article>
-          <article><span>04 / SOLIDARIETÀ</span><h3>Restituire qualcosa.</h3><p>La fondazione e i progetti con UNICEF ampliano il racconto oltre i risultati sportivi.</p></article>
+          <article><span>01 · ROSARIO</span><h3>Le radici.</h3><p>Nato nel 1987, cresce nel quartiere di Las Heras e gioca nelle giovanili del Newell’s Old Boys.</p></article>
+          <article><span>02 · BARCELLONA</span><h3>Una nuova casa.</h3><p>A tredici anni si trasferisce in Catalogna. Il club lo accompagna verso il calcio professionistico.</p></article>
+          <article><span>03 · SOLIDARIETÀ</span><h3>Restituire qualcosa.</h3><p>La Fundación Leo Messi sostiene progetti legati a salute, istruzione e inclusione.</p></article>
         </div>
       </div>
     </section>
@@ -403,11 +394,11 @@
       <div class="container updates-layout">
         <div>
           <p class="eyebrow">AGGIORNAMENTI</p>
-          <h2 id="updates-title">Una storia che<br><em>continua.</em></h2>
-          <p class="updates-intro">Le notizie ufficiali, le fonti dei dati e la data dell’ultima verifica sono raccolte qui.</p>
+          <h2 id="updates-title">Una storia<br><em>che continua.</em></h2>
+          <p class="updates-intro">Notizie ufficiali e data dell’ultima verifica dei numeri.</p>
           <article class="news-card">
-            <img class="news-context-image" src="assets/images/argentina-farewell-2026.jpg" data-media="argentina-farewell-2026" width="1600" height="1070" alt="Messi saluta il pubblico del Monumental il 7 ottobre 2026" decoding="async" loading="lazy">
-            <div><time datetime="2026-10-07">7 OTTOBRE 2026</time><h3>Un gol, due assist.<br>Un ultimo saluto.</h3><p>L’omaggio del Monumental alla maglia dell’Argentina, nel resoconto ufficiale della nazionale.</p><a href="https://messi.com/emotivo-adios-de-leo-con-la-seleccion-con-un-gol-y-doble-asistencia/" target="_blank" rel="noopener noreferrer">Leggi la fonte ufficiale <span aria-hidden="true">↗</span></a></div>
+            <img class="news-context-image" src="assets/images/argentina-farewell-2026.jpg" data-media="argentina-farewell-2026" width="1600" height="1070" alt="Messi saluta il pubblico del Monumental il 7 ottobre 2026" loading="lazy">
+            <div><time datetime="2026-10-07">7 OTTOBRE 2026</time><h3>Un gol, due assist.<br>Un saluto all’Argentina.</h3><p>L’omaggio del Monumental alla maglia albiceleste, nel resoconto ufficiale.</p><a href="https://messi.com/emotivo-adios-de-leo-con-la-seleccion-con-un-gol-y-doble-asistencia/" target="_blank" rel="noopener noreferrer">Leggi la fonte ufficiale ↗</a></div>
           </article>
         </div>
         <aside class="live-panel" hidden aria-label="Aggiornamenti live Inter Miami">
@@ -419,47 +410,55 @@
     <section class="section sources-section" id="crediti" aria-labelledby="sources-title">
       <div class="container">
         <div class="section-heading">
-          <div><p class="eyebrow">FONTI E TRASPARENZA</p><h2 id="sources-title">Dietro le immagini.<br><em>Il lavoro degli autori.</em></h2></div>
-          <p>Le statistiche hanno una fonte e una data. Le fotografie riportano autore, provenienza e condizioni di licenza quando disponibili.</p>
+          <div><p class="eyebrow">FONTI E TRASPARENZA</p><h2 id="sources-title">Le immagini.<br><em>Le loro fonti.</em></h2></div>
+          <p>Ogni dato e ogni fotografia è collegata alla propria provenienza.</p>
         </div>
         <div class="sources-grid">
-          <article><span>01</span><h3>Numeri ufficiali</h3><p>Le statistiche sono lette dal sito ufficiale di Lionel Messi e confrontate con lo snapshot locale. In caso di errore restano visibili gli ultimi dati validi e la loro data.</p><a href="https://messi.com/estadisticas-totales/" target="_blank" rel="noopener noreferrer">messi.com · statistiche <span aria-hidden="true">↗</span></a></article>
-          <article><span>02</span><h3>Un archivio indipendente</h3><p>Questo progetto non è affiliato a Lionel Messi, ai club, alle federazioni o agli organizzatori delle competizioni. Marchi e trofei appartengono ai rispettivi titolari.</p><a href="https://messi.com/" target="_blank" rel="noopener noreferrer">Sito ufficiale di Lionel Messi <span aria-hidden="true">↗</span></a></article>
+          <article><span>01</span><h3>Statistiche</h3><p>I dati sono raccolti dal sito ufficiale di Lionel Messi. Se non sono aggiornabili, resta visibile l’ultima lettura disponibile.</p><a href="https://messi.com/estadisticas-totales/" target="_blank" rel="noopener noreferrer">Apri messi.com ↗</a></article>
+          <article><span>02</span><h3>Progetto indipendente</h3><p>Questo archivio non è affiliato a Lionel Messi, ai club, alle federazioni o agli organizzatori delle competizioni.</p><a href="https://messi.com/" target="_blank" rel="noopener noreferrer">Sito ufficiale ↗</a></article>
         </div>
         <details class="credits-disclosure">
-          <summary>Crediti delle fotografie, dei loghi e delle licenze</summary>
+          <summary>Autori, fonti e licenze delle immagini</summary>
           <div id="asset-credits"></div>
         </details>
-        <p class="edition-note">Edizione editoriale rivista il <time id="edition-time" datetime="2026-10-13">13 ottobre 2026 · UTC+2</time>.</p>
+        <p class="edition-note">Edizione editoriale aggiornata il <time id="edition-time" datetime="2026-10-13">13 ottobre 2026 · UTC+2</time>.</p>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container">
-      <div class="footer-main"><a class="brand brand-footer" href="#inizio"><img src="assets/images/messi-logo.png" data-media="messi-logo" width="425" height="521" alt="" decoding="async"><span class="brand-name">ARCHIVIO <strong>MESSI</strong></span></a><p>Una vita di calcio.<br>Un racconto per immagini.</p><a class="back-top" href="#inizio">Torna all’inizio ↑</a></div>
+      <a class="brand brand-footer" href="#inizio"><img src="assets/images/messi-logo.png" data-media="messi-logo" width="425" height="521" alt="" decoding="async"><span class="brand-name">ARCHIVIO <strong>MESSI</strong></span></a>
+      <p>Una vita di calcio.<br>Un racconto per immagini.</p>
       <div class="footer-bottom"><span>© 2026 · Filippo Girolami, Alex Amadio e Stefano Amadio</span><a href="#crediti">Fonti e crediti</a><a href="README.md">Documentazione</a></div>
     </div>
   </footer>
 
-  <div class="mobile-dock" aria-label="Navigazione rapida">
-    <span id="dock-context">MESSI · LA STORIA DEL DIECI</span>
-    <a class="button button-primary dock-action" id="dock-action" href="#carriera" hidden>Esplora la carriera</a>
-    <button class="menu-button" id="menu" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="Apri menu"><span aria-hidden="true">☰</span></button>
+  <div class="mobile-dock">
+    <nav class="mobile-tabs" aria-label="Navigazione principale">
+      <a href="#inizio" aria-label="Inizio" aria-current="location"><span aria-hidden="true">⌂</span><small>Inizio</small></a>
+      <a href="#carriera" aria-label="Carriera"><span aria-hidden="true">01</span><small>Carriera</small></a>
+      <a href="#numeri" aria-label="Numeri"><span aria-hidden="true">02</span><small>Numeri</small></a>
+      <a href="#fotografie" aria-label="Fotografie"><span aria-hidden="true">▦</span><small>Foto</small></a>
+      <button class="menu-button" id="menu" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="Apri altre sezioni"><span aria-hidden="true">•••</span><small>Altro</small></button>
+    </nav>
+    <span id="dock-context" hidden aria-hidden="true">MESSI · ARCHIVIO</span>
+    <a class="button button-primary dock-action" id="dock-action" href="#carriera" hidden aria-hidden="true">Esplora la carriera</a>
   </div>
 
   <dialog class="detail-dialog" id="trophy-dialog" aria-labelledby="dialog-title">
     <button class="dialog-close" id="dialog-close" type="button" aria-label="Chiudi dettagli trofeo">×</button>
-    <div class="detail-dialog-grid"><div class="dialog-art"><img id="dialog-image" alt="" width="1024" height="683"></div><div class="dialog-copy"><span class="dialog-count" id="dialog-count"></span><h2 id="dialog-title"></h2><p id="dialog-description"></p><h3>Gli anni delle vittorie</h3><p id="dialog-years"></p><p class="dialog-photo-note" id="dialog-photo-note"></p></div></div>
+    <div class="detail-dialog-grid">
+      <div class="dialog-art"><img id="dialog-image" alt="" width="1024" height="683"></div>
+      <div class="dialog-copy"><span class="dialog-count" id="dialog-count"></span><h2 id="dialog-title"></h2><p id="dialog-description"></p><h3>Gli anni delle vittorie</h3><p id="dialog-years"></p><p class="dialog-photo-note" id="dialog-photo-note"></p></div>
+    </div>
   </dialog>
 
   <dialog class="photo-dialog" id="photo-dialog" aria-labelledby="photo-caption">
     <div class="photo-dialog-head"><p id="photo-position">1 / 24</p><button id="photo-close" type="button" aria-label="Chiudi fotografia">×</button></div>
     <div class="photo-dialog-body"><button class="photo-step" id="photo-prev" type="button" aria-label="Fotografia precedente">←</button><img id="photo-image" alt=""><button class="photo-step" id="photo-next" type="button" aria-label="Fotografia successiva">→</button></div>
-    <div class="photo-dialog-caption"><p id="photo-caption"></p><p>← → per sfogliare · Esc per chiudere</p></div>
+    <div class="photo-dialog-caption"><p id="photo-caption"></p><p>Usa le frecce per sfogliare · Esc per chiudere</p></div>
   </dialog>
-
-  <noscript><p class="no-js">Le fotografie e i contenuti sono disponibili. Filtri, dettagli dei trofei e aggiornamento dei numeri richiedono JavaScript.</p></noscript>
 </body>
 </html>
 

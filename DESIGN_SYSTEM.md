@@ -1,59 +1,39 @@
-# Sistema visivo mobile
+# Sistema visivo — Archivio Messi
 
-## Obiettivo
+## Intento
 
-Raccontare la carriera di Lionel Messi in una pagina editoriale mobile che si legge e si naviga senza sforzo. Una gerarchia principale per volta: introduzione, capitoli, numeri, palmarès, storie e archivio fotografico. Le sezioni desktop restano nel foglio separato.
+Ricostruire la pagina come archivio editoriale mobile: poche decisioni per schermata, contenuti leggibili e immagini trattate come parte del racconto. La composizione per telefono è definita in `styles/mobile.css`; il foglio desktop resta separato.
 
 ## Fondazioni
 
-- Stile: flat, editoriale, fotografico; superfici piane, bordi sottili, nessuna ombra decorativa.
-- Palette mobile:
-  - Pagina `--paper`: #f5f7fa
-  - Superficie `--surface`: #ffffff
-  - Testo `--ink`: #142235
-  - Secondario `--muted`: #566579
-  - Bordo `--line`: #d9e0e8
-  - Accento `--blue`: #2459d3
-  - Accento scuro `--blue-dark`: #1945aa
-  - Accento morbido `--blue-soft`: #eaf0ff
-  - Dettaglio `--gold`: #e3b64d
-- Tipografia: Manrope locale; corpo 16 px / 1,55, metadati da 10–12 px, titoli con scala fluida e interlinea stretta.
-- Spazi: griglia di 4 px; passi comuni 8, 12, 16, 20, 24, 32, 48 e 72 px. Spazi interni più stretti di quelli tra gruppi e sezioni.
-- Forme: angoli 6–8 px per contenuti e controlli; pillola solo per filtri.
-- Movimento: transizioni brevi e funzionali; scorrimento orizzontale con snap; rispetto di `prefers-reduced-motion`.
+- **Stile:** flat design editoriale. Superfici piatte, separatori leggeri e nessuna ombra decorativa nel layout mobile.
+- **Palette:** carta `#f4f7f8`, bianco `#ffffff`, testo `#142630`, testo secondario `#53656e`, bordo `#d7e1e5`, azzurro `#8fd1ec`, blu `#177ca5`, blu profondo `#125b79`, blu tenue `#e7f4f9`, oro `#e8bd4e`, fondo scuro `#10242d`.
+- **Tipografia:** Manrope locale; corpo 16 px con interlinea 1,55; titoli compatti e fluidi; etichette e didascalie mantenute leggibili a partire da 11 px.
+- **Spaziatura:** griglia di 4 px. Gli spazi interni ai gruppi sono più stretti di quelli tra sezioni; le sezioni usano 48–64 px secondo la larghezza.
+- **Forme:** raggi da 4–8 px per schede e controlli; forma a pillola riservata ai filtri fotografici.
+- **Movimento:** transizioni brevi per menu e controlli, scorrimento con snap dove aiuta a esplorare; `prefers-reduced-motion` rimuove gli effetti non essenziali.
 
-## Layout e breakpoint
+I principi del file ZIP TypeUI allegato sono applicati dove pertinenti: gerarchia, raggruppamento, ritmo su griglia, dimensioni dei controlli, focus e movimento accessibile. Il kit contiene linee guida di interfaccia, non fotografie di calcio: le immagini del racconto restano quelle attribuite nel repository.
 
-- 320–679 px: foglio dedicato in `styles/mobile.css`, contenuto centrato e largo al massimo 720 px, margine laterale 20 px (16 px sotto i 360 px), sezioni in colonna.
-- Da 680 px: `styles/desktop.css`, caricato da `styles/site.css`.
-- Barra d’azione flottante con area sicura per notch e menu a comparsa sopra la barra.
-- Immagini a larghezza piena nel racconto; archivio a due colonne con una copertina a tutta larghezza.
-- Carosello dei trofei con scorrimento a scatto e controlli espliciti.
+## Layout mobile
+
+- **320–679 px:** una colonna, margini laterali fluidi, contenuto largo al massimo 720 px, tipografia e spazi adattivi.
+- **Barra inferiore:** cinque azioni nella zona del pollice — inizio, carriera, numeri, foto e menu. La sezione attiva segue lo scorrimento e usa `aria-current`.
+- **Menu secondario:** trofei, cronologia, persona, aggiornamenti, fonti; compare sopra la barra e si chiude selezionando una destinazione o premendo Esc.
+- **Contenuti:** capitoli selezionabili, numeri filtrabili, carosello dei trofei, cronologia e archivio di 24 fotografie filtrabile e apribile a schermo intero.
+- **Immagini:** proporzioni dichiarate per limitare i salti di layout, alternative testuali, caricamento differito fuori dall’apertura.
+- **Scorrimento:** solo liste e caroselli hanno scorrimento orizzontale; il documento resta verticale.
+
+La soglia 680 px carica il foglio desktop esistente; tra 680 e 1024 px la barra mantiene una navigazione touch a cinque azioni. Sopra i 1024 px torna la navigazione nell’intestazione.
 
 ## Interazione e accessibilità
 
-- Ogni controllo touch deve avere area minima 44 × 44 px e separazione visibile.
-- Stati attivi distinguibili con testo/forma oltre al colore; focus da tastiera sempre evidente.
-- Un’azione primaria per volta; navigazione secondaria raccolta nel menu.
-- Filtri con stato `aria-pressed`; immagini apribili con pulsanti; dialoghi chiudibili da tastiera.
-- Testo alternativo descrittivo, proporzioni immagine dichiarate, messaggi di errore leggibili.
-- Nessuna animazione necessaria per comprendere il contenuto; motion ridotto supportato.
+- Controlli touch con area di almeno 44 × 44 px, stati attivi distinguibili e anello di focus evidente.
+- La barra espone quattro collegamenti diretti e un quinto controllo per le altre sezioni.
+- Filtri con `aria-pressed`; selettori etichettati; menu e dialoghi utilizzabili da tastiera.
+- Dialoghi nativi: Esc chiude, i comandi hanno nomi accessibili e la galleria consente di scorrere le immagini.
+- Testi secondari con contrasto leggibile; movimento non necessario alla comprensione e disattivato per chi lo richiede.
 
-## Componenti principali
+## Controlli di qualità
 
-- **Apertura:** titolo, descrizione breve, una fotografia, credito e invito alla carriera.
-- **Capitoli:** selettore etichettato, fotografia, descrizione e tre numeri.
-- **Statistiche:** cinque filtri scorrevoli, quattro valori principali e dati secondari raggruppati.
-- **Trofei:** card fotografiche orizzontali; il dettaglio si apre solo su richiesta.
-- **Cronologia:** storie ordinate per squadra e data, in schede compatte.
-- **Archivio:** 24 immagini filtrabili; scorrimento naturale, anteprima a schermo intero.
-- **Fonti:** attribuzioni e licenze raccolte in una disclosure.
-
-## Verifiche prima del rilascio
-
-- Controllare larghezze 320, 360, 390 e 430 px, oltre alla soglia 679/680.
-- Nessuno scorrimento orizzontale della pagina; overflow limitato a caroselli e filtri.
-- Tutti i controlli raggiungibili con tastiera e comodi al tocco.
-- Filtri, capitoli, statistiche, trofei, menu e galleria continuano a funzionare.
-- Contrasto, focus visibile e movimento ridotto verificati.
-
+Verificare a 320, 360, 390 e 430 px, poi attorno alla soglia 679/680 px. Controllare che non ci sia overflow orizzontale del documento e provare menu, selettori, filtri, trofei, galleria, tastiera e `prefers-reduced-motion`.

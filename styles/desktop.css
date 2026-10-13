@@ -365,4 +365,15 @@ body{padding-bottom:0}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 
+@media (min-width:680px) and (max-width:1024px){
+body{padding-bottom:calc(92px + env(safe-area-inset-bottom))}
+.mobile-dock{right:max(12px,calc((100vw - 720px)/2));bottom:calc(8px + env(safe-area-inset-bottom));left:max(12px,calc((100vw - 720px)/2));display:block;min-height:0;padding:4px;border-color:var(--line);border-radius:8px;background:var(--surface);box-shadow:none}
+.mobile-tabs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}
+.mobile-tabs>a,.mobile-tabs .menu-button{width:auto;min-width:0;min-height:52px;height:auto;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:4px;border:0;border-radius:4px;color:var(--muted);background:transparent;text-align:center;text-decoration:none}
+.mobile-tabs>a[aria-current=location],.mobile-tabs>a:active,.mobile-tabs .menu-button[aria-expanded=true]{color:var(--sky-dark);background:#e6f0ef}
+.mobile-tabs>a>span,.mobile-tabs .menu-button>span{font-size:14px;font-weight:700;line-height:1}
+.mobile-tabs small{font-size:10px;font-weight:700;line-height:1.2}
+#dock-context,#dock-action{display:none!important}
+}
+
 
