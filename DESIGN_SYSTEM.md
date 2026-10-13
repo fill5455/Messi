@@ -17,11 +17,11 @@ L’utente deve riconoscere il soggetto e scegliere dove andare prima di incontr
 - Nessuna ombra sulle carte informative, nessun testo su fotografie.
 
 ## Composizione
-- Home: profilo 72×88px + testo → destinazioni → dati di sintesi.
+- Home: ritratto in cornice 72×88px + testo → destinazioni → dati di sintesi.
 - Carriera: quattro righe espandibili, una aperta alla volta.
 - Trofei: Club / Argentina / Premi individuali; categorie senza annidamenti.
 - Record: valore, nome, periodo, spiegazione nello stesso blocco.
-- Fotografie: tre file utilizzati, nessun archivio o galleria.
+- Fotografie: cinque file pertinenti, nessun archivio o galleria.
 - Header unico; niente indici sticky che competono con la tab bar.
 
 ## Interazioni
@@ -33,3 +33,10 @@ L’utente deve riconoscere il soggetto e scegliere dove andare prima di incontr
 
 ## Verifica visiva ancora da eseguire
 320/375/390/402px, Safari iOS, kit esterno, testo ingrandito, safe-area, focus e lettura con VoiceOver. La verifica statica non dimostra la qualità del rendering.
+
+## Identità e precisione
+- Cinque stemmi in una colonna da 48px; nei titoli del palmarès cornice da 36px. Object-fit:contain, nessuna deformazione.
+- Summary con tre colonne: identità / nome e periodo / indicatore. Testo flessibile, stemma e chevron non comprimibili.
+- Icone principali identiche a quelle della tab bar: book-open, star, arrow-up.
+- Fotografie di Barcellona, PSG e Miami all’interno del rispettivo capitolo, dopo il testo. Composizioni integrali e rapporto intrinseco corretto.
+- Record: titolo e periodo a sinistra, valore allineato a destra; spiegazione separata sotto.

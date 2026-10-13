@@ -1,5 +1,14 @@
 [
   {
+    "key": "messi-portrait",
+    "title": "Messi · Argentina a Qatar 2022",
+    "author": "Hossein Zohrevand / Tasnim News Agency",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lionel_Messi_WC2022.jpg",
+    "file": "assets/images/messi-portrait.webp"
+  },
+  {
     "key": "barcelona-2011",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gran_Messi,_Bar%C3%A7a_Mallorca.jpg",
     "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Gran_Messi%2C_Bar%C3%A7a_Mallorca.jpg",
@@ -17,16 +26,6 @@
     "file": "assets/images/barcelona-2011.webp"
   },
   {
-    "key": "gallery-miami-nycfc",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lionel_Messi_NYCFC_Miami_24_Sep_2025-081.jpg",
-    "author": "Bryan Berlin",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
-    "caption": "New York City FC–Inter Miami — 24 settembre 2025",
-    "title": "Un nuovo orizzonte.",
-    "file": "assets/images/hero.webp"
-  },
-  {
     "key": "worldcup-selected",
     "title": "Messi alza la Coppa del Mondo · Qatar 2022",
     "sourceUrl": "https://wallpaperaccess.com/full/14139924.jpg",
@@ -35,5 +34,70 @@
     "licenseUrl": "https://wallpaperaccess.com/full/14139924.jpg",
     "note": "Fotografia scelta dal committente. Ridimensionamento e compressione WebP; colori originali.",
     "file": "assets/images/worldcup-selected.webp"
+  },
+  {
+    "key": "psg-crisp",
+    "sourceUrl": "https://messi.com/en/galeria/?mgi_45=16230%2Fpsg-v-nantes",
+    "author": "Leo Messi official website; individual photographer not identified",
+    "license": "Materiale ufficiale protetto da copyright; licenza pubblica di riuso non verificata",
+    "licenseUrl": "https://messi.com/terminos-y-condiciones/",
+    "caption": "PSG–Nantes · 2021",
+    "title": "PSG–Nantes · 2021",
+    "file": "assets/images/messi-psg.webp"
+  },
+  {
+    "key": "gallery-miami-revolution",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lionel_Messi_NE_Revolution_Inter_Miami_7.9.25-143.jpg",
+    "author": "Bryan Berlin",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "caption": "New England Revolution–Inter Miami — 9 luglio 2025",
+    "title": "Il dieci, in rosa.",
+    "file": "assets/images/gallery-miami-revolution.webp"
+  },
+  {
+    "key": "logo-newells",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Newell%27s_Old_Boys_Escudo.png",
+    "author": "//www.newellsoldboys.com.ar/",
+    "license": "Marchio e stemma dei rispettivi titolari. Condizioni di riuso indicate nella fonte.",
+    "licenseUrl": "https://commons.wikimedia.org/wiki/File:Newell%27s_Old_Boys_Escudo.png",
+    "title": "Newells Logo",
+    "file": "assets/images/newells-logo.png"
+  },
+  {
+    "key": "logo-barcelona",
+    "sourceUrl": "https://en.wikipedia.org/wiki/File:FC_Barcelona_(crest).svg",
+    "author": "FC Barcelona",
+    "license": "Marchio e stemma dei rispettivi titolari. Condizioni di riuso indicate nella fonte.",
+    "licenseUrl": "https://en.wikipedia.org/wiki/File:FC_Barcelona_(crest).svg",
+    "title": "Barcelona Logo",
+    "file": "assets/images/barcelona-logo.svg"
+  },
+  {
+    "key": "logo-psg",
+    "sourceUrl": "https://en.wikipedia.org/wiki/File:Paris_Saint-Germain_F.C..svg",
+    "author": "Paris Saint-Germain Football Club",
+    "license": "Marchio e stemma dei rispettivi titolari. Condizioni di riuso indicate nella fonte.",
+    "licenseUrl": "https://en.wikipedia.org/wiki/File:Paris_Saint-Germain_F.C..svg",
+    "title": "Psg Logo",
+    "file": "assets/images/psg-logo.svg"
+  },
+  {
+    "key": "logo-miami",
+    "sourceUrl": "https://en.wikipedia.org/wiki/File:Inter_Miami_CF_logo.svg",
+    "author": "Inter Miami CF",
+    "license": "Marchio e stemma dei rispettivi titolari. Condizioni di riuso indicate nella fonte.",
+    "licenseUrl": "https://en.wikipedia.org/wiki/File:Inter_Miami_CF_logo.svg",
+    "title": "Miami Logo",
+    "file": "assets/images/miami-logo.svg"
+  },
+  {
+    "key": "logo-argentina",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Argentine_Football_Association_logo.svg",
+    "author": "Argentine Football Association",
+    "license": "Marchio e stemma dei rispettivi titolari. Condizioni di riuso indicate nella fonte.",
+    "licenseUrl": "https://commons.wikimedia.org/wiki/File:Argentine_Football_Association_logo.svg",
+    "title": "Argentina Logo",
+    "file": "assets/images/argentina-logo.svg"
   }
 ]

@@ -1,6 +1,6 @@
 # Messi — mobile leggibile
 
-La home identifica il soggetto e porta subito a Carriera, Trofei e Record. Una sola fotografia da 72×88px precede le azioni. I dati di sintesi vengono dopo la navigazione.
+La home identifica il soggetto e porta subito a Carriera, Trofei e Record. Un ritratto in una cornice da 72×88px precede le azioni. I dati di sintesi vengono dopo la navigazione.
 
 ## Pagine
 - Home: profilo breve, tre destinazioni e tre dati di sintesi.
@@ -8,7 +8,7 @@ La home identifica il soggetto e porta subito a Carriera, Trofei e Record. Una s
 - Trofei: tre categorie espandibili, senza ulteriori accordion annidati.
 - Record: numeri sempre accompagnati da titolo, periodo e spiegazione.
 - Argentina: vittorie in ordine cronologico e approfondimento su Qatar 2022.
-- Fonti e crediti: provenienza delle tre immagini utilizzate.
+- Fonti e crediti: provenienza delle cinque fotografie e dei cinque stemmi utilizzati.
 
 ## Design
 Sistema di font nativo, testo 16px, descrizioni 15–17px, note 14px. Titoli pagina 32px. Nessun titolo spezzato manualmente nelle pagine, nessun testo sovrapposto a immagini, nessuna immagine grande prima delle azioni della home. Un header e la tab bar, senza altre barre sticky nel contenuto.
@@ -21,3 +21,6 @@ HTML statico, un CSS e un JS. Nessun build. Servire la radice; percorsi relativi
 
 ## Verifica
 Controllati struttura HTML, tab bar, link, ancore, apertura dei link diretti, copertura delle immagini nei crediti, contrasto della palette e stato delle schede. Browser QA e verifica di leggibilità su dispositivo reale non eseguiti nell’ambiente disponibile.
+
+## Rifinitura degli asset e della gerarchia
+Stemmi originali del repository per Newell’s Old Boys, FC Barcelona, PSG, Inter Miami e Argentina, normalizzati con object-fit:contain. Ritratto verificato visivamente per il profilo; fotografie dei capitoli selezionate e ispezionate singolarmente, con dimensioni intrinseche corrette e senza tagliare firme o watermark. Icone delle destinazioni allineate alla famiglia del kit. Nei record: nome → periodo → valore → spiegazione. Link ai trofei di un club aprono il gruppo corrispondente. Questi controlli sugli asset non sostituiscono la verifica del rendering in browser.
