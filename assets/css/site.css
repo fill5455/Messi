@@ -286,3 +286,7 @@ main:focus{outline:none}
 
 .destination:active,.chapter:active,summary:active{color:var(--accent)}
 .nav-link:active:not([aria-current=page]){background:var(--sky-soft)}
+
+.portrait-photo{justify-self:center;width:fit-content;max-width:100%}
+.portrait-photo img{width:auto;height:320px;max-width:100%;object-fit:contain}
+@media(min-width:700px){.portrait-photo{justify-self:end}.portrait-photo img{height:400px}}
