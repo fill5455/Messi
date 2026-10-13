@@ -76,12 +76,15 @@ export function installFeedback(root, host = window) {
   const icons = new Map();
   const panels = new Map();
   let press = null;
-  const controls = '.destination, .content-detail > summary, .source-details > summary, .inline-link, button';
+  const controls = '.destination, .content-detail > summary, .source-details > summary, .inline-link, .story-link, .photo-link, button';
   const scaleFor = control => {
-    const icon = control.querySelector(':scope > .destination-icon, :scope > .team-badge, :scope > i') || (control.tagName === 'BUTTON' ? control : null);
+    if(control.closest('.liquid-ready'))return null; // The lens owns its contact response.
+    const icon = control.tagName === 'BUTTON' ? control : control.querySelector(':scope > .destination-icon, :scope > .team-badge, :scope > .photo-zoom, :scope > i');
     if (!icon) return null;
-    if (!icons.has(icon)) icons.set(icon, new Spring(1, .18, value => { icon.style.transform = `scale(${value})`; }));
-    return { spring: icons.get(icon), target: icon === control ? .97 : .92 };
+    if (!icons.has(icon)) icons.set(icon, new Spring(1, .2, value => {
+      icon.style.transform = icon === control ? `scale(${1-(1-value)*.55},${value})` : `scale(${value})`;
+    },{damping:.74}));
+    return { spring: icons.get(icon), target: icon === control ? .94 : .9 };
   };
   const release = (instant = false) => {
     if (!press) return;
@@ -93,6 +96,7 @@ export function installFeedback(root, host = window) {
     release(); press = { control, pointerId, x, y };
     control.classList.add('is-pressed');
     const scale = scaleFor(control);
+    if(scale&&!reduced.matches&&scale.spring.frame===null){scale.spring.value=.98;scale.spring.render(.98);}
     scale?.spring.to(reduced.matches ? 1 : scale.target, reduced.matches);
   };
   root.addEventListener('pointerdown', event => {

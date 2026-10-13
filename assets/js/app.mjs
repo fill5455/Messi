@@ -1,6 +1,6 @@
-import { installLiquid } from './liquid.mjs?v=6146ef77b3';
-import { Spring, installFeedback } from './motion.mjs?v=0e032714f1';
-import { installFeatures } from './features.mjs?v=1be5975609';
+import { installLiquid } from './liquid.mjs?v=2342a7efde';
+import { Spring, installFeedback } from './motion.mjs?v=642d03137e';
+import { installFeatures } from './features.mjs?v=ab21e1531c';
 
 /** Latest navigation wins, including when an older fetch or transition finishes late. */
 export function createNavigator({load,render,busy=()=>{},cancelTransition=()=>{},fallback=()=>{}}) {

@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {rubberBand,projectIndex,liquidShape} from '../assets/js/liquid.mjs';
+import {rubberBand,projectIndex,liquidShape,contactShape} from '../assets/js/liquid.mjs';
 import {Spring} from '../assets/js/motion.mjs';
 const frames={request:()=>1,cancel:()=>{},now:()=>0};
 assert.equal(rubberBand(150,50,350),150);
@@ -26,6 +26,7 @@ let callback='';s.to(100,false,()=>callback='old');s.to(0,true,()=>callback='lat
 console.log('PASS lens projection, edge resistance, bounded deformation, live reversal, velocity continuity, 60/120 Hz equivalence, rest and reduced-motion completion');
 // Pointer lifecycle tested with event/geometry doubles, not a browser renderer.
 import {installLiquid} from '../assets/js/liquid.mjs';
+function style(){return {setProperty(name,value){this[name]=value;},removeProperty(name){delete this[name];}};}
 class Bus {
  constructor(){this.listeners=new Map();}
  addEventListener(type,fn){if(!this.listeners.has(type))this.listeners.set(type,new Set());this.listeners.get(type).add(fn);}
@@ -39,10 +40,10 @@ bar.classList={add(){},remove(){}};bar.getBoundingClientRect=()=>({left:0});bar.
 bar.setPointerCapture=id=>{captured=id;};bar.hasPointerCapture=id=>captured===id;bar.releasePointerCapture=()=>{captured=null;};
 const items=Array.from({length:4},(_,i)=>{
  const input={_checked:i===0,get checked(){return this._checked;},set checked(value){if(value)items.forEach(item=>item.input._checked=false);this._checked=value;},dispatchEvent(){changes++;bar.emit('change');}};
- return {input,classList:bar.classList,closest:()=>items[i],querySelector:()=>input,getBoundingClientRect:()=>({left:i*100,width:100})};
+ return {input,style:style(),classList:bar.classList,closest:()=>items[i],querySelector:()=>input,getBoundingClientRect:()=>({left:i*100,width:100})};
 });
 bar.querySelectorAll=()=>items;
-const doc={querySelector:()=>bar,querySelectorAll:()=>[],createElement:()=>({style:{},setAttribute(){},remove(){}})};
+const doc={querySelector:()=>bar,querySelectorAll:()=>[],createElement:()=>({style:style(),setAttribute(){},remove(){}})};
 globalThis.MutationObserver=class{observe(){}disconnect(){}};
 let now=0,framesQueue=new Map(),frameId=0;
 globalThis.requestAnimationFrame=fn=>{framesQueue.set(++frameId,fn);return frameId;};globalThis.cancelAnimationFrame=id=>framesQueue.delete(id);
@@ -56,3 +57,16 @@ settle();bar.emit('pointerdown',pointer(350,0,1000));host.emit('pointermove',poi
 bar.emit('pointerdown',pointer(350,0,1100));host.emit('pointermove',pointer(100,0,1300));host.emit('pointercancel',pointer(100,0,1301));assert.equal(captured,null);assert.equal(changes,1);settle();
 reduced.matches=true;reduced.emit('change');bar.emit('pointerdown',pointer(350,0,1400));host.emit('pointermove',pointer(50,0,1600));assert.match(lens.style.transform,/scale\(1,1\)/);host.emit('pointerup',pointer(50,0,1601));assert(items[0].input.checked);
 api.refresh();console.log('PASS pointer threshold, direct tracking, capture/release, velocity snap, vertical cancellation, pointercancel and reduced-motion gesture lifecycle (event doubles)');
+
+// A normal tap, and a tap on the already active tab, must both have visible down feedback.
+reduced.matches=false;reduced.emit('change');settle();
+const beforeContact=lens.style.transform;
+bar.emit('pointerdown',pointer(50,0,2000));
+assert.notEqual(lens.style.transform,beforeContact);assert.equal(changes,2);
+host.emit('pointerup',pointer(50,0,2020));assert.equal(changes,2);settle();
+assert.deepEqual(contactShape(0,0),{x:1,y:1});
+assert(contactShape(0,1).y>1.15);assert(contactShape(0,-.2).y<1);
+const nextTap={...pointer(250,0,2100),target:items[2]};
+bar.emit('pointerdown',nextTap);assert.equal(changes,2);host.emit('pointerup',{...nextTap,timeStamp:2120});assert(items[2].input.checked);assert.equal(changes,3);
+let prevented=false;bar.emit('click',{detail:1,preventDefault(){prevented=true;},stopImmediatePropagation(){}});assert(prevented);
+settle();console.log('PASS same-tab down feedback, contact expansion, tap selection on release and duplicate-click suppression');

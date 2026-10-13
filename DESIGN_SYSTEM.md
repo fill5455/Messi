@@ -28,10 +28,12 @@ Safari su iPhone, View Transitions e fallback, tastiera/VoiceOver, zoom testo, t
 ## Lente Liquid Glass
 - Lente separata dai contenuti: gli elementi semantici e le etichette restano fermi; si anima solo il materiale dietro.
 - Tab bar: trascinamento orizzontale con cattura dopo 10px, offset conservato, resistenza ai bordi e proiezione di 120ms; nessun blocco degli input.
-- Damping 1 / .4s per spostamenti; .8 solo per release con velocità reale >120px/s. Width .32s, press .22s, modal .3s.
-- Stretch limitato al 12%, squash verticale al 6%. Spring analitiche; nessun keyframe per i gesti.
+- Damping 1 / .4s per spostamenti; .8 solo per release con velocità reale >120px/s. Width .32s, contatto .2s, modal .3s.
+- Stretch da velocità limitato al 16%; contatto: primo frame compresso, espansione 12% × 20%, ricomposizione con damping .72 / risposta .2s. Spring analitiche; nessun keyframe per i gesti.
 - Filtri: una sola lente con geometria misurata, radio e pulsanti nativi conservati.
 - Dialogo foto: trasformazione dal centro della sorgente, ritorno sullo stesso percorso; Escape e focus nativi.
 - Il kit iOS resta esterno. `.liquid-tab-lane`, `.liquid-item`, `.liquid-lens` sono strati applicativi originali.
 - Contenuti solidi bianchi; materiale su tab bar e piccoli controlli, blur statico 16–22px. Riduzione movimento, maggiore contrasto e fallback opaco.
 - Riferimento verificato il 13 ottobre 2026: https://github.com/GetStream/awesome-liquid-glass/blob/main/README.md. Adattamento web, non equivalenza ottica al renderer iOS.
+
+Il pointer-down fa reagire il controllo toccato, anche sulla scheda attiva; non si attende il click. Nei filtri la lente ha lo stesso contatto. Riflesso localizzato sulla pressione, bordo illuminato, icona sollevata massimo 1,5px; riduzione del movimento elimina deformazioni e sollevamento.

@@ -205,12 +205,12 @@ button:disabled{cursor:default}
 .liquid-ready::before,.liquid-ready::after,.liquid-tab-lane>.liquid-item::before,.liquid-tab-lane>.liquid-item::after{display:none}
 .liquid-tab-lane>.liquid-item{position:relative;z-index:1;background:transparent!important;border-radius:999px;min-height:56px;color:var(--secondary);touch-action:pan-y}
 .liquid-tab-lane>.liquid-item:has(input:checked){color:var(--accent);background:transparent!important}
-.liquid-lens{position:absolute;z-index:0;left:0;top:6px;bottom:6px;pointer-events:none;border:1px solid var(--glass-border);border-radius:999px;background:linear-gradient(135deg,#ffffffed,#e4effbd9);box-shadow:inset 0 1px 2px white,inset 0 -1px 2px #6a91bd14,0 2px 7px #304d751c;transform-origin:center;will-change:transform}
+.liquid-lens{position:absolute;z-index:0;left:0;top:6px;bottom:6px;pointer-events:none;border:1px solid var(--glass-border);border-radius:999px;background:linear-gradient(145deg,#ffffffb8,#e4effb70);box-shadow:inset 0 1px 2px #ffffff,inset 0 -1px 3px #54779c26,0 3px 10px #183b641c;transform-origin:center;will-change:transform;border-color:#ffffffed;backdrop-filter:blur(5px) saturate(1.45);-webkit-backdrop-filter:blur(5px) saturate(1.45)}
 .liquid-ready.is-dragging{cursor:grabbing}
 .filter-row.liquid-ready{position:relative;isolation:isolate;display:flex;flex-wrap:nowrap;gap:0;padding:5px;margin-top:16px;border:1px solid #cbd4e3;border-radius:999px;background:#f3f6fb;box-shadow:inset 0 1px 2px #17375d08}
 .filter-row.liquid-ready button{position:relative;z-index:1;flex:1;min-width:0;min-height:44px;padding:8px 5px;border:0;background:transparent;color:var(--secondary);font-size:.875rem;white-space:nowrap;box-shadow:none}
 .filter-row.liquid-ready button[aria-pressed=true]{color:var(--accent);background:transparent;font-weight:600}
-.filter-row.liquid-ready>.liquid-lens{top:5px;bottom:5px;background:linear-gradient(135deg,white,#e7f0fc);border-color:white}
+.filter-row.liquid-ready>.liquid-lens{top:5px;bottom:5px;background:linear-gradient(145deg,#ffffffe8,#e7f0fba8);border-color:white}
 .photo-zoom,.dialog-header button{background:rgba(247,250,255,.91);border:1px solid #ffffffde;box-shadow:inset 0 1px 0 white,0 3px 12px #142d491a;backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px) saturate(1.2)}
 .photo-link{border-radius:14px;overflow:hidden}
 .dialog-image{border-radius:12px}
@@ -221,3 +221,15 @@ button:disabled{cursor:default}
 @media(prefers-reduced-transparency:reduce){.liquid-tab-lane,.photo-zoom,.dialog-header button{background:#f7faff;backdrop-filter:none;-webkit-backdrop-filter:none}.utility-dialog::backdrop{backdrop-filter:none;-webkit-backdrop-filter:none}}
 @media(prefers-reduced-motion:reduce){.liquid-lens{will-change:auto}.utility-dialog{will-change:auto}}
 @media(forced-colors:active){.liquid-lens{background:Highlight;border:1px solid Highlight}.liquid-tab-lane>.liquid-item:has(input:checked),.filter-row.liquid-ready button[aria-pressed=true]{color:HighlightText}.liquid-tab-lane,.filter-row.liquid-ready{border:1px solid CanvasText;box-shadow:none}}
+
+/* Contact response: the touched lens inflates and recoils, including same-tab taps. */
+
+.liquid-lens::before,.liquid-lens::after{content:'';position:absolute;pointer-events:none;border-radius:inherit;inset:0}
+.liquid-lens::before{background:radial-gradient(ellipse at var(--touch-x,50%) 0%,#ffffffed,transparent 62%);opacity:calc(.3 + var(--liquid-contact,0)*.55);box-shadow:inset 0 1px 0 #ffffff}
+.liquid-lens::after{inset:2px;border:1px solid #ffffff70;box-shadow:inset 0 -1px 2px #6a95c538;opacity:calc(.3 + var(--liquid-contact,0)*.45)}
+.liquid-tab-lane>.liquid-item>i{transform:translateY(var(--liquid-lift,0px));transform-origin:center}
+.liquid-ready.is-contact>.liquid-lens{border-color:white;box-shadow:inset 0 2px 3px white,inset 0 -2px 4px #648cb733,0 6px 18px #173e6f24}
+
+@media(prefers-reduced-motion:reduce){.liquid-tab-lane>.liquid-item>i{transform:none}}
+@media(prefers-reduced-transparency:reduce){.liquid-lens{background:#e7f0fc;backdrop-filter:none;-webkit-backdrop-filter:none}}
+@media(forced-colors:active){.liquid-lens{background:Highlight;backdrop-filter:none;-webkit-backdrop-filter:none}.liquid-lens::before,.liquid-lens::after{display:none}}
