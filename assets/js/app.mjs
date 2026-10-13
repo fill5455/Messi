@@ -1,6 +1,5 @@
-import { installLiquid } from './liquid.mjs?v=57794c1666';
-import { Spring, installFeedback } from './motion.mjs?v=a8295a3730';
-import { installFeatures } from './features.mjs?v=379f9da6de';
+import { installFeedback } from './motion.mjs?v=6dc89fb561';
+import { installFeatures } from './features.mjs?v=c2174c90e9';
 
 /** Latest navigation wins, including when an older fetch or transition finishes late. */
 export function createNavigator({load,render,busy=()=>{},cancelTransition=()=>{},fallback=()=>{}}) {
@@ -31,38 +30,22 @@ export function installApp(doc=document,host=window) {
   const header=doc.querySelector('.app-header');
   const nav=doc.querySelector('.ios-tabbar');
   if(!surface||!region||!header||!nav) return;
-  const inputs=[...nav.querySelectorAll('input[data-href]')];
+  const navLinks=[...nav.querySelectorAll('a[data-href]')];
   const feedback=installFeedback(doc,host);
   const rawPages=new Map(), pageState=new Map();
   const pageKey=url=>url.pathname.endsWith('/')?url.pathname+'index.html':url.pathname;
-  let currentURL=new URL(host.location.href), activeTransition=null, clearance=112, keyboard=true;
+  let currentURL=new URL(host.location.href), clearance=112, keyboard=true;
   const live=doc.querySelector('.navigation-status');
   const reduced=feedback.reduced;
-  const pulse=new Spring(1,.28,value=>{
-    region.style.opacity=String(.9+.1*value);
-    region.style.transform=`scale(${.996+.004*value})`;
-  });
-  const cancelTransition=()=>{ activeTransition?.skipTransition();activeTransition=null;pulse.stop(); };
-  const mutate=async update=>{
-    cancelTransition();
-    if(typeof doc.startViewTransition==='function' && !reduced.matches) {
-      const transition=doc.startViewTransition(update); activeTransition=transition;
-      transition.ready.catch(()=>{});transition.finished.catch(()=>{});
-      await transition.updateCallbackDone;
-      transition.finished.then(()=>{if(activeTransition===transition)activeTransition=null;}).catch(()=>{});
-    } else {
-      update();
-      if(!reduced.matches) {if(pulse.value===1){pulse.value=0;pulse.velocity=0;}pulse.to(1);} else pulse.to(1,true);
-    }
-  };
+  const cancelTransition=()=>{};
+  const mutate=async update=>{update();};
   mutate.cancel=cancelTransition;
   const features=installFeatures(doc,host,{mutate,reduced});
-  const liquid=installLiquid(doc,host,{reduced});
   const selectedFile=url=>{
     const file=url.pathname.split('/').pop()||'index.html';
     return file==='argentina.html'?'carriera.html':file==='credits.html'?'index.html':file;
   };
-  const select=url=>{inputs.forEach(input=>{input.checked=input.defaultChecked=input.dataset.href===selectedFile(url);});liquid.sync();};
+  const select=url=>{navLinks.forEach(link=>{if(link.dataset.href===selectedFile(url))link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');});};
   function ensureVisible(target) {
     if(!target?.matches('a,button,input,summary,[tabindex="0"]'))return;
     const viewport=region.getBoundingClientRect(),bounds=target.getBoundingClientRect();
@@ -73,7 +56,7 @@ export function installApp(doc=document,host=window) {
   const measure=()=>{
     if(host.visualViewport && host.visualViewport.scale===1)surface.style.height=`${Math.round(host.visualViewport.height)}px`;
     else surface.style.removeProperty('height');
-    clearance=Math.ceil(nav.getBoundingClientRect().height+(parseFloat(host.getComputedStyle(nav).bottom)||0)+16);
+    clearance=host.matchMedia('(min-width: 800px)').matches?24:Math.ceil(nav.getBoundingClientRect().height+(parseFloat(host.getComputedStyle(nav).bottom)||0)+16);
     surface.style.setProperty('--nav-clearance',`${clearance}px`);
     requestAnimationFrame(()=>{if(region.contains(doc.activeElement))ensureVisible(doc.activeElement);});
   };
@@ -126,7 +109,7 @@ export function installApp(doc=document,host=window) {
       if(options.history==='push')host.history.pushState({messi:true},'',url.href);
       currentURL=new URL(url.href);select(currentURL);
       (state.open||[]).forEach(id=>{const d=doc.getElementById(id);if(d?.tagName==='DETAILS')d.open=true;});
-      feedback.refresh();features.mount(state);liquid.refresh();
+      feedback.refresh();features.mount(state);
       region.scrollTop=state.scroll||0;
       if(currentURL.hash)revealHash();
       measure();
@@ -142,9 +125,6 @@ export function installApp(doc=document,host=window) {
     remember();navigator.go(url,{history});
   };
   doc.addEventListener('keydown',()=>{keyboard=true;});doc.addEventListener('pointerdown',()=>{keyboard=false;});
-  nav.addEventListener('change',event=>{
-    const input=event.target;if(inputs.includes(input)&&input.checked)go(new URL(input.dataset.href,host.location.href));
-  });
   doc.addEventListener('click',event=>{
     if(event.detail===0)keyboard=true;
     const anchor=event.target.closest('a[href]');
@@ -162,9 +142,8 @@ export function installApp(doc=document,host=window) {
   });
   host.addEventListener('pagehide',()=>{remember();navigator.cancel();});
   host.addEventListener('pageshow',()=>{select(new URL(host.location.href));measure();});
-  reduced.addEventListener('change',()=>{if(reduced.matches){cancelTransition();pulse.to(1,true);}});
   host.history.scrollRestoration='manual';
-  select(currentURL);features.mount();liquid.refresh();revealHash();
-  return {go,navigator,features,feedback,liquid};
+  select(currentURL);features.mount();revealHash();
+  return {go,navigator,features,feedback};
 }
 if(typeof document!=='undefined')installApp();

@@ -1,4 +1,4 @@
-import { Spring } from './motion.mjs?v=a8295a3730';
+import { Spring } from './motion.mjs?v=6dc89fb561';
 
 export const normalize = value => String(value).replace(/\b(\d{4})\/(\d{2})\b/g,(_,start,end)=>`${start}/${end} ${start.slice(0,2)}${end}`).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
 export function matchesRecord(record,query,filter,saved=new Set()) {
@@ -68,7 +68,7 @@ export function installFeatures(doc,host,{mutate,reduced}) {
       tools.querySelector('[data-clear-search]').hidden=input.value.length===0;
       tools.querySelectorAll('[data-record-filter]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.recordFilter===filter)));
     };
-    if(animate)mutate(update).catch(()=>update());else update();
+    update();
   };
   const mount=(state={})=>{
     tools=doc.querySelector('.record-tools');rows=[...doc.querySelectorAll('[data-record]')];
@@ -94,9 +94,7 @@ export function installFeatures(doc,host,{mutate,reduced}) {
     mutate.cancel();
     if(!dialog.open){modalSpring.value=0;modalSpring.velocity=0;dialog.style.opacity='0';dialog.style.transform='none';dialog.showModal();
       origin={x:0,y:12,scale:.96};
-      if(trigger){const source=trigger.getBoundingClientRect(),destination=dialog.getBoundingClientRect();
-        origin={x:source.left+source.width/2-destination.left-destination.width/2,y:source.top+source.height/2-destination.top-destination.height/2,scale:Math.max(.55,Math.min(.96,source.width/destination.width))};
-      }
+      origin={x:0,y:8,scale:1};
       modalSpring.render(0);
     }
     modalSpring.to(1,reduced.matches);
@@ -105,7 +103,7 @@ export function installFeatures(doc,host,{mutate,reduced}) {
     dialog.replaceChildren();
     const header=doc.createElement('div');header.className='dialog-header';
     const h=doc.createElement('h2');h.id='utility-title';h.textContent=title;
-    const button=doc.createElement('button');button.type='button';button.dataset.closeOverlay='';button.setAttribute('aria-label','Chiudi');button.textContent='×';
+    const button=doc.createElement('button');button.type='button';button.dataset.closeOverlay='';button.setAttribute('aria-label','Chiudi');button.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>';
     header.append(h,button);dialog.append(header);
   };
   const openPhoto=anchor=>{

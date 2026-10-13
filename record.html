@@ -1,137 +1,128 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="it">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#ffffff">
-  <title>Record — Messi</title>
-  <meta name="description" content="I record di Lionel Messi spiegati con numeri, periodi e contesto.">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="https://aiuxplayground.com/kits/ios-26/v1/ios.css">
-  <link rel="stylesheet" href="assets/css/site.css?v=072472c90c">
-  <script type="module" src="assets/js/app.mjs?v=9c448b2c2e"></script>
-</head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
+<meta content="#f7f7f2" name="theme-color"/>
+<title>Record — Messi</title>
+<meta content="I record di Lionel Messi spiegati con numeri, periodi e contesto." name="description"/>
+<link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/>
+
+<link href="assets/css/site.css?v=5b65ae57c3" rel="stylesheet"/>
+<script src="assets/js/app.mjs?v=0eed7b194f" type="module"></script>
+<link as="font" crossorigin="" href="assets/fonts/barlow-condensed-700.woff2" rel="preload" type="font/woff2"/></head>
 <body>
 <div class="ios-surface">
-  <a class="skip" href="#contenuto">Salta al contenuto</a>
-  <header class="app-header"><a class="brand" href="index.html" aria-label="Messi, homepage">Messi<span>10</span></a><span class="current-page">Record</span></header>
-  <div class="screen-scroll" tabindex="0" aria-label="Contenuto della pagina">
-    <main data-page="record" id="contenuto" tabindex="-1" aria-labelledby="page-title">
-<div class="page-heading"><span class="eyebrow">LIONEL MESSI · I PRIMATI</span>
+<a class="skip" href="#contenuto">Salta al contenuto</a>
+<header class="app-header"><a aria-label="Messi, homepage" class="brand" href="index.html" translate="no">MESSI<span>10</span></a><span class="current-page">Record</span></header>
+<div aria-label="Contenuto della pagina" class="screen-scroll" tabindex="0">
+<main aria-labelledby="page-title" data-page="record" id="contenuto" tabindex="-1">
+<div class="page-heading heading-text-only"><div class="heading-copy">
 <h1 id="page-title">Record</h1>
 <p>I primati di Messi, con il periodo e il loro significato.</p>
-</div>
-<section class="page-section" aria-label="Record storici"><div class="record-tools" hidden>
+</div></div>
+<section aria-label="Record storici" class="page-section"><div class="record-tools" hidden=""><p class="record-help">Trova un primato e salva quelli che vuoi ritrovare.</p>
 <label for="record-search">Cerca nei record</label><div class="search-field">
-<i class="ios-icon ios-icon--search" aria-hidden="true"></i><input id="record-search" type="search" placeholder="Es. Liga, Mondiale, 2012" autocomplete="off" aria-controls="record-results" maxlength="80"><button type="button" data-clear-search aria-label="Cancella la ricerca" hidden>×</button>
+<i aria-hidden="true" class="ios-icon ios-icon--search"></i><input aria-controls="record-results" autocomplete="off" id="record-search" maxlength="80" name="q" placeholder="Cerca un traguardo, un torneo o un anno…" type="search"/><button aria-label="Cancella la ricerca" data-clear-search="" hidden="" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
 </div>
-<div class="filter-row" aria-label="Filtra i record" role="group">
-<button type="button" data-record-filter="tutti" aria-pressed="true">Tutti</button><button type="button" data-record-filter="gol" aria-pressed="false">Gol</button><button type="button" data-record-filter="premi" aria-pressed="false">Premi</button><button type="button" data-record-filter="salvati" aria-pressed="false">Salvati</button>
+<div aria-label="Filtra i record" class="filter-row" role="group">
+<button aria-pressed="true" data-record-filter="tutti" type="button">Tutti</button><button aria-pressed="false" data-record-filter="gol" type="button">Gol</button><button aria-pressed="false" data-record-filter="premi" type="button">Premi</button><button aria-pressed="false" data-record-filter="salvati" type="button">Salvati</button>
 </div>
-<p class="result-count" aria-live="polite"></p>
+<p aria-live="polite" class="result-count"></p>
 </div>
 <div class="record-list" id="record-results">
-<article class="record-row" id="record-91" data-record="" data-category="gol"><div class="record-top">
+<article class="record-row" data-category="gol" data-record="" id="record-91"><div class="record-top">
 <div>
 <h2>Gol in un anno</h2>
 <p class="record-period">2012 · Club e nazionale</p>
 </div>
-<strong class="record-number" aria-label="91 gol">91</strong>
+<strong aria-label="91 gol" class="record-number">91</strong>
 </div>
 <p class="record-meaning">79 con il Barcellona e 12 con l’Argentina. Supera gli 85 gol realizzati da Gerd Müller nel 1972, secondo Guinness World Records.</p>
-<div class="record-actions" hidden>
-<button type="button" data-save-record="record-91" aria-pressed="false"><i class="ios-icon ios-icon--bookmark" aria-hidden="true" style="--w:18px;--h:18px"></i><span>Salva</span></button><button type="button" data-share-record="record-91"><i class="ios-icon ios-icon--share" aria-hidden="true" style="--w:18px;--h:18px"></i><span>Condividi</span></button>
-</div></article><article class="record-row" id="record-50" data-record="" data-category="gol"><div class="record-top">
+<div class="record-actions" hidden="">
+<button aria-pressed="false" data-save-record="record-91" type="button"><i aria-hidden="true" class="ios-icon ios-icon--bookmark" style="--w:18px;--h:18px"></i><span>Salva</span></button><button data-share-record="record-91" type="button"><i aria-hidden="true" class="ios-icon ios-icon--share" style="--w:18px;--h:18px"></i><span>Condividi</span></button>
+</div></article><article class="record-row" data-category="gol" data-record="" id="record-50"><div class="record-top">
 <div>
 <h2>Gol in una stagione di Liga</h2>
 <p class="record-period">2011/12 · Barcellona</p>
 </div>
-<strong class="record-number" aria-label="50 gol">50</strong>
+<strong aria-label="50 gol" class="record-number">50</strong>
 </div>
 <p class="record-meaning">Record di reti in una singola stagione del campionato spagnolo.</p>
-<div class="record-actions" hidden>
-<button type="button" data-save-record="record-50" aria-pressed="false"><i class="ios-icon ios-icon--bookmark" aria-hidden="true" style="--w:18px;--h:18px"></i><span>Salva</span></button><button type="button" data-share-record="record-50"><i class="ios-icon ios-icon--share" aria-hidden="true" style="--w:18px;--h:18px"></i><span>Condividi</span></button>
-</div></article><article class="record-row" id="record-474" data-record="" data-category="gol"><div class="record-top">
+<div class="record-actions" hidden="">
+<button aria-pressed="false" data-save-record="record-50" type="button"><i aria-hidden="true" class="ios-icon ios-icon--bookmark" style="--w:18px;--h:18px"></i><span>Salva</span></button><button data-share-record="record-50" type="button"><i aria-hidden="true" class="ios-icon ios-icon--share" style="--w:18px;--h:18px"></i><span>Condividi</span></button>
+</div></article><article class="record-row" data-category="gol" data-record="" id="record-474"><div class="record-top">
 <div>
 <h2>Gol nella Liga</h2>
 <p class="record-period">2004–2021 · Barcellona</p>
 </div>
-<strong class="record-number" aria-label="474 gol">474</strong>
+<strong aria-label="474 gol" class="record-number">474</strong>
 </div>
 <p class="record-meaning">Il totale di Messi nel campionato spagnolo al termine del suo percorso con il club.</p>
-<div class="record-actions" hidden>
-<button type="button" data-save-record="record-474" aria-pressed="false"><i class="ios-icon ios-icon--bookmark" aria-hidden="true" style="--w:18px;--h:18px"></i><span>Salva</span></button><button type="button" data-share-record="record-474"><i class="ios-icon ios-icon--share" aria-hidden="true" style="--w:18px;--h:18px"></i><span>Condividi</span></button>
-</div></article><article class="record-row" id="record-672" data-record="" data-category="gol"><div class="record-top">
+<div class="record-actions" hidden="">
+<button aria-pressed="false" data-save-record="record-474" type="button"><i aria-hidden="true" class="ios-icon ios-icon--bookmark" style="--w:18px;--h:18px"></i><span>Salva</span></button><button data-share-record="record-474" type="button"><i aria-hidden="true" class="ios-icon ios-icon--share" style="--w:18px;--h:18px"></i><span>Condividi</span></button>
+</div></article><article class="record-row" data-category="gol" data-record="" id="record-672"><div class="record-top">
 <div>
 <h2>Gol con il Barcellona</h2>
 <p class="record-period">2004–2021 · Prima squadra</p>
 </div>
-<strong class="record-number" aria-label="672 gol">672</strong>
+<strong aria-label="672 gol" class="record-number">672</strong>
 </div>
 <p class="record-meaning">Il miglior marcatore della storia del club nelle partite ufficiali.</p>
-<div class="record-actions" hidden>
-<button type="button" data-save-record="record-672" aria-pressed="false"><i class="ios-icon ios-icon--bookmark" aria-hidden="true" style="--w:18px;--h:18px"></i><span>Salva</span></button><button type="button" data-share-record="record-672"><i class="ios-icon ios-icon--share" aria-hidden="true" style="--w:18px;--h:18px"></i><span>Condividi</span></button>
-</div></article><article class="record-row" id="record-ballon" data-record="" data-category="premi"><div class="record-top">
+<div class="record-actions" hidden="">
+<button aria-pressed="false" data-save-record="record-672" type="button"><i aria-hidden="true" class="ios-icon ios-icon--bookmark" style="--w:18px;--h:18px"></i><span>Salva</span></button><button data-share-record="record-672" type="button"><i aria-hidden="true" class="ios-icon ios-icon--share" style="--w:18px;--h:18px"></i><span>Condividi</span></button>
+</div></article><article class="record-row" data-category="premi" data-record="" id="record-ballon"><div class="record-top">
 <div>
 <h2>Palloni d’Oro</h2>
 <p class="record-period">2009–2023 · Premi individuali</p>
 </div>
-<strong class="record-number" aria-label="8 premi">8</strong>
+<strong aria-label="8 premi" class="record-number">8</strong>
 </div>
 <p class="record-meaning">Vinti nel 2009, 2010, 2011, 2012, 2015, 2019, 2021 e 2023.</p>
-<div class="record-actions" hidden>
-<button type="button" data-save-record="record-ballon" aria-pressed="false"><i class="ios-icon ios-icon--bookmark" aria-hidden="true" style="--w:18px;--h:18px"></i><span>Salva</span></button><button type="button" data-share-record="record-ballon"><i class="ios-icon ios-icon--share" aria-hidden="true" style="--w:18px;--h:18px"></i><span>Condividi</span></button>
-</div></article><article class="record-row" id="record-golden-ball" data-record="" data-category="premi"><div class="record-top">
+<div class="record-actions" hidden="">
+<button aria-pressed="false" data-save-record="record-ballon" type="button"><i aria-hidden="true" class="ios-icon ios-icon--bookmark" style="--w:18px;--h:18px"></i><span>Salva</span></button><button data-share-record="record-ballon" type="button"><i aria-hidden="true" class="ios-icon ios-icon--share" style="--w:18px;--h:18px"></i><span>Condividi</span></button>
+</div></article><article class="record-row" data-category="premi" data-record="" id="record-golden-ball"><div class="record-top">
 <div>
 <h2>Golden Ball ai Mondiali</h2>
 <p class="record-period">2014 e 2022 · Argentina</p>
 </div>
-<strong class="record-number" aria-label="2 premi">2</strong>
+<strong aria-label="2 premi" class="record-number">2</strong>
 </div>
 <p class="record-meaning">Primo calciatore a vincere due volte il premio di miglior giocatore del Mondiale.</p>
-<div class="record-actions" hidden>
-<button type="button" data-save-record="record-golden-ball" aria-pressed="false"><i class="ios-icon ios-icon--bookmark" aria-hidden="true" style="--w:18px;--h:18px"></i><span>Salva</span></button><button type="button" data-share-record="record-golden-ball"><i class="ios-icon ios-icon--share" aria-hidden="true" style="--w:18px;--h:18px"></i><span>Condividi</span></button>
+<div class="record-actions" hidden="">
+<button aria-pressed="false" data-save-record="record-golden-ball" type="button"><i aria-hidden="true" class="ios-icon ios-icon--bookmark" style="--w:18px;--h:18px"></i><span>Salva</span></button><button data-share-record="record-golden-ball" type="button"><i aria-hidden="true" class="ios-icon ios-icon--share" style="--w:18px;--h:18px"></i><span>Condividi</span></button>
 </div></article>
-<article class="record-row" id="record-shoes" data-record="" data-category="premi"><div class="record-top">
+<article class="record-row" data-category="premi" data-record="" id="record-shoes"><div class="record-top">
 <div>
 <h2>Scarpe d’Oro europee</h2>
 <p class="record-period">2009/10–2018/19 · Barcellona</p>
 </div>
-<strong class="record-number" aria-label="6 premi">6</strong>
+<strong aria-label="6 premi" class="record-number">6</strong>
 </div>
 <p class="record-meaning">Sei premi da miglior marcatore dei campionati europei: 2009/10, 2011/12, 2012/13, 2016/17, 2017/18 e 2018/19.</p>
-<div class="record-actions" hidden>
-<button type="button" data-save-record="record-shoes" aria-pressed="false"><i class="ios-icon ios-icon--bookmark" aria-hidden="true" style="--w:18px;--h:18px"></i><span>Salva</span></button><button type="button" data-share-record="record-shoes"><i class="ios-icon ios-icon--share" aria-hidden="true" style="--w:18px;--h:18px"></i><span>Condividi</span></button>
+<div class="record-actions" hidden="">
+<button aria-pressed="false" data-save-record="record-shoes" type="button"><i aria-hidden="true" class="ios-icon ios-icon--bookmark" style="--w:18px;--h:18px"></i><span>Salva</span></button><button data-share-record="record-shoes" type="button"><i aria-hidden="true" class="ios-icon ios-icon--share" style="--w:18px;--h:18px"></i><span>Condividi</span></button>
 </div></article>
 </div>
-<div class="empty-results" hidden>
+<div class="empty-results" hidden="">
 <strong>Nessun record trovato</strong><p>Prova un’altra ricerca o cambia filtro.</p>
-<button type="button" data-reset-records>Mostra tutti i record</button>
+<button data-reset-records="" type="button">Mostra tutti i record</button>
 </div></section><p class="data-note page-note">Traguardi storici. Fonti consultate il 13 ottobre 2026.</p>
-<details class="source-details" id="record-detail-0"><summary>Fonti dei contenuti<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"></path></svg></summary><ul>
-<li><a href="https://www.uefa.com/news-media/news/0242-0e97e0ac1cb3-eef786ff788c-1000--messi-all-his-records/" target="_blank" rel="noopener noreferrer">UEFA: i record di Messi <span aria-hidden="true">↗</span></a></li>
-<li><a href="https://www.fcbarcelona.com/en/card/2214377/leo-messi" target="_blank" rel="noopener noreferrer">FC Barcelona: record del club <span aria-hidden="true">↗</span></a></li>
-<li><a href="https://messi.com/palmares/" target="_blank" rel="noopener noreferrer">Palmarès ufficiale <span aria-hidden="true">↗</span></a></li>
-<li><a href="https://www.fifa.com/en/watch/14Q9we1dyweTi2XNhL9tGY" target="_blank" rel="noopener noreferrer">FIFA: i due Golden Ball mondiali <span aria-hidden="true">↗</span></a></li>
-<li><a href="https://www.guinnessworldrecords.com/world-records/106274-most-football-goals-scored-in-a-calendar-year" target="_blank" rel="noopener noreferrer">Guinness World Records: i 91 gol ↗</a></li>
+<details class="source-details" id="record-detail-0"><summary>Fonti dei contenuti<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5v14"></path></svg></summary><ul>
+<li><a href="https://www.uefa.com/news-media/news/0242-0e97e0ac1cb3-eef786ff788c-1000--messi-all-his-records/" rel="noopener noreferrer" target="_blank">UEFA: i record di Messi <span aria-hidden="true">↗</span></a></li>
+<li><a href="https://www.fcbarcelona.com/en/card/2214377/leo-messi" rel="noopener noreferrer" target="_blank">FC Barcelona: record del club <span aria-hidden="true">↗</span></a></li>
+<li><a href="https://messi.com/palmares/" rel="noopener noreferrer" target="_blank">Palmarès ufficiale <span aria-hidden="true">↗</span></a></li>
+<li><a href="https://www.fifa.com/en/watch/14Q9we1dyweTi2XNhL9tGY" rel="noopener noreferrer" target="_blank">FIFA: i due Golden Ball mondiali <span aria-hidden="true">↗</span></a></li>
+<li><a href="https://www.guinnessworldrecords.com/world-records/106274-most-football-goals-scored-in-a-calendar-year" rel="noopener noreferrer" target="_blank">Guinness World Records: i 91 gol ↗</a></li>
 </ul></details>
-    </main>
-    <footer class="app-footer">
-      <a href="credits.html">Fonti e crediti</a>
-      <p>Progetto indipendente su Lionel Messi.</p>
-    </footer>
-  </div>
-  <nav class="ios-tabbar" aria-label="Navigazione principale">
-    <div class="ios-tabbar__bar" style="--tabs:4">
-      <label class="ios-tab"><input type="radio" name="tabs" aria-label="Home" data-href="index.html"><i class="ios-icon ios-icon--home" aria-hidden="true"></i><span>Home</span></label>
-      <label class="ios-tab"><input type="radio" name="tabs" aria-label="Carriera" data-href="carriera.html"><i class="ios-icon ios-icon--book-open" aria-hidden="true"></i><span>Carriera</span></label>
-      <label class="ios-tab"><input type="radio" name="tabs" aria-label="Trofei" data-href="trofei.html"><i class="ios-icon ios-icon--star" aria-hidden="true"></i><span>Trofei</span></label>
-      <label class="ios-tab"><input type="radio" name="tabs" aria-label="Record" data-href="record.html" checked><i class="ios-icon ios-icon--arrow-up" aria-hidden="true"></i><span>Record</span></label>
-    </div>
-  </nav>
-  <noscript><nav class="tab-fallback" aria-label="Navigazione senza JavaScript"><a href="index.html">Home</a><a href="carriera.html">Carriera</a><a href="trofei.html">Trofei</a><a href="record.html" aria-current="page">Record</a></nav></noscript>
-<p class="navigation-status sr-only" aria-live="polite"></p>
-<div class="toast" role="status" aria-live="polite"></div>
+</main>
+<footer class="app-footer"><div class="footer-top"><a aria-label="Messi, homepage" class="footer-brand" href="index.html">MESSI<span>10</span></a><p>La storia, le vittorie e i numeri.<br/>Un progetto indipendente dedicato a Lionel Messi.</p></div><nav aria-label="Altri percorsi"><a href="index.html">Home</a><a href="carriera.html">Carriera</a><a href="trofei.html">Trofei</a><a href="record.html">Record</a><a href="argentina.html">Argentina</a><a href="credits.html">Fonti e crediti</a></nav></footer>
+</div>
+<nav aria-label="Navigazione principale" class="ios-tabbar"><a class="nav-link" data-href="index.html" href="index.html">Home</a><a class="nav-link" data-href="carriera.html" href="carriera.html">Carriera</a><a class="nav-link" data-href="trofei.html" href="trofei.html">Trofei</a><a aria-current="page" class="nav-link" data-href="record.html" href="record.html">Record</a></nav>
+
+<p aria-live="polite" class="navigation-status sr-only"></p>
+<div aria-live="polite" class="toast" role="status"></div>
 </div>
 </body>
 </html>

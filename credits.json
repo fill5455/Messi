@@ -23,7 +23,10 @@
     "caption": "La celebrazione con Abidal e Dani Alves contro il Mallorca.",
     "alt": "La celebrazione con Abidal e Dani Alves contro il Mallorca.",
     "position": "50% 35%",
-    "file": "assets/images/barcelona-2011.webp"
+    "file": "assets/images/barcelona-2011.webp",
+    "derivatives": [
+      "assets/images/barcelona-2011-preview.webp"
+    ]
   },
   {
     "key": "worldcup-selected",
@@ -46,7 +49,10 @@
     "licenseUrl": "https://messi.com/terminos-y-condiciones/",
     "caption": "PSG–Nantes · 2021",
     "title": "PSG–Nantes · 2021",
-    "file": "assets/images/messi-psg.webp"
+    "file": "assets/images/messi-psg.webp",
+    "derivatives": [
+      "assets/images/messi-psg-preview.webp"
+    ]
   },
   {
     "key": "gallery-miami-revolution",
@@ -56,7 +62,10 @@
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
     "caption": "New England Revolution–Inter Miami — 9 luglio 2025",
     "title": "Il dieci, in rosa.",
-    "file": "assets/images/gallery-miami-revolution.webp"
+    "file": "assets/images/gallery-miami-revolution.webp",
+    "derivatives": [
+      "assets/images/gallery-miami-revolution-preview.webp"
+    ]
   },
   {
     "key": "logo-newells",

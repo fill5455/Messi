@@ -17,6 +17,7 @@ class Page(HTMLParser):
         if tag=='main': self.main+=1; assert a.get('aria-labelledby')
         if tag=='a':
             self.links.append(a.get('href',''))
+            if 'data-href' in a: self.tabs.append(a['data-href'])
             if a.get('target')=='_blank': assert {'noopener','noreferrer'}<=set(a.get('rel','').split()), self.path
         if tag in ('img','script') and 'src' in a: self.assets.append(a['src'])
         if tag=='img': assert 'alt' in a and int(a.get('width',0))>0 and int(a.get('height',0))>0, self.path

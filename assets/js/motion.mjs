@@ -71,117 +71,27 @@ export class Spring {
   }
 }
 
+/** Flat controls use CSS feedback; native details handle disclosure and focus. */
 export function installFeedback(root, host = window) {
   const reduced = host.matchMedia('(prefers-reduced-motion: reduce)');
-  const icons = new Map();
-  const panels = new Map();
-  let press = null;
-  const controls = '.destination, .content-detail > summary, .source-details > summary, .inline-link, .story-link, .photo-link, button';
-  const scaleFor = control => {
-    if(control.closest('.liquid-ready'))return null; // The lens owns its contact response.
-    const icon = control.tagName === 'BUTTON' ? control : control.querySelector(':scope > .destination-icon, :scope > .team-badge, :scope > .photo-zoom, :scope > i');
-    if (!icon) return null;
-    if (!icons.has(icon)) icons.set(icon, new Spring(1, .2, value => {
-      icon.style.transform = icon === control ? `scale(${1-(1-value)*.55},${value})` : `scale(${value})`;
-    },{damping:.74}));
-    return { spring: icons.get(icon), target: icon === control ? .94 : .9 };
-  };
-  const release = (instant = false) => {
-    if (!press) return;
-    press.control.classList.remove('is-pressed');
-    scaleFor(press.control)?.spring.to(1, instant || reduced.matches);
-    press = null;
-  };
-  const begin = (control, pointerId = null, x = 0, y = 0) => {
-    release(); press = { control, pointerId, x, y };
-    control.classList.add('is-pressed');
-    const scale = scaleFor(control);
-    if(scale&&!reduced.matches&&scale.spring.frame===null){scale.spring.value=.98;scale.spring.render(.98);}
-    scale?.spring.to(reduced.matches ? 1 : scale.target, reduced.matches);
-  };
+  let pressed = null;
+  const release = () => { pressed?.classList.remove('is-pressed'); pressed = null; };
+  const controls = '.destination, summary, .primary-button, .chapter, button';
   root.addEventListener('pointerdown', event => {
     if (!event.isPrimary || event.button !== 0) return;
-    const control = event.target.closest(controls);
-    if (control && !control.disabled) begin(control, event.pointerId, event.clientX, event.clientY);
+    release(); pressed = event.target.closest(controls);
+    if (pressed && !pressed.disabled) pressed.classList.add('is-pressed');
   });
-  host.addEventListener('pointermove', event => {
-    if (press?.pointerId === event.pointerId && Math.hypot(event.clientX - press.x, event.clientY - press.y) > 10) release();
-  }, { passive:true });
-  const end = event => { if (press?.pointerId === event.pointerId) release(); };
-  host.addEventListener('pointerup', end); host.addEventListener('pointercancel', end);
-  root.addEventListener('keydown', event => {
-    if (event.repeat) return;
-    const control = event.target.closest(controls);
-    if (control && (event.key === 'Enter' || (event.key === ' ' && ['SUMMARY','BUTTON'].includes(control.tagName)))) begin(control);
-  });
-  root.addEventListener('keyup', event => { if (event.key === 'Enter' || event.key === ' ') release(); });
-  root.addEventListener('focusout', event => { if (press?.control.contains(event.target)) release(); });
-  host.addEventListener('blur', () => release(true));
-  const naturalHeight = state => state.body.getBoundingClientRect().height;
-  const setOpen = (state, open, instant = reduced.matches) => {
-    if (open && state.group) panels.forEach(other => { if (other !== state && other.group === state.group && other.desired) setOpen(other, false, instant); });
-    state.desired = open;
-    state.details.dataset.openTarget = String(open);
-    if (open) state.details.open = true;
-    else if (state.wrapper.contains(root.activeElement)) state.summary.focus({ preventScroll:true });
-    state.wrapper.inert = !open;
-    state.wrapper.style.overflow = 'hidden';
-    state.arrow?.to(open ? 90 : 0, instant);
-    state.height.to(open ? naturalHeight(state) : 0, instant, () => {
-      if (state.desired) { state.wrapper.style.height = 'auto';state.wrapper.style.overflow='visible'; }
-      else state.details.open = false;
-    });
+  host.addEventListener('pointerup', release);
+  host.addEventListener('pointercancel', release);
+  host.addEventListener('blur', release);
+  root.addEventListener('focusout', release);
+  const reveal = target => {
+    let node = target;
+    while (node) {
+      if (node.tagName === 'DETAILS') node.open = true;
+      node = node.parentElement;
+    }
   };
-  root.addEventListener('click', event => {
-    const summary = event.target.closest('.content-detail > summary, .source-details > summary');
-    const state = summary && panels.get(summary.parentElement);
-    if (!state || event.defaultPrevented) return;
-    event.preventDefault(); setOpen(state, !state.desired);
-  });
-  const refresh = () => {
-    release(true); icons.forEach(spring => spring.stop()); icons.clear();
-    panels.forEach(state => { state.height.stop(); state.arrow?.stop(); state.observer?.disconnect(); }); panels.clear();
-    root.querySelectorAll('.content-detail, .source-details').forEach(details => {
-      const summary = details.querySelector(':scope > summary');
-      if (!summary) return;
-      let wrapper = details.querySelector(':scope > .details-content');
-      if (!wrapper) {
-        wrapper = root.createElement('div'); wrapper.className = 'details-content';
-        [...details.childNodes].filter(node => node !== summary).forEach(node => wrapper.append(node)); details.append(wrapper);
-      }
-      const body = wrapper.firstElementChild;
-      if (!body) return;
-      const arrowElement = summary.querySelector(':scope > svg');
-      const state = { details, summary, wrapper, body, desired:details.open, group:details.getAttribute('name') || details.dataset.detailGroup };
-      if (state.group) details.dataset.detailGroup = state.group;
-      details.removeAttribute('name'); // Native exclusivity would instantly hide a panel before its exit spring.
-      details.dataset.openTarget = String(state.desired);
-      wrapper.inert = !state.desired;
-      state.height = new Spring(state.desired ? naturalHeight(state) : 0, .3, value => { if(value<0){state.height.value=0;state.height.velocity=0;}wrapper.style.height = `${Math.max(0,value)}px`; }, {restDelta:.25,restSpeed:2});
-      if (arrowElement) state.arrow = new Spring(state.desired ? 90 : 0, .22, value => { arrowElement.style.transform = `rotate(${value}deg)`; });
-      wrapper.style.height = state.desired ? 'auto' : '0px';
-      panels.set(details,state);
-      if (typeof ResizeObserver !== 'undefined') {
-        state.observer = new ResizeObserver(() => {
-          if (!state.desired) return;
-          const height = naturalHeight(state);
-          if (state.height.frame !== null) state.height.to(height, reduced.matches, () => {
-            if (state.desired) { wrapper.style.height='auto';wrapper.style.overflow='visible'; }
-          });
-          else { state.height.value = state.height.target = height; state.height.velocity = 0; }
-        });
-        state.observer.observe(body);
-      }
-    });
-  };
-  const settle = () => {
-    release(true); icons.forEach(spring => spring.to(1,true));
-    panels.forEach(state => setOpen(state,state.desired,true));
-  };
-  reduced.addEventListener('change', () => { if (reduced.matches) settle(); });
-  host.addEventListener('pagehide',settle);
-  refresh();
-  return { refresh, reduced, settle, reveal(target,instant=true) {
-    let node=target; while(node) { const state=panels.get(node); if(state)setOpen(state,true,instant); else if(node.tagName==='DETAILS')node.open=true; node=node.parentElement; }
-  } };
+  return { reduced, refresh:release, settle:release, reveal };
 }
