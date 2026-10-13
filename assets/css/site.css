@@ -473,7 +473,6 @@ main:focus{outline:none}
  .record-top h2{font-size:1.25rem;line-height:1.4}
  .record-period{font-size:.875rem;line-height:1.6}
  .record-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,7rem),1fr))}
- .record-actions{grid-template-columns:repeat(auto-fit,minmax(min(100%,7rem),1fr))}
  .record-actions button{padding:10px;font-size:.875rem;justify-content:center}
  .reading-card{background:var(--white);border:1px solid var(--line)}
 }
@@ -494,3 +493,9 @@ main:focus{outline:none}
  }
 }
 @media(prefers-reduced-motion:reduce){.is-pressed,.nav-link[aria-current=page] .ios-icon,.chapter:hover,.destination:hover,.primary-button:hover>svg{transform:none!important}}
+
+/* Reserve enhanced controls before module initialization to prevent reading jumps. */
+.record-tools[hidden],.record-actions[hidden]{display:block!important;visibility:hidden}
+.record-actions[hidden]{display:flex!important}
+.result-count{min-height:1.6em}
+@media(max-width:699px){.record-actions[hidden]{display:grid!important}}

@@ -23,3 +23,5 @@ Navigazione a link: superiore su desktop, barra solida su mobile. La griglia del
 Riferimenti applicati dagli allegati: TypeUI (gerarchia, spaziatura e accessibilità), Taste (contenuto e composizione editoriale), Impeccable (nuova identità e qualità del rendering), Hallmark (struttura e tipografia), UI/UX Pro Max (flat design), guide di design engineering/motion (feedback e proprietà economiche), Web Interface Guidelines (semantica e stati).
 
 Sotto 700 px il layout usa una sola colonna: testata ordinata in titolo, testo, azione e foto larga; dati su righe; capitoli e approfondimenti su superfici distinte. Testo 16 px con interlinea 1,75–1,8; titoli contenuti e margini esterni 14 px. La barra mobile usa icone con etichette persistenti.
+
+La gerarchia di lettura usa DM Sans per titoli di sezione e approfondimenti anche sul desktop. Indici interni guidano alle sezioni; gli approfondimenti iniziano chiusi e preservano lo stato durante la navigazione. Ingressi di 340 ms, feedback di 180 ms e disclosure di 280 ms, con cancellazione e rispetto del movimento ridotto. I contenuti rimangono disponibili senza animazioni o JavaScript.
