@@ -1,4 +1,4 @@
-import { Spring } from './motion.mjs?v=7831dc8ed5';
+import { Spring } from './motion.mjs?v=0e032714f1';
 
 export const normalize = value => String(value).replace(/\b(\d{4})\/(\d{2})\b/g,(_,start,end)=>`${start}/${end} ${start.slice(0,2)}${end}`).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
 export function matchesRecord(record,query,filter,saved=new Set()) {
@@ -74,14 +74,24 @@ export function installFeatures(doc,host,{mutate,reduced}) {
 
   // One contextual viewer, never a gallery. Native dialog handles focus and modal semantics.
   const dialog=doc.createElement('dialog');dialog.className='utility-dialog';dialog.setAttribute('aria-labelledby','utility-title');surface.append(dialog);
-  const modalSpring=new Spring(0,.3,value=>{dialog.style.opacity=String(value);dialog.style.transform=`scale(${.96+.04*value})`;});
+  let origin={x:0,y:12,scale:.96};
+  const modalSpring=new Spring(0,.3,value=>{
+    dialog.style.opacity=String(value);
+    dialog.style.transform=`translate3d(${origin.x*(1-value)}px,${origin.y*(1-value)}px,0) scale(${origin.scale+(1-origin.scale)*value})`;
+  });
   const closeOverlay=(instant=false)=>{
     if(!dialog.open)return;
     modalSpring.to(0,instant||reduced.matches,()=>{dialog.close();});
   };
-  const showDialog=()=>{
+  const showDialog=(trigger=null)=>{
     mutate.cancel();
-    if(!dialog.open){modalSpring.value=0;modalSpring.velocity=0;dialog.style.opacity='0';dialog.style.transform='scale(.96)';dialog.showModal();}
+    if(!dialog.open){modalSpring.value=0;modalSpring.velocity=0;dialog.style.opacity='0';dialog.style.transform='none';dialog.showModal();
+      origin={x:0,y:12,scale:.96};
+      if(trigger){const source=trigger.getBoundingClientRect(),destination=dialog.getBoundingClientRect();
+        origin={x:source.left+source.width/2-destination.left-destination.width/2,y:source.top+source.height/2-destination.top-destination.height/2,scale:Math.max(.55,Math.min(.96,source.width/destination.width))};
+      }
+      modalSpring.render(0);
+    }
     modalSpring.to(1,reduced.matches);
   };
   const dialogHeader=title=>{
@@ -99,7 +109,7 @@ export function installFeatures(doc,host,{mutate,reduced}) {
     image.width=Number(original.width)||1200;image.height=Number(original.height)||900;
     const caption=doc.createElement('p');caption.className='dialog-caption';caption.textContent=anchor.closest('figure').querySelector('figcaption').textContent.replace(' Tocca la foto per ingrandirla.','');
     const credit=doc.createElement('a');credit.href='credits.html';credit.textContent='Fonti e crediti';credit.className='dialog-credit';
-    dialog.append(image,caption,credit);showDialog();return true;
+    dialog.append(image,caption,credit);showDialog(anchor);return true;
   };
   const copyFallback=url=>{
     if(typeof dialog.showModal!=='function'){announce('Copia questo indirizzo dalla barra del browser.');return;}

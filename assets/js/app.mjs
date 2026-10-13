@@ -1,5 +1,6 @@
-import { Spring, installFeedback } from './motion.mjs?v=7831dc8ed5';
-import { installFeatures } from './features.mjs?v=a23a99da1f';
+import { installLiquid } from './liquid.mjs?v=6146ef77b3';
+import { Spring, installFeedback } from './motion.mjs?v=0e032714f1';
+import { installFeatures } from './features.mjs?v=1be5975609';
 
 /** Latest navigation wins, including when an older fetch or transition finishes late. */
 export function createNavigator({load,render,busy=()=>{},cancelTransition=()=>{},fallback=()=>{}}) {
@@ -56,11 +57,12 @@ export function installApp(doc=document,host=window) {
   };
   mutate.cancel=cancelTransition;
   const features=installFeatures(doc,host,{mutate,reduced});
+  const liquid=installLiquid(doc,host,{reduced});
   const selectedFile=url=>{
     const file=url.pathname.split('/').pop()||'index.html';
     return file==='argentina.html'?'carriera.html':file==='credits.html'?'index.html':file;
   };
-  const select=url=>inputs.forEach(input=>{input.checked=input.defaultChecked=input.dataset.href===selectedFile(url);});
+  const select=url=>{inputs.forEach(input=>{input.checked=input.defaultChecked=input.dataset.href===selectedFile(url);});liquid.sync();};
   function ensureVisible(target) {
     if(!target?.matches('a,button,input,summary,[tabindex="0"]'))return;
     const viewport=region.getBoundingClientRect(),bounds=target.getBoundingClientRect();
@@ -123,7 +125,7 @@ export function installApp(doc=document,host=window) {
       if(options.history==='push')host.history.pushState({messi:true},'',url.href);
       currentURL=new URL(url.href);select(currentURL);
       (state.open||[]).forEach(id=>{const d=doc.getElementById(id);if(d?.tagName==='DETAILS')d.open=true;});
-      feedback.refresh();features.mount(state);
+      feedback.refresh();features.mount(state);liquid.refresh();
       region.scrollTop=state.scroll||0;
       if(currentURL.hash)revealHash();
       measure();
@@ -161,7 +163,7 @@ export function installApp(doc=document,host=window) {
   host.addEventListener('pageshow',()=>{select(new URL(host.location.href));measure();});
   reduced.addEventListener('change',()=>{if(reduced.matches){cancelTransition();pulse.to(1,true);}});
   host.history.scrollRestoration='manual';
-  select(currentURL);features.mount();revealHash();
-  return {go,navigator,features,feedback};
+  select(currentURL);features.mount();liquid.refresh();revealHash();
+  return {go,navigator,features,feedback,liquid};
 }
 if(typeof document!=='undefined')installApp();

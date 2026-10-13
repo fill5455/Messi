@@ -24,3 +24,14 @@ Ricerca Records etichettata, filtri esclusivi con aria-pressed, stato vuoto cont
 
 ## QA ancora necessaria
 Safari su iPhone, View Transitions e fallback, tastiera/VoiceOver, zoom testo, tastiera virtuale, storage/clipboard/share reali, riapertura durante chiusura, performance degli accordion lunghi. La verifica del codice non equivale a una misurazione della fluidità sul dispositivo.
+
+## Lente Liquid Glass
+- Lente separata dai contenuti: gli elementi semantici e le etichette restano fermi; si anima solo il materiale dietro.
+- Tab bar: trascinamento orizzontale con cattura dopo 10px, offset conservato, resistenza ai bordi e proiezione di 120ms; nessun blocco degli input.
+- Damping 1 / .4s per spostamenti; .8 solo per release con velocità reale >120px/s. Width .32s, press .22s, modal .3s.
+- Stretch limitato al 12%, squash verticale al 6%. Spring analitiche; nessun keyframe per i gesti.
+- Filtri: una sola lente con geometria misurata, radio e pulsanti nativi conservati.
+- Dialogo foto: trasformazione dal centro della sorgente, ritorno sullo stesso percorso; Escape e focus nativi.
+- Il kit iOS resta esterno. `.liquid-tab-lane`, `.liquid-item`, `.liquid-lens` sono strati applicativi originali.
+- Contenuti solidi bianchi; materiale su tab bar e piccoli controlli, blur statico 16–22px. Riduzione movimento, maggiore contrasto e fallback opaco.
+- Riferimento verificato il 13 ottobre 2026: https://github.com/GetStream/awesome-liquid-glass/blob/main/README.md. Adattamento web, non equivalenza ottica al renderer iOS.

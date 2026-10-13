@@ -1,9 +1,10 @@
-/** A critically damped spring: current position and velocity survive retargeting. */
+/** Analytic spring, critically damped by default; preserves live position and velocity. */
 export class Spring {
   constructor(value, response, render, frames = {}) {
     this.value = this.target = value;
     this.velocity = 0;
     this.omega = 2 * Math.PI / response;
+    this.damping = Math.max(.5, Math.min(1, frames.damping ?? 1));
     this.render = render;
     this.request = frames.request || (callback => requestAnimationFrame(callback));
     this.cancel = frames.cancel || (id => cancelAnimationFrame(id));
@@ -16,10 +17,20 @@ export class Spring {
   }
   step(seconds) {
     const delta = this.value - this.target;
-    const b = this.velocity + this.omega * delta;
-    const decay = Math.exp(-this.omega * seconds);
-    this.value = this.target + (delta + b * seconds) * decay;
-    this.velocity = (this.velocity - this.omega * b * seconds) * decay;
+    if (this.damping < 1) {
+      const a = this.damping * this.omega;
+      const frequency = this.omega * Math.sqrt(1 - this.damping ** 2);
+      const b = (this.velocity + a * delta) / frequency;
+      const cos = Math.cos(frequency * seconds), sin = Math.sin(frequency * seconds);
+      const decay = Math.exp(-a * seconds);
+      this.value = this.target + decay * (delta * cos + b * sin);
+      this.velocity = decay * ((-a * delta + frequency * b) * cos + (-a * b - frequency * delta) * sin);
+    } else {
+      const b = this.velocity + this.omega * delta;
+      const decay = Math.exp(-this.omega * seconds);
+      this.value = this.target + (delta + b * seconds) * decay;
+      this.velocity = (this.velocity - this.omega * b * seconds) * decay;
+    }
     if (Math.abs(this.value - this.target) < this.restDelta && Math.abs(this.velocity) < this.restSpeed) {
       this.value = this.target;
       this.velocity = 0;

@@ -198,3 +198,26 @@ button:disabled{cursor:default}
 ::view-transition-group(*){animation-duration:.28s;animation-timing-function:cubic-bezier(.22,1,.36,1)}
 ::view-transition-old(page-label){animation:page-out .14s ease-out both}
 ::view-transition-new(page-label){animation:page-in .2s ease-out both}
+
+/* App-owned travelling lenses; the external kit remains linked and untouched. */
+:root{--glass-border:rgba(255,255,255,.9);--glass-shadow:0 8px 28px #16345a14,0 1px 4px #16345a0d}
+.liquid-tab-lane{position:relative;isolation:isolate;overflow:visible;border:1px solid #cbd4e3;background:rgba(247,250,255,.88);box-shadow:var(--glass-shadow),inset 0 1px 0 white;border-radius:999px;backdrop-filter:blur(22px) saturate(1.3);-webkit-backdrop-filter:blur(22px) saturate(1.3);touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.liquid-ready::before,.liquid-ready::after,.liquid-tab-lane>.liquid-item::before,.liquid-tab-lane>.liquid-item::after{display:none}
+.liquid-tab-lane>.liquid-item{position:relative;z-index:1;background:transparent!important;border-radius:999px;min-height:56px;color:var(--secondary);touch-action:pan-y}
+.liquid-tab-lane>.liquid-item:has(input:checked){color:var(--accent);background:transparent!important}
+.liquid-lens{position:absolute;z-index:0;left:0;top:6px;bottom:6px;pointer-events:none;border:1px solid var(--glass-border);border-radius:999px;background:linear-gradient(135deg,#ffffffed,#e4effbd9);box-shadow:inset 0 1px 2px white,inset 0 -1px 2px #6a91bd14,0 2px 7px #304d751c;transform-origin:center;will-change:transform}
+.liquid-ready.is-dragging{cursor:grabbing}
+.filter-row.liquid-ready{position:relative;isolation:isolate;display:flex;flex-wrap:nowrap;gap:0;padding:5px;margin-top:16px;border:1px solid #cbd4e3;border-radius:999px;background:#f3f6fb;box-shadow:inset 0 1px 2px #17375d08}
+.filter-row.liquid-ready button{position:relative;z-index:1;flex:1;min-width:0;min-height:44px;padding:8px 5px;border:0;background:transparent;color:var(--secondary);font-size:.875rem;white-space:nowrap;box-shadow:none}
+.filter-row.liquid-ready button[aria-pressed=true]{color:var(--accent);background:transparent;font-weight:600}
+.filter-row.liquid-ready>.liquid-lens{top:5px;bottom:5px;background:linear-gradient(135deg,white,#e7f0fc);border-color:white}
+.photo-zoom,.dialog-header button{background:rgba(247,250,255,.91);border:1px solid #ffffffde;box-shadow:inset 0 1px 0 white,0 3px 12px #142d491a;backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px) saturate(1.2)}
+.photo-link{border-radius:14px;overflow:hidden}
+.dialog-image{border-radius:12px}
+.utility-dialog{border:1px solid #ffffffde;box-shadow:0 20px 70px #071a3440,inset 0 1px 0 white;transform-origin:center;will-change:transform,opacity}
+.dialog-header button:focus-visible{outline-offset:3px}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.liquid-tab-lane,.photo-zoom,.dialog-header button{background:#f7faff}}
+@media(prefers-contrast:more){.liquid-tab-lane,.filter-row.liquid-ready{background:white;border-color:#697586}.liquid-lens{background:#dceaff;border-color:#6e8eb7}.liquid-tab-lane>.liquid-item,.filter-row.liquid-ready button{color:#34343a}}
+@media(prefers-reduced-transparency:reduce){.liquid-tab-lane,.photo-zoom,.dialog-header button{background:#f7faff;backdrop-filter:none;-webkit-backdrop-filter:none}.utility-dialog::backdrop{backdrop-filter:none;-webkit-backdrop-filter:none}}
+@media(prefers-reduced-motion:reduce){.liquid-lens{will-change:auto}.utility-dialog{will-change:auto}}
+@media(forced-colors:active){.liquid-lens{background:Highlight;border:1px solid Highlight}.liquid-tab-lane>.liquid-item:has(input:checked),.filter-row.liquid-ready button[aria-pressed=true]{color:HighlightText}.liquid-tab-lane,.filter-row.liquid-ready{border:1px solid CanvasText;box-shadow:none}}
