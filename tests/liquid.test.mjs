@@ -70,3 +70,10 @@ const nextTap={...pointer(250,0,2100),target:items[2]};
 bar.emit('pointerdown',nextTap);assert.equal(changes,2);host.emit('pointerup',{...nextTap,timeStamp:2120});assert(items[2].input.checked);assert.equal(changes,3);
 let prevented=false;bar.emit('click',{detail:1,preventDefault(){prevented=true;},stopImmediatePropagation(){}});assert(prevented);
 settle();console.log('PASS same-tab down feedback, contact expansion, tap selection on release and duplicate-click suppression');
+
+// Wrapped controls and enlarged text keep the lens on the selected row.
+items.forEach((item,index)=>{item.getBoundingClientRect=()=>({left:(index%2)*100,top:Math.floor(index/2)*60,width:100,height:52});});
+reduced.matches=true;host.emit('resize');
+assert.equal(lens.style.top,'60px');assert.equal(lens.style.height,'52px');
+assert.equal(lens.style.bottom,'auto');
+console.log('PASS selected-row lens geometry for wrapped and enlarged controls');

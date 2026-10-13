@@ -31,26 +31,30 @@ export function installLiquid(doc,host,{reduced}) {
     const lens=doc.createElement('span');lens.className='liquid-lens';lens.setAttribute('aria-hidden','true');bar.prepend(lens);
     bar.classList.add('liquid-ready');if(draggable)bar.classList.add('liquid-tab-lane');items.forEach(item=>item.classList.add('liquid-item'));
     let geometry=[],gesture=null,suppressClick=false,suppressionTimer=null,observer=null;
-    let width,pressure,position,pressedItem=null;
+    let width,pressure,position,offset,lensHeight,pressedItem=null;
     const selected=()=>Math.max(0,items.findIndex(isSelected));
     const paint=()=>{
       const shape=reduced.matches?{x:1,y:1}:contactShape(gesture?gesture.velocity:position.velocity,pressure.value);
       lens.style.setProperty('--liquid-contact',String(Math.max(0,pressure.value)));
       if(pressedItem)pressedItem.style.setProperty('--liquid-lift',`${reduced.matches?0:-1.5*Math.max(0,pressure.value)}px`);
       lens.style.width=`${width.value}px`;
+      lens.style.top=`${offset.value}px`;lens.style.bottom='auto';lens.style.height=`${lensHeight.value}px`;
       lens.style.transform=`translate3d(${position.value-width.value/2}px,0,0) scale(${shape.x},${shape.y})`;
     };
+    offset=new Spring(0,.32,()=>{}, {restDelta:.08,restSpeed:.5});
+    lensHeight=new Spring(0,.32,()=>{}, {restDelta:.08,restSpeed:.5});
     position=new Spring(0,.4,paint,{restDelta:.08,restSpeed:.5});
     width=new Spring(0,.32,paint,{restDelta:.08,restSpeed:.5});
     pressure=new Spring(0,.2,paint,{damping:.72});
+    offset.render=lensHeight.render=paint;
     const sync=(instant=reduced.matches)=>{
       if(gesture||!geometry.length)return;
       const target=geometry[selected()];position.damping=1;
-      position.to(target.center,instant);width.to(target.width,instant);pressure.to(0,instant);
+      position.to(target.center,instant);width.to(target.width,instant);offset.to(target.top,instant);lensHeight.to(target.height,instant);pressure.to(0,instant);
     };
     const measure=()=>{
       const rect=bar.getBoundingClientRect(),border=bar.clientLeft||0;
-      geometry=items.map(item=>{const r=item.getBoundingClientRect();return {center:r.left-rect.left-border+r.width/2,width:Math.max(24,r.width-8)};});
+      geometry=items.map(item=>{const r=item.getBoundingClientRect();return {center:r.left-rect.left-border+r.width/2,width:Math.max(24,r.width-8),top:(r.top||0)-(rect.top||0)-(bar.clientTop||0),height:r.height||44};});
       // A geometry change cancels the gesture instead of applying stale grab offsets.
       if(gesture)cancel();sync(true);
     };
@@ -74,7 +78,7 @@ export function installLiquid(doc,host,{reduced}) {
       gesture={item,index,id:event.pointerId,x:event.clientX,y:event.clientY,start:position.value,lastX:event.clientX,lastTime:event.timeStamp,velocity:0,dragging:false};
       // Make the first presentation change in the input handler, before the next frame.
       if(!reduced.matches&&pressure.frame===null){pressure.value=-.2;pressure.velocity=7;}
-      position.damping=1;position.to(geometry[index].center,reduced.matches);width.to(geometry[index].width,reduced.matches);
+      position.damping=1;position.to(geometry[index].center,reduced.matches);width.to(geometry[index].width,reduced.matches);offset.to(geometry[index].top,reduced.matches);lensHeight.to(geometry[index].height,reduced.matches);
       lens.style.setProperty('--touch-x',`${Math.max(8,Math.min(92,(event.clientX-item.getBoundingClientRect().left)/item.getBoundingClientRect().width*100))}%`);
       pressure.to(reduced.matches?0:1,reduced.matches);paint();
     };
@@ -96,7 +100,7 @@ export function installLiquid(doc,host,{reduced}) {
       position.value=nextPosition;
       position.velocity=gesture.velocity;
       const nearest=projectIndex(position.value,0,geometry.map(g=>g.center));
-      width.to(geometry[nearest].width,reduced.matches);paint();
+      width.to(geometry[nearest].width,reduced.matches);offset.to(geometry[nearest].top,reduced.matches);lensHeight.to(geometry[nearest].height,reduced.matches);paint();
     };
     const up=event=>{
       if(!gesture||event.pointerId!==gesture.id)return;
@@ -115,7 +119,7 @@ export function installLiquid(doc,host,{reduced}) {
       choose(items[index]);
       position.velocity=velocity;
       position.damping=!reduced.matches&&Math.abs(velocity)>120?.8:1;
-      position.to(geometry[index].center,reduced.matches);width.to(geometry[index].width,reduced.matches);pressure.to(0,reduced.matches);
+      position.to(geometry[index].center,reduced.matches);width.to(geometry[index].width,reduced.matches);offset.to(geometry[index].top,reduced.matches);lensHeight.to(geometry[index].height,reduced.matches);pressure.to(0,reduced.matches);
     };
     const click=event=>{if(suppressClick&&event.detail!==0){event.preventDefault();event.stopImmediatePropagation();suppressClick=false;host.clearTimeout(suppressionTimer);}};
     const keyDown=event=>{
@@ -133,7 +137,7 @@ export function installLiquid(doc,host,{reduced}) {
     const reduce=()=>{if(reduced.matches)end();};reduced.addEventListener('change',reduce);
     measure();
     return {sync,dispose(){
-      gesture=null;position.stop();width.stop();pressure.stop();observer?.disconnect();mutations.disconnect();host.clearTimeout(suppressionTimer);
+      gesture=null;position.stop();width.stop();offset.stop();lensHeight.stop();pressure.stop();observer?.disconnect();mutations.disconnect();host.clearTimeout(suppressionTimer);
       bar.removeEventListener('change',change);bar.removeEventListener('pointerdown',down);bar.removeEventListener('keydown',keyDown);bar.removeEventListener('keyup',keyUp);host.removeEventListener('pointermove',move);host.removeEventListener('pointerup',up);host.removeEventListener('pointercancel',pointerCancel);bar.removeEventListener('lostpointercapture',pointerCancel);bar.removeEventListener('click',click,true);host.removeEventListener('resize',measure);host.removeEventListener('blur',end);host.removeEventListener('pagehide',end);reduced.removeEventListener('change',reduce);lens.remove();items.forEach(item=>item.classList.remove('liquid-item'));bar.classList.remove('liquid-ready','liquid-tab-lane','is-dragging','is-contact');
     }};
   };

@@ -92,6 +92,7 @@ export function installApp(doc=document,host=window) {
     if(target.matches('[data-record]'))features.showAll();
     feedback.reveal(target,true);
     target.scrollIntoView({block:'start',behavior:'auto'});
+    if(keyboard){if(!target.hasAttribute('tabindex'))target.setAttribute('tabindex','-1');target.focus({preventScroll:true});}
   };
   const allowed=url=>{
     const file=url.pathname.split('/').pop()||'index.html';
@@ -147,7 +148,7 @@ export function installApp(doc=document,host=window) {
   doc.addEventListener('click',event=>{
     if(event.detail===0)keyboard=true;
     const anchor=event.target.closest('a[href]');
-    if(!anchor||event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey||anchor.target==='_blank'||anchor.hasAttribute('download'))return;
+    if(!anchor||event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey||(anchor.target&&anchor.target!=='_self')||anchor.hasAttribute('download'))return;
     if(anchor.classList.contains('skip')){
       event.preventDefault();region.scrollTop=0;doc.getElementById('contenuto')?.focus({preventScroll:true});return;
     }

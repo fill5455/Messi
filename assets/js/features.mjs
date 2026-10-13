@@ -51,7 +51,14 @@ export function installFeatures(doc,host,{mutate,reduced}) {
     if(!tools||!doc.contains(tools))return;
     const update=()=>{
       if(!doc.contains(tools))return;
-      rows.forEach(row=>{row.hidden=!matchesRecord(dataFor(row),input.value,filter,favorites.values);});
+      const saved=favorites.values;
+      rows.forEach(row=>{
+        row.hidden=!matchesRecord(dataFor(row),input.value,filter,saved);
+        if(row.hidden&&row.contains(doc.activeElement)) {
+          const destination=[...tools.querySelectorAll('[data-record-filter]')].find(button=>button.dataset.recordFilter===filter)||input;
+          destination.focus({preventScroll:true});
+        }
+      });
       const count=rows.filter(row=>!row.hidden).length;
       tools.querySelector('.result-count').textContent=`${count} record${filter==='salvati'?(count===1?' salvato':' salvati'):''}`;
       const empty=doc.querySelector('.empty-results');empty.hidden=count!==0;
@@ -148,7 +155,7 @@ export function installFeatures(doc,host,{mutate,reduced}) {
     if(target.closest('[data-close-overlay]'))closeOverlay();
     if(target.closest('[data-select-link]')){const field=dialog.querySelector('textarea');field.focus();field.select();}
   });
-  host.addEventListener('storage',event=>{if(event.key===favorites.key){favorites.reload(event.newValue);syncSaved();applyFilter();}});
+  host.addEventListener('storage',event=>{if(event.key===favorites.key||event.key===null){favorites.reload(event.key===null?null:event.newValue);syncSaved();applyFilter();}});
   reduced.addEventListener('change',()=>{if(reduced.matches){toastSpring.to(toastSpring.target,true);modalSpring.to(modalSpring.target,true,()=>{if(modalSpring.target===0&&dialog.open)dialog.close();});}});
   host.addEventListener('pagehide',()=>{host.clearTimeout(toastTimer);toastSpring.to(0,true);closeOverlay(true);});
   return {mount,collect,showAll,closeOverlay,favorites};
