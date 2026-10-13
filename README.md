@@ -1,6 +1,6 @@
-# Messi — Flat design
+# Messi — Design editoriale arrotondato
 
-Sito HTML/CSS/JavaScript dedicato a Lionel Messi. Sei pagine con superfici piene, azzurro Argentina, tipografia Barlow Condensed + DM Sans ospitata localmente, fotografie reali e navigazione tramite link nativi.
+Sito HTML/CSS/JavaScript dedicato a Lionel Messi. Sei pagine con superfici piene e arrotondate, layout di lettura dedicato al mobile, azzurro Argentina, tipografia Barlow Condensed + DM Sans ospitata localmente, fotografie reali e navigazione tramite link nativi.
 
 La Home racconta il profilo, i numeri e i capitoli fotografici. Carriera presenta tappe e profilo laterale; Trofei raggruppa il palmarès; Record mantiene ricerca, filtri, salvataggi e condivisione. Argentina e Crediti completano il sito.
 
