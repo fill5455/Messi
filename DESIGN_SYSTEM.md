@@ -1,26 +1,21 @@
-# Sistema editoriale Messi
+# Messi — direzione iOS 26
 
-## Architettura
-Home → Carriera / Argentina / Trofei. Fonti e crediti nel footer. Le categorie sono pagine reali con titolo, descrizione, contenuto e navigazione. Nessun archivio fotografico o componente galleria.
+## Superficie e navigazione
+- Superficie mobile `ios-surface`: 402px nominali, max-width 100%, altezza 100dvh.
+- Tema chiaro senza classe dark.
+- Quattro schede: Home (home), Carriera (book-open), Trofei (star), Record (arrow-up).
+- Componente fornito dal kit esterno, senza copia o riscrittura di ios.css.
+- `--tabs:4` sulla barra; un input checked per pagina. Nessun badge o ricerca.
+- Tab bar assoluta sul fondo della superficie, safe-area e 120px riservati nel contenuto.
+- Header fisso nella struttura; pagina scorrevole internamente. Indici sticky dentro il contenuto.
 
-## Fondamenti
-- Carta `#f4f3ed`, inchiostro `#14201e`, testo secondario `#52605a`, azzurro `#b5ddec`, focus `#086685`.
-- Oswald 600: titoli. Manrope 400/700: testo e controlli. Font locali e licenze OFL.
-- Testo 16px / 1.7; introduzioni 17–19px; etichette 10–12px; comandi 13–14px, etichette dock 11px.
-- H1 56–112px, H2 40–76px con clamp; hero 84–216px. 32px fra titolo e testo.
-- Scala spaziale di 4px; margine mobile 24px, tablet 40px, desktop 48px.
-- Sezioni principali 80px sopra/sotto su mobile, 104px su tablet/desktop.
-- Superfici piatte, immagini squadrate, bordi sottili. Raggio 4px sui link a pulsante e 16px sul dock mobile.
+## Stile dell’applicazione
+- Carattere di sistema: -apple-system / BlinkMacSystemFont / Segoe UI / sans-serif.
+- Fondo #f2f2f7, testo #1c1c1e, secondario #636366, accento #007aff.
+- Titoli pagina 40px, hero 54px, titoli sezione 28px, testo 15–16px.
+- Margini 20px; superfici raggruppate bianche con raggio 20–28px; azioni a pillola.
+- Fotografie integrate nei racconti; nessun archivio fotografico.
+- Focus visibile; controlli dell’applicazione 44–48px o più; prefers-reduced-motion.
 
-## Comportamento
-- Tutta la navigazione funziona senza JavaScript.
-- Dock a 4 destinazioni, stato aria-current=page, safe-area, area riservata nel body.
-- Desktop: navigazione in header; dock nascosto sopra 1000px.
-- Carriera e Trofei: indice di capitolo sticky con ancore native, scorrimento orizzontale naturale quando necessario.
-- Palmarès: details/summary nativi; prima categoria aperta; indicatori di espansione.
-- Target dei link di controllo 48px o maggiori, 8px fra comandi adiacenti.
-- Focus 3px, contrasto del testo verificato con luminanza WCAG, contenuto disponibile senza animazioni.
-- prefers-reduced-motion disattiva scorrimento animato e transizioni.
-
-## Verifica visiva ancora necessaria
-320/375/390/430/768/1440px; zoom 200%; VoiceOver; tastiera; ritagli fotografici; font caricati; safe-area iOS; overflow e indice sticky. Questi controlli non sono dichiarati eseguiti.
+## Da verificare in browser
+Caricamento del kit esterno e delle icone, resa della tab bar, 320/375/390/402px, Safari iOS, safe-area, zoom e tastiera. Questi controlli visivi non sono dichiarati eseguiti.
