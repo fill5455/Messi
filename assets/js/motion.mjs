@@ -71,9 +71,26 @@ export class Spring {
   }
 }
 
-/** Flat controls use CSS feedback; native details handle disclosure and focus. */
+/** Native disclosures, cancellable entrance motion and direct control feedback. */
 export function installFeedback(root, host = window) {
   const reduced = host.matchMedia('(prefers-reduced-motion: reduce)');
+  let observer = null;
+  const animations = new Set(), seen = new WeakSet();
+  const stopMotion = () => {
+    observer?.disconnect(); observer = null;
+    for (const animation of animations) animation.cancel();
+    animations.clear();
+  };
+  const enter = (node, delay = 0) => {
+    if (reduced.matches || !node.animate || seen.has(node)) return;
+    seen.add(node);
+    const animation = node.animate([
+      { opacity: .65, transform: 'translateY(12px)' },
+      { opacity: 1, transform: 'translateY(0)' }
+    ], { duration: 340, delay, easing: 'cubic-bezier(.2,.8,.2,1)' });
+    animations.add(animation);
+    animation.finished.then(() => animations.delete(animation)).catch(() => animations.delete(animation));
+  };
   let pressed = null;
   const release = () => { pressed?.classList.remove('is-pressed'); pressed = null; };
   const controls = '.destination, summary, .primary-button, .chapter, button';
@@ -93,5 +110,24 @@ export function installFeedback(root, host = window) {
       node = node.parentElement;
     }
   };
-  return { reduced, refresh:release, settle:release, reveal };
+  const refresh = () => {
+    release(); stopMotion();
+    if (reduced.matches || !root.querySelectorAll) return;
+    const heading = root.querySelector('.profile, .page-heading');
+    if (heading) enter(heading);
+    if (!host.IntersectionObserver) return;
+    observer = new host.IntersectionObserver(entries => {
+      let delay = 0;
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        observer?.unobserve(entry.target);
+        enter(entry.target, delay); delay = Math.min(delay + 45, 135);
+      }
+    }, { root: root.querySelector('.screen-scroll'), threshold: .1 });
+    root.querySelectorAll('.destination, .chapter, .content-detail, .record-row, .event-list>li, .home-facts, .reading-card').forEach(node => observer.observe(node));
+  };
+  reduced.addEventListener?.('change', () => { if (reduced.matches) stopMotion(); else refresh(); });
+  host.addEventListener('pagehide', stopMotion);
+  return { reduced, refresh, settle:() => { release(); stopMotion(); }, reveal };
+
 }

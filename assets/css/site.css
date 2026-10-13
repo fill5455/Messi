@@ -414,3 +414,83 @@ main:focus{outline:none}
  .nav-link{flex-direction:column;gap:5px;min-height:60px;padding:8px 4px;font-size:.8125rem;line-height:1.3;white-space:normal}
  .nav-link .ios-icon{display:block;width:20px;height:20px}
 }
+
+/* Reading hierarchy and orientation. */
+.page-index{padding:24px var(--inset) 0}
+.page-index p{font-size:.875rem;font-weight:600;color:var(--secondary);margin-bottom:12px}
+.page-index>div{display:flex;flex-wrap:wrap;gap:10px}
+.page-index a{display:inline-flex;align-items:center;min-height:44px;padding:10px 16px;border:1px solid var(--line);border-radius:12px;background:var(--white);font-size:.9375rem;font-weight:600;line-height:1.5;text-decoration:none;color:var(--accent)}
+.page-index a:hover{background:var(--sky-soft);border-color:var(--accent)}
+.section-label{font-family:var(--font-body);font-size:2rem;line-height:1.25;letter-spacing:-.03em}
+.summary-copy>strong{font-family:var(--font-body);font-size:1.375rem;line-height:1.35;letter-spacing:-.02em}
+.content-detail[open]{background:var(--white);border-color:var(--accent)}
+.content-detail[open]>summary{border-bottom:1px solid var(--line);margin-bottom:20px}
+.detail-body p,.reading-card>p,.record-meaning{max-width:60ch;line-height:1.8}
+.record-top h2{font-family:var(--font-body);font-size:1.625rem;line-height:1.35;letter-spacing:-.025em}
+.record-period,.chapter-meta{font-weight:500}
+.home-navigation{margin-top:24px}
+.home-facts{padding-block:40px}
+@media(min-width:700px){
+ .destination-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;border:0}
+ .destination{align-items:flex-start;min-height:0;border:1px solid var(--line);border-radius:20px;background:var(--white);padding:24px;gap:16px}
+ .destination-copy strong{font-family:var(--font-body);font-size:1.5rem;line-height:1.3;letter-spacing:-.025em}
+ .destination>svg{width:24px;height:24px}
+ .page-index{padding-top:28px}
+ .content-detail>summary{min-height:88px}
+ .record-row{padding:32px 24px;border:1px solid var(--line);border-radius:20px;background:var(--white)}
+ .record-list{gap:24px;border:0}
+ .record-top{gap:16px}
+ .record-top>div{flex-basis:12rem}
+}
+@media(max-width:699px){
+ body{font-size:1.0625rem}
+ .profile{padding:24px 20px}
+ .profile p,.detail-body>p,.record-meaning,.reading-card>p,.section-intro p{font-size:1.0625rem;line-height:1.8}
+ .hero-portrait img{aspect-ratio:auto;height:180px;object-position:50% 28%}
+ .hero-origin{font-size:.8125rem}
+ .hero-copy{gap:14px}
+ .home-navigation{margin-top:20px;padding:24px 20px}
+ .section-intro{margin-bottom:16px}
+ .section-intro p{font-size:1rem}
+ .destination-list{border:0;display:grid;gap:12px}
+ .destination{border:1px solid var(--line);border-radius:16px;background:var(--white);padding:18px 16px;min-height:0;gap:12px}
+ .destination-copy strong{font-size:1.25rem}
+ .destination-copy>span{font-size:.9375rem;line-height:1.65}
+ .home-facts{padding-block:28px}
+ .page-index{padding:20px 4px 0}
+ .page-index>div{gap:8px}
+ .page-index a{padding:10px 12px;font-size:.875rem}
+ .heading-photo img{height:160px;aspect-ratio:auto;object-fit:cover}
+ .portrait-photo img{height:180px;object-fit:contain}
+ .heading-photo figcaption{font-size:.8125rem}
+ .section-label{font-size:1.625rem;line-height:1.3;margin-bottom:12px}
+ .content-detail[open]>summary{margin-bottom:20px}
+ .detail-body{padding-inline:18px}
+ .record-tools{padding:18px}
+ .record-top{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:start}
+ .record-number{grid-column:1;grid-row:1;font-size:2.25rem;line-height:1.2}
+ .record-top>div{grid-column:2;grid-row:1}
+ .record-top h2{font-size:1.25rem;line-height:1.4}
+ .record-period{font-size:.875rem;line-height:1.6}
+ .record-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,7rem),1fr))}
+ .record-actions{grid-template-columns:repeat(auto-fit,minmax(min(100%,7rem),1fr))}
+ .record-actions button{padding:10px;font-size:.875rem;justify-content:center}
+ .reading-card{background:var(--white);border:1px solid var(--line)}
+}
+/* Motion stays local; content remains available before JavaScript. */
+.primary-button,.chapter,.destination,.record-actions button,.page-index a{transition:transform 180ms ease-out,background-color 180ms ease-out,border-color 180ms ease-out,color 180ms ease-out}
+.is-pressed{transform:scale(.985)}
+.nav-link .ios-icon{transition:transform 220ms cubic-bezier(.2,.8,.2,1)}
+.nav-link[aria-current=page] .ios-icon{transform:translateY(-2px)}
+@media(hover:hover){.chapter:hover,.destination:hover{transform:translateY(-3px)}.primary-button:hover>svg{transform:translateX(4px)}}
+.primary-button>svg{transition:transform 180ms ease-out}
+@media(prefers-reduced-motion:no-preference){
+ @keyframes disclosure-enter{from{opacity:.55;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+ .content-detail[open]>.detail-body{animation:disclosure-enter 260ms cubic-bezier(.2,.8,.2,1)}
+ @supports(interpolate-size:allow-keywords){
+  .content-detail{interpolate-size:allow-keywords}
+  .content-detail::details-content{height:0;overflow:clip;transition:height 280ms cubic-bezier(.2,.8,.2,1),content-visibility 280ms allow-discrete}
+  .content-detail[open]::details-content{height:auto}
+ }
+}
+@media(prefers-reduced-motion:reduce){.is-pressed,.nav-link[aria-current=page] .ios-icon,.chapter:hover,.destination:hover,.primary-button:hover>svg{transform:none!important}}

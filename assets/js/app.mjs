@@ -1,5 +1,5 @@
-import { installFeedback } from './motion.mjs?v=6dc89fb561';
-import { installFeatures } from './features.mjs?v=c2174c90e9';
+import { installFeedback } from './motion.mjs?v=74964ec467';
+import { installFeatures } from './features.mjs?v=95cf4ac336';
 
 /** Latest navigation wins, including when an older fetch or transition finishes late. */
 export function createNavigator({load,render,busy=()=>{},cancelTransition=()=>{},fallback=()=>{}}) {
@@ -143,7 +143,7 @@ export function installApp(doc=document,host=window) {
   host.addEventListener('pagehide',()=>{remember();navigator.cancel();});
   host.addEventListener('pageshow',()=>{select(new URL(host.location.href));measure();});
   host.history.scrollRestoration='manual';
-  select(currentURL);features.mount();revealHash();
+  select(currentURL);features.mount();revealHash();feedback.refresh();
   return {go,navigator,features,feedback};
 }
 if(typeof document!=='undefined')installApp();
