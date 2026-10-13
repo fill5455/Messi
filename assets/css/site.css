@@ -336,3 +336,5 @@ button:disabled{cursor:default}
  .record-actions button:hover{background:#edf3fb;border-color:#9eb9d9}
  .back-link:hover,.app-footer a:hover{text-decoration:underline}
 }
+
+.ios-tab>span{overflow-wrap:anywhere;text-align:center}
