@@ -118,7 +118,7 @@ export function installApp(doc=document,host=window) {
     });
   };
   const navigator=createNavigator({load,render,cancelTransition,busy:loading=>{
-    header.classList.toggle('is-loading',loading);region.setAttribute('aria-busy',String(loading));
+    header.classList.toggle('is-loading',loading);nav.setAttribute('aria-busy',String(loading));region.setAttribute('aria-busy',String(loading));
     if(loading&&live)live.textContent='Caricamento della pagina';
   },fallback:url=>host.location.assign(url.href)});
   const go=(url,history='push')=>{

@@ -1,33 +1,22 @@
 import assert from 'node:assert/strict';
-import {installFeedback} from '../assets/js/motion.mjs';
-
-class Bus {
-  listeners=new Map();
-  addEventListener(type,handler){if(!this.listeners.has(type))this.listeners.set(type,new Set());this.listeners.get(type).add(handler);}
-  emit(type,event={}){for(const handler of this.listeners.get(type)||[])handler(event);}
-}
-const root=new Bus(),host=new Bus(),reduced=new Bus();reduced.matches=false;
-host.matchMedia=()=>reduced;root.activeElement=null;
-let measuredHeight=160,resize;
-const body={getBoundingClientRect:()=>({height:measuredHeight})};
-const wrapper={style:{},firstElementChild:body,contains:()=>false};
-const summary={querySelector:()=>null,closest:()=>summary};
-const details={open:false,dataset:{},getAttribute:()=>null,removeAttribute(){},querySelector:selector=>selector.includes('summary')?summary:wrapper};
-summary.parentElement=details;
-root.querySelectorAll=()=>[details];
-globalThis.ResizeObserver=class {constructor(callback){resize=callback;}observe(){}disconnect(){}};
-let nextId=0,time=performance.now();const frames=new Map();
-globalThis.requestAnimationFrame=handler=>{frames.set(++nextId,handler);return nextId;};
-globalThis.cancelAnimationFrame=id=>frames.delete(id);
-const settle=()=>{for(let step=0;step<300&&frames.size;step++){time+=16;const pending=[...frames.values()];frames.clear();pending.forEach(handler=>handler(time));}assert.equal(frames.size,0);};
-const toggle=()=>root.emit('click',{target:summary,defaultPrevented:false,preventDefault(){}});
-installFeedback(root,host);
-toggle();assert.equal(details.open,true);assert.equal(wrapper.inert,false);
-measuredHeight=240;resize();settle();
-assert.equal(wrapper.style.height,'auto');assert.equal(wrapper.style.overflow,'visible');
-toggle();settle();assert.equal(details.open,false);assert.equal(wrapper.inert,true);assert.equal(wrapper.style.height,'0px');
-toggle();resize();toggle();toggle();resize();settle();
-assert.equal(details.open,true);assert.equal(wrapper.style.height,'auto');assert.equal(wrapper.style.overflow,'visible');
-reduced.matches=true;reduced.emit('change');toggle();
-assert.equal(details.open,false);assert.equal(wrapper.style.height,'0px');
-console.log('PASS accordion resize during opening, unclipped settled content, rapid reversals and reduced-motion closure (event doubles)');
+import { installFeedback } from '../assets/js/motion.mjs';
+const listeners=new Map(),hostEvents=new Map();
+const reduced={matches:false};
+const root={addEventListener:(name,callback)=>listeners.set(name,callback)};
+const host={matchMedia:()=>reduced,addEventListener:(name,callback)=>hostEvents.set(name,callback)};
+const feedback=installFeedback(root,host);
+const outer={tagName:'DETAILS',open:false,parentElement:null};
+const inner={tagName:'DETAILS',open:false,parentElement:outer};
+const target={tagName:'H3',parentElement:inner};
+feedback.reveal(target);
+assert.equal(inner.open,true);assert.equal(outer.open,true);
+assert.equal(listeners.has('click'),false,'native summaries must retain their click behavior');
+assert.equal(feedback.reduced,reduced);
+const classes=new Set();
+const control={disabled:false,classList:{add:name=>classes.add(name),remove:name=>classes.delete(name)}};
+listeners.get('pointerdown')({isPrimary:true,button:0,target:{closest:()=>control}});
+assert.equal(classes.has('is-pressed'),true);
+hostEvents.get('pointercancel')();assert.equal(classes.size,0);
+listeners.get('pointerdown')({isPrimary:true,button:0,target:{closest:()=>control}});
+feedback.refresh();assert.equal(classes.size,0);
+console.log('PASS native disclosure behavior, ancestor reveal, press cancellation and refresh cleanup');
