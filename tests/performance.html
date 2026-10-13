@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="it">
+<head><base href="../"><script>
+history.replaceState(null,'','../index.html?qa=performance');
+const qaMetrics={fcp:null,lcp:null,cls:0,shifts:[]};
+const qaLcp=new PerformanceObserver(list=>{for(const e of list.getEntries())qaMetrics.lcp=e.startTime});qaLcp.observe({type:'largest-contentful-paint',buffered:true});
+const qaCls=new PerformanceObserver(list=>{qaMetrics.shifts.push(...list.getEntries().filter(e=>!e.hadRecentInput).map(e=>({value:e.value,time:e.startTime,nodes:e.sources?.map(s=>s.node?.tagName+'.'+s.node?.className)})))});qaCls.observe({type:'layout-shift',buffered:true});
+window.addEventListener('load',()=>setTimeout(()=>{qaMetrics.fcp=performance.getEntriesByType('paint').find(e=>e.name==='first-contentful-paint')?.startTime??null;let score=0,first=0,last=0;for(const e of qaMetrics.shifts){if(e.time-last>1000||e.time-first>5000){score=0;first=e.time}score+=e.value;last=e.time;qaMetrics.cls=Math.max(qaMetrics.cls,score)}qaLcp.disconnect();qaCls.disconnect();const out=document.createElement('pre');out.id='qa-metrics';out.style.cssText='position:fixed;right:8px;top:8px;z-index:100;max-width:300px;max-height:80vh;overflow:auto;padding:12px;background:#fff;border:1px solid #8792a3;font:12px/1.5 monospace;box-shadow:0 4px 20px #0002';out.textContent=JSON.stringify(qaMetrics,null,2);document.body.append(out)},2000));
+</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
+  <title>Messi — Carriera, trofei e record</title>
+  <meta name="description" content="La storia di Lionel Messi in tre sezioni semplici: carriera, trofei e record.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://aiuxplayground.com/kits/ios-26/v1/ios.css">
+  <link rel="stylesheet" href="assets/css/site.css?v=072472c90c">
+  <script type="module" src="assets/js/app.mjs?v=9c448b2c2e"></script>
+</head>
+<body>
+<div class="ios-surface">
+  <a class="skip" href="#contenuto">Salta al contenuto</a>
+  <header class="app-header"><a class="brand" href="index.html" aria-label="Messi, homepage">Messi<span>10</span></a><span class="current-page">Home</span></header>
+  <div class="screen-scroll" tabindex="0" aria-label="Contenuto della pagina">
+    <main data-page="home" id="contenuto" tabindex="-1" aria-labelledby="profile-title">
+<section class="profile" aria-labelledby="profile-title">
+  <div>
+<span class="eyebrow">ARGENTINA · NUMERO 10</span><h1 id="profile-title">Lionel Messi</h1>
+<p class="profile-intro">Da Rosario al tetto del mondo. Le squadre, le vittorie e i numeri di una carriera straordinaria.</p><a class="inline-link hero-link" href="carriera.html">Esplora la carriera <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"></path></svg></a>
+</div>
+  <span class="profile-photo"><img src="assets/images/messi-portrait.webp" alt="Lionel Messi con la maglia dell’Argentina" width="720" height="744" fetchpriority="high" decoding="async">
+</span></section>
+<section class="home-navigation" aria-labelledby="discover-title">
+  <h2 id="discover-title">Una storia, tre prospettive</h2>
+  <div class="destination-list">
+<a class="destination" href="carriera.html"><span class="destination-icon"><i class="ios-icon ios-icon--book-open" aria-hidden="true" style="--w:22px;--h:22px"></i></span><span class="destination-copy"><strong>Carriera</strong><span>Squadre e tappe principali.</span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"></path></svg></a><a class="destination" href="trofei.html"><span class="destination-icon"><i class="ios-icon ios-icon--star" aria-hidden="true" style="--w:22px;--h:22px"></i></span><span class="destination-copy"><strong>Trofei</strong><span>Titoli vinti e premi individuali.</span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"></path></svg></a><a class="destination" href="record.html"><span class="destination-icon"><i class="ios-icon ios-icon--arrow-up" aria-hidden="true" style="--w:22px;--h:22px"></i></span><span class="destination-copy"><strong>Record</strong><span>Primati e numeri della sua storia.</span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"></path></svg></a>
+  </div>
+</section>
+<section class="home-facts" aria-labelledby="facts-title">
+  <h2 id="facts-title">Messi in breve</h2>
+  <dl class="fact-list">
+<div>
+<dt>Palloni d’Oro</dt>
+<dd>8</dd>
+</div>
+<div>
+<dt>Mondiale vinto con l’Argentina</dt>
+<dd>2022</dd>
+</div>
+<div>
+<dt>Gol ufficiali con il Barcellona</dt>
+<dd>672</dd>
+</div>
+</dl>
+</section>
+    <section class="page-section" aria-labelledby="home-reading"><h2 class="section-label" id="home-reading">Da leggere</h2>
+<a class="story-link" href="argentina.html#lusail"><img src="assets/images/worldcup-preview.webp" alt="" aria-hidden="true" width="240" height="360" loading="lazy" decoding="async"><span><small>ARGENTINA · 2022</small><strong>Il Mondiale di Messi</strong><span>La finale, i gol e la coppa di Lusail.</span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"></path></svg></a></section></main>
+    <footer class="app-footer">
+      <a href="credits.html">Fonti e crediti</a>
+      <p>Progetto indipendente su Lionel Messi.</p>
+    </footer>
+  </div>
+  <nav class="ios-tabbar" aria-label="Navigazione principale">
+    <div class="ios-tabbar__bar" style="--tabs:4">
+      <label class="ios-tab"><input type="radio" name="tabs" aria-label="Home" data-href="index.html" checked><i class="ios-icon ios-icon--home" aria-hidden="true"></i><span>Home</span></label>
+      <label class="ios-tab"><input type="radio" name="tabs" aria-label="Carriera" data-href="carriera.html"><i class="ios-icon ios-icon--book-open" aria-hidden="true"></i><span>Carriera</span></label>
+      <label class="ios-tab"><input type="radio" name="tabs" aria-label="Trofei" data-href="trofei.html"><i class="ios-icon ios-icon--star" aria-hidden="true"></i><span>Trofei</span></label>
+      <label class="ios-tab"><input type="radio" name="tabs" aria-label="Record" data-href="record.html"><i class="ios-icon ios-icon--arrow-up" aria-hidden="true"></i><span>Record</span></label>
+    </div>
+  </nav>
+  <noscript><nav class="tab-fallback" aria-label="Navigazione senza JavaScript"><a href="index.html" aria-current="page">Home</a><a href="carriera.html">Carriera</a><a href="trofei.html">Trofei</a><a href="record.html">Record</a></nav></noscript>
+<p class="navigation-status sr-only" aria-live="polite"></p>
+<div class="toast" role="status" aria-live="polite"></div>
+</div>
+</body>
+</html>
+
