@@ -367,6 +367,7 @@ body{padding-bottom:0}
 
 @media(max-width:679px){
   .hero .eyebrow,.hero-figure figcaption,.trophy-overline,.record-card>span,.story-copy>span,.gallery-card figcaption span,.image-note,.media-message,.asset-credit-item p,.edition-note,.footer-bottom,.data-caption,.gallery-note,.chapter-photo-credit,.status-line{font-size:.75rem}
+  #dock-context{font-size:.75rem;letter-spacing:.04em}
 }
 
 /* Mobile art direction: compact rhythm, clear reading order, thumb-first controls. */
