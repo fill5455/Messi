@@ -338,3 +338,12 @@ button:disabled{cursor:default}
 }
 
 .ios-tab>span{overflow-wrap:anywhere;text-align:center}
+/* Flex items must shrink at enlarged text sizes; long facts may stack. */
+.fact-list>div{flex-wrap:wrap;gap:8px 20px}
+.fact-list dt{min-width:0;flex:1 1 8rem}
+.fact-list dd{min-width:0;max-width:100%}
+.mini-timeline span,.event-list>li>div,.team-heading>span{min-width:0}
+.record-actions{flex-wrap:wrap}
+.record-actions button{flex:1 1 9rem;min-width:0}
+.record-actions button>span{min-width:0;overflow-wrap:anywhere}
+.app-header{flex-wrap:wrap;gap:4px 20px}

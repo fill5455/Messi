@@ -13,10 +13,10 @@ frame.addEventListener('load',()=>{adapt();report.textContent='Pagina pronta. In
 page.onchange=()=>load(page.value);width.onchange=adapt;size.onchange=adapt;
 async function check(){
  const doc=frame.contentDocument,win=frame.contentWindow,region=doc.querySelector('.screen-scroll'),nav=doc.querySelector('.ios-tabbar');
- const all=[...doc.querySelectorAll('main *')].filter(e=>e.getClientRects().length&&win.getComputedStyle(e).position!=='absolute');
+ const all=[...doc.querySelectorAll('.app-header *,main *,.ios-tabbar *')].filter(e=>e.getClientRects().length&&win.getComputedStyle(e).position!=='absolute');
  const overflow=all.filter(e=>{const r=e.getBoundingClientRect();return r.left<-.5||r.right>win.innerWidth+.5}).map(e=>e.tagName+'.'+e.className);
  const broken=[...doc.images].filter(i=>i.getClientRects().length&&i.complete&&!i.naturalWidth).map(i=>i.getAttribute('src'));
- const result={page:doc.title,viewport:win.innerWidth,text:size.value+'%',documentOverflow:doc.documentElement.scrollWidth>win.innerWidth,contentOverflow:region.scrollWidth>region.clientWidth,overflow,brokenImages:broken,navHeight:Math.round(nav.getBoundingClientRect().height),mainHeading:doc.querySelectorAll('h1').length,localResources:win.performance.getEntriesByType('resource').filter(e=>e.name.includes('/assets/')&&e.transferSize).length};
+ const result={page:doc.title,viewport:win.innerWidth,text:size.value+'%',documentOverflow:doc.documentElement.scrollWidth>win.innerWidth,contentOverflow:region.scrollWidth>region.clientWidth,overflow,brokenImages:broken,navHeight:Math.round(nav.getBoundingClientRect().height),mainHeading:doc.querySelectorAll('h1').length,localResources:win.performance.getEntriesByType('resource').filter(e=>e.name.includes('/assets/')&&e.transferSize).length,domElements:doc.querySelectorAll('*').length};
  if(!win.axe){await new Promise((resolve,reject)=>{const script=doc.createElement('script');script.src='https://cdn.jsdelivr.net/npm/axe-core@4.10.3/axe.min.js';script.onload=resolve;script.onerror=reject;doc.head.append(script)})} if(win.axe){const a=await win.axe.run(doc,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa','wcag22aa']}});result.accessibility=a.violations.map(v=>({id:v.id,impact:v.impact,nodes:v.nodes.map(n=>n.target)}));result.passes=a.passes.length}else result.accessibility='axe unavailable';
  return result;
 }
