@@ -1,21 +1,35 @@
-# Messi — direzione iOS 26
+# Messi — chiarezza mobile
 
-## Superficie e navigazione
-- Superficie mobile `ios-surface`: 402px nominali, max-width 100%, altezza 100dvh.
-- Tema chiaro senza classe dark.
-- Quattro schede: Home (home), Carriera (book-open), Trofei (star), Record (arrow-up).
-- Componente fornito dal kit esterno, senza copia o riscrittura di ios.css.
-- `--tabs:4` sulla barra; un input checked per pagina. Nessun badge o ricerca.
-- Tab bar assoluta sul fondo della superficie, safe-area e 120px riservati nel contenuto.
-- Header fisso nella struttura; pagina scorrevole internamente. Indici sticky dentro il contenuto.
+## Obiettivo
+L’utente deve riconoscere il soggetto e scegliere dove andare prima di incontrare racconti lunghi o fotografie. Ogni pagina ha un titolo che descrive il contenuto. I dati hanno sempre etichetta e contesto.
 
-## Stile dell’applicazione
-- Carattere di sistema: -apple-system / BlinkMacSystemFont / Segoe UI / sans-serif.
-- Fondo #f2f2f7, testo #1c1c1e, secondario #636366, accento #007aff.
-- Titoli pagina 40px, hero 54px, titoli sezione 28px, testo 15–16px.
-- Margini 20px; superfici raggruppate bianche con raggio 20–28px; azioni a pillola.
-- Fotografie integrate nei racconti; nessun archivio fotografico.
-- Focus visibile; controlli dell’applicazione 44–48px o più; prefers-reduced-motion.
+## Gerarchia
+- Livello 1: titolo pagina, 32px / 1.25.
+- Livello 2: sezioni, 22px / 1.25; etichette di gruppo 18px.
+- Livello 3: titoli dei controlli e dei record, 18px.
+- Lettura: 16px / 1.65. Descrizioni: 15–17px. Note e crediti: almeno 14px.
+- Font di sistema. Nessuna etichetta tutta maiuscola, slogan, numerazione decorativa o titolo spezzato.
 
-## Da verificare in browser
-Caricamento del kit esterno e delle icone, resa della tab bar, 320/375/390/402px, Safari iOS, safe-area, zoom e tastiera. Questi controlli visivi non sono dichiarati eseguiti.
+## Fondamenti
+- Fondo #f2f2f7, superfici #fff, testo #1c1c1e, secondario #52525b, azioni #005fc9.
+- Margini 20px; gruppi 20px di raggio; separatori leggeri.
+- Tre livelli di distanza: 4–8px per label, 12–20px per gruppi, 24–28px per sezioni.
+- Nessuna ombra sulle carte informative, nessun testo su fotografie.
+
+## Composizione
+- Home: profilo 72×88px + testo → destinazioni → dati di sintesi.
+- Carriera: quattro righe espandibili, una aperta alla volta.
+- Trofei: Club / Argentina / Premi individuali; categorie senza annidamenti.
+- Record: valore, nome, periodo, spiegazione nello stesso blocco.
+- Fotografie: tre file utilizzati, nessun archivio o galleria.
+- Header unico; niente indici sticky che competono con la tab bar.
+
+## Interazioni
+- Kit iOS 26 esterno invariato; quattro input radio, una selezione per pagina.
+- Superficie 402px/max-width100%; scorrimento interno e safe-area.
+- Details nativi con summary ampio; feedback di pressione immediato sui controlli dell’app.
+- Link a categorie: apertura automatica del details di destinazione.
+- Focus visibile, target ampi, fallback senza JavaScript, reduced motion.
+
+## Verifica visiva ancora da eseguire
+320/375/390/402px, Safari iOS, kit esterno, testo ingrandito, safe-area, focus e lettura con VoiceOver. La verifica statica non dimostra la qualità del rendering.

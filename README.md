@@ -1,23 +1,23 @@
-# Messi — prototipo iOS 26
+# Messi — mobile leggibile
 
-Prototipo mobile con quattro schede: Home, Carriera, Trofei e Record. Argentina resta un approfondimento accessibile dai contenuti; Fonti e crediti è nel footer.
+La home identifica il soggetto e porta subito a Carriera, Trofei e Record. Una sola fotografia da 72×88px precede le azioni. I dati di sintesi vengono dopo la navigazione.
 
-## Struttura
-- `index.html`, `carriera.html`, `trofei.html`, `record.html`: destinazioni della tab bar.
-- `argentina.html`, `credits.html`: approfondimenti.
-- `assets/css/site.css`: layout e stile dell’applicazione.
-- `assets/js/tabs.js`: navigazione delle schede, ripristino dello stato su pageshow e skip link.
-- `credits.json`: provenienza delle otto fotografie utilizzate.
+## Pagine
+- Home: profilo breve, tre destinazioni e tre dati di sintesi.
+- Carriera: quattro tappe espandibili; una tappa aperta alla volta; Argentina come approfondimento.
+- Trofei: tre categorie espandibili, senza ulteriori accordion annidati.
+- Record: numeri sempre accompagnati da titolo, periodo e spiegazione.
+- Argentina: vittorie in ordine cronologico e approfondimento su Qatar 2022.
+- Fonti e crediti: provenienza delle tre immagini utilizzate.
 
-## Kit iOS 26
-Ogni pagina include una volta il link esterno `https://aiuxplayground.com/kits/ios-26/v1/ios.css`. Il foglio di stile non è copiato nel repository, né letto o riscritto. Parti, classi e attributi della tab bar seguono il formato fornito: `ios-tabbar`, `ios-tabbar__bar`, `ios-tab`, input radio, icone e `--tabs:4`. Nessun badge o pulsante ricerca perché il prototipo non ne richiede il comportamento.
+## Design
+Sistema di font nativo, testo 16px, descrizioni 15–17px, note 14px. Titoli pagina 32px. Nessun titolo spezzato manualmente nelle pagine, nessun testo sovrapposto a immagini, nessuna immagine grande prima delle azioni della home. Un header e la tab bar, senza altre barre sticky nel contenuto.
 
-La superficie `ios-surface` è larga 402px e si riduce alla larghezza disponibile sui dispositivi più piccoli. Tema chiaro. Altezza 100dvh, header in alto, contenuto in un contenitore scorrevole, tab bar ancorata al fondo della superficie con safe-area. Ogni pagina ha una sola scheda checked; Argentina appartiene al percorso Carriera, Crediti al percorso Home.
-
-La tab bar richiede JavaScript per aprire le pagine. Una navigazione alternativa in noscript mantiene le destinazioni raggiungibili quando JavaScript è disattivato. Il kit esterno deve essere disponibile perché icone e aspetto della tab bar vengano caricati.
+## Kit e navigazione
+Superficie iOS chiara da 402px, adattabile agli schermi più piccoli. Il kit esterno è incluso una volta per pagina tramite `https://aiuxplayground.com/kits/ios-26/v1/ios.css`; non è letto, copiato o riscritto. Quattro schede: Home, Carriera, Trofei, Record. JavaScript apre le destinazioni e rivela le categorie dei link diretti. La navigazione alternativa noscript conserva l’accesso alle pagine senza JavaScript.
 
 ## Pubblicazione
-Servire la radice. Nessun build o dipendenza npm. Percorsi relativi compatibili con `/Messi/`. `.nojekyll` preservato.
+HTML statico, un CSS e un JS. Nessun build. Servire la radice; percorsi relativi compatibili con `/Messi/`. `.nojekyll` preservato. Fonti e fatti storici già verificati nell’edizione precedente; palmarès consultato il 13 ottobre 2026.
 
 ## Verifica
-Validati HTML, collegamenti e ancore, unica inclusione del kit, wrapper, numero e stato delle schede, copertura degli asset e sintassi JavaScript. Verificato il comportamento del controller delle schede in un harness Node. Browser QA e rendering del kit esterno non eseguiti nell’ambiente disponibile.
+Controllati struttura HTML, tab bar, link, ancore, apertura dei link diretti, copertura delle immagini nei crediti, contrasto della palette e stato delle schede. Browser QA e verifica di leggibilità su dispositivo reale non eseguiti nell’ambiente disponibile.
