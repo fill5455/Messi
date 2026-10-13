@@ -372,7 +372,7 @@ body{padding-bottom:calc(92px + env(safe-area-inset-bottom))}
 .mobile-tabs>a,.mobile-tabs .menu-button{width:auto;min-width:0;min-height:52px;height:auto;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:4px;border:0;border-radius:4px;color:var(--muted);background:transparent;text-align:center;text-decoration:none}
 .mobile-tabs>a[aria-current=location],.mobile-tabs>a:active,.mobile-tabs .menu-button[aria-expanded=true]{color:var(--sky-dark);background:#e6f0ef}
 .mobile-tabs>a>span,.mobile-tabs .menu-button>span{font-size:14px;font-weight:700;line-height:1}
-.mobile-tabs small{font-size:10px;font-weight:700;line-height:1.2}
+.mobile-tabs small{font-size:11px;font-weight:700;line-height:1.2}
 #dock-context,#dock-action{display:none!important}
 }
 

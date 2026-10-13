@@ -190,7 +190,7 @@ button:focus-visible, a:focus-visible, select:focus-visible, summary:focus-visib
 }
 .mobile-tabs a:active, .mobile-tabs a[aria-current="location"] { color: var(--blue-dark); background: var(--blue-pale); }
 .mobile-tabs a > span, .mobile-tabs .menu-button > span { font-size: 14px; font-weight: 700; line-height: 1; }
-.mobile-tabs small { font-size: 9px; font-weight: 700; line-height: 1.2; }
+.mobile-tabs small { font-size: 11px; font-weight: 700; line-height: 1.2; }
 .mobile-tabs .menu-button[aria-expanded="true"] { color: var(--blue-dark); background: var(--blue-pale); }
 #dock-context, #dock-action { display: none !important; }
 
@@ -590,7 +590,7 @@ dialog::backdrop { background: rgb(10 23 30 / 72%); }
   .record-grid { column-gap:8px; }
   .record-card { min-height: 142px; }
   .mobile-dock { right: 6px; left: 6px; padding:4px; }
-  .mobile-tabs small { font-size: 10px; }
+  .mobile-tabs small { font-size: 11px; }
   .gallery-grid { gap:8px; }
 }
 /* Editorial metadata stays legible on narrow screens. */
@@ -608,7 +608,7 @@ dialog::backdrop { background: rgb(10 23 30 / 72%); }
   }
   .gallery-card figcaption strong { font-size:12px; }
   .record-card p, .story-copy p, .person-stories p, .news-card p { font-size:13px; }
-  .mobile-tabs small { font-size:10px; }
+  .mobile-tabs small { font-size:11px; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
