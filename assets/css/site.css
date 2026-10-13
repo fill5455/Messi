@@ -383,7 +383,7 @@ main:focus{outline:none}
  .story-picture figcaption{font-size:.875rem;line-height:1.7;padding-top:12px}
  .record-tools{padding:20px;margin-bottom:20px}
  .record-help{margin-bottom:16px;line-height:1.75}
- .filter-row{margin-top:16px;gap:8px}
+ .filter-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,7rem),1fr));margin-top:16px;gap:8px}
  .filter-row button{flex-basis:6rem;padding:12px 10px;font-size:.9375rem}
  .search-field{gap:8px;padding-inline:12px}
  .record-list{border:0;gap:16px}
