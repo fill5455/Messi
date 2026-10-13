@@ -165,7 +165,9 @@ export function installFeedback(root, host = window) {
         state.observer = new ResizeObserver(() => {
           if (!state.desired) return;
           const height = naturalHeight(state);
-          if (state.height.frame !== null) state.height.to(height, reduced.matches, () => { if (state.desired) wrapper.style.height='auto'; });
+          if (state.height.frame !== null) state.height.to(height, reduced.matches, () => {
+            if (state.desired) { wrapper.style.height='auto';wrapper.style.overflow='visible'; }
+          });
           else { state.height.value = state.height.target = height; state.height.velocity = 0; }
         });
         state.observer.observe(body);

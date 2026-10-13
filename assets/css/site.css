@@ -347,3 +347,8 @@ button:disabled{cursor:default}
 .record-actions button{flex:1 1 9rem;min-width:0}
 .record-actions button>span{min-width:0;overflow-wrap:anywhere}
 .app-header{flex-wrap:wrap;gap:4px 20px}
+@media(min-width:700px){
+ .home-facts .fact-list>div{flex-wrap:nowrap}
+ .home-facts .fact-list dt{flex:initial}
+ .profile .eyebrow{max-width:none}
+}
