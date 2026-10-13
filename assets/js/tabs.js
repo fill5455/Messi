@@ -10,6 +10,31 @@
     const destination = new URL(input.dataset.href, document.baseURI);
     if (destination.origin === window.location.origin) window.location.assign(destination.href);
   });
+  const surface = document.querySelector('.ios-surface');
+  const scrollRegion = document.querySelector('.screen-scroll');
+  const navigation = document.querySelector('.ios-tabbar');
+  let navigationClearance = 112;
+  const measureNavigation = () => {
+    if (!surface || !navigation) return;
+    const bottom = parseFloat(getComputedStyle(navigation).bottom) || 0;
+    navigationClearance = Math.ceil(navigation.getBoundingClientRect().height + bottom + 16);
+    surface.style.setProperty('--nav-clearance', `${navigationClearance}px`);
+  };
+  if (navigation && typeof ResizeObserver !== 'undefined') new ResizeObserver(measureNavigation).observe(navigation);
+  window.addEventListener('resize', measureNavigation);
+  window.visualViewport?.addEventListener('resize', measureNavigation);
+  measureNavigation();
+  // Keyboard focus must stay above the floating tab bar, including after text zoom.
+  scrollRegion?.addEventListener('focusin', event => {
+    const target = event.target;
+    if (!target.matches('a, button, input, summary, [tabindex="0"]')) return;
+    const viewport = scrollRegion.getBoundingClientRect();
+    const bounds = target.getBoundingClientRect();
+    const top = viewport.top + 12;
+    const bottom = viewport.bottom - navigationClearance;
+    if (bounds.top < top || bounds.height > bottom - top) scrollRegion.scrollTop += bounds.top - top;
+    else if (bounds.bottom > bottom) scrollRegion.scrollTop += bounds.bottom - bottom;
+  });
   document.querySelector('.skip')?.addEventListener('click', event => {
     const main = document.getElementById('contenuto');
     const scroll = document.querySelector('.screen-scroll');

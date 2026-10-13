@@ -40,3 +40,14 @@ L’utente deve riconoscere il soggetto e scegliere dove andare prima di incontr
 - Icone principali identiche a quelle della tab bar: book-open, star, arrow-up.
 - Fotografie di Barcellona, PSG e Miami all’interno del rispettivo capitolo, dopo il testo. Composizioni integrali e rapporto intrinseco corretto.
 - Record: titolo e periodo a sinistra, valore allineato a destra; spiegazione separata sotto.
+
+## Precisione finale
+- Pesi di lettura normalizzati: 400 / 600 / 700. Titoli pagina 32px; titoli di riga 18px; testo 16px; descrizioni 15–17px; note 14px.
+- Colonna iniziale comune da 48px per icone e stemmi. Glyph della famiglia iOS da 22px.
+- Raggio dei gruppi centralizzato in --radius. Pivot dei chevron sul centro del viewBox.
+- Cornice del ritratto 72×88px; composizioni complete nelle foto dei capitoli.
+- Feedback spring solo transform: scala delle icone 1↔0.92, rotazione dei chevron 0↔90. Nessuna animazione di layout che ritardi la lettura.
+- Spring critically damped, valore e velocità conservati al cambio target; nessuna transizione CSS sulle proprietà controllate.
+- Reduced motion: nessuna scala animata; cambio di stato istantaneo.
+- Spazio sotto la pagina e scroll-padding-bottom derivati dalla misura della tab bar, compresa safe-area.
+- Focus inset nelle liste con overflow:hidden; gestione del focus sopra la barra flottante.
