@@ -370,6 +370,13 @@ body{padding-bottom:0}
   #dock-context{font-size:.75rem;letter-spacing:.04em}
 }
 
+@media(max-width:679px) and (hover:none){
+  .button-primary:hover{background:var(--ink);transform:none}
+  .button-light:hover{background:var(--sky)}
+  .carousel-arrow:hover{background:transparent;color:inherit}
+  .trophy-card:hover .trophy-art img,.story-card:hover .story-image img,.gallery-open:hover img,.gallery-open:focus-visible img{transform:none}
+}
+
 /* Mobile art direction: compact rhythm, clear reading order, thumb-first controls. */
 @media(max-width:679px){
   :root{--gutter:clamp(18px,5.2vw,22px)}
