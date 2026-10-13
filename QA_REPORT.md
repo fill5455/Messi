@@ -1,3 +1,7 @@
+# Archivio della verifica precedente
+
+Questo rapporto riguarda la versione precedente. Il successivo redesign flat sostituisce componenti, tipografia e navigazione; le indicazioni sul kit e sulle lenti non descrivono la versione corrente.
+
 # Rapporto di verifica — Messi
 
 Verifica del 13/10/2026, 23:23 UTC+2. Base: `848a4c37380fe1ab271d49fa2f49c2d7960b18aa`. Ramo: `redesign/responsive-quality`.
