@@ -499,3 +499,6 @@ main:focus{outline:none}
 .record-actions[hidden]{display:flex!important}
 .result-count{min-height:1.6em}
 @media(max-width:699px){.record-actions[hidden]{display:grid!important}}
+
+/* The mobile reading viewport ends above navigation instead of behind it. */
+@media(max-width:799px){.screen-scroll{margin-bottom:calc(var(--nav-clearance) - 16px);padding-bottom:24px;scroll-padding:24px}}

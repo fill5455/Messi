@@ -49,7 +49,7 @@ export function installApp(doc=document,host=window) {
   function ensureVisible(target) {
     if(!target?.matches('a,button,input,summary,[tabindex="0"]'))return;
     const viewport=region.getBoundingClientRect(),bounds=target.getBoundingClientRect();
-    const top=viewport.top+12,bottom=viewport.bottom-clearance;
+    const top=viewport.top+12,bottom=viewport.bottom-16;
     if(bounds.top<top||bounds.height>bottom-top)region.scrollTop+=bounds.top-top;
     else if(bounds.bottom>bottom)region.scrollTop+=bounds.bottom-bottom;
   }
