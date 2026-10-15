@@ -1,3 +1,38 @@
+# Verifica corrente — 15 ottobre 2026, 14:34 UTC+2
+
+Revisione delle sei pagine HTML con identità flat e arrotondata conservata. Le verifiche a matrice hanno coperto le revisioni `9d6cf6c` e `8f1c28f`; il comportamento finale di indirizzi, ancore, ricaricamento e ritorno dalla Carriera è stato verificato in browser su `77f4c37`.
+
+| Controllo eseguito | Esito osservato |
+| --- | --- |
+| Sei pagine × sei larghezze, testo 100% e 200% | 72 scenari senza overflow, immagini rotte o violazioni axe nei tag WCAG selezionati |
+| Sei pagine × quattro viewport bassi, testo 100% e 200% | 48 scenari senza sovrapposizione tra area di lettura e navigazione; area di lettura minima osservata 194 px |
+| Sei pagine × sei larghezze, spaziatura accessibile aumentata | 36 scenari senza overflow o violazioni axe selezionate |
+| Tutti i 26 approfondimenti a 320 px e testo 200% | Contenuti aperti e controllati senza anomalie rilevate dal test |
+| Ricerca `Mondiali`, filtro Premi, ricaricamento | Un risultato mantenuto; ricerca e filtro presenti nell’indirizzo |
+| Carriera → indietro ai Record | Ricerca, filtro e risultato ripristinati |
+| Collegamento con filtro e ancora di un risultato escluso | Ancora incoerente rimossa, filtro mantenuto |
+| Fotografia → Escape | Dialogo chiuso, focus restituito al collegamento originale |
+| Approfondimento aperto con Enter | Apertura nativa, animazione disattivata durante l’uso da tastiera |
+| Controlli locali | 150 riferimenti, ancore, versioni cache e attributi verificati; test navigazione, preferiti, ricerca, URL e movimento ridotto superati; sintassi JS e diff controllati |
+
+## Correzioni guidate dalle skill allegate
+
+| Before | After | Why |
+| --- | --- | --- |
+| Ingressi su quasi tutti i blocchi di contenuto | Ingressi di 240 ms concentrati su testata e fotografie | Lettura stabile; motion più breve e pertinente (Emil, Impeccable) |
+| Transizione dell’altezza degli approfondimenti | Apertura nativa e feedback con opacity/transform | Evitare animazioni che richiedono ricalcolo del layout (Emil, Vercel, UI/UX Pro Max) |
+| Ricerca conservata solo nello stato interno | Parametri pubblici `q` e `f` con validazione | Ripristino e condivisione coerenti (Vercel, TypeUI) |
+| Intestazione completa su viewport bassi | Navigazione compatta e testate più brevi | Più spazio utile al contenuto (TypeUI, UI/UX Pro Max, Hallmark) |
+| Metadati e font critici incompleti | Metadati social e preload dei due font locali | Condivisione identificabile e caricamento tipografico anticipato (Taste, Vercel) |
+
+Applicati anche il controllo del contrasto tramite axe, la gerarchia tipografica, i target interattivi, i focus, la coerenza dei raggi e delle superfici. Il design esistente è stato mantenuto secondo il mandato di raffinamento.
+
+## Limiti della verifica
+
+Browser usato: Chrome cloud, con viewport reali dentro iframe. Nessuna certificazione WCAG o garanzia di assenza di difetti. Non verificati Safari/WebKit, dispositivi fisici, lettori di schermo, resa su stampante e guasti di rete provocati. Le metriche temporali dell’iframe non costituiscono una misura affidabile dei Core Web Vitals: nessun nuovo punteggio di prestazioni viene dichiarato. La fixture standalone è stata rigenerata dal codice corrente.
+
+---
+
 # Archivio della verifica precedente
 
 Questo rapporto riguarda la versione precedente. Il successivo redesign flat sostituisce componenti, tipografia e navigazione; le indicazioni sul kit e sulle lenti non descrivono la versione corrente.
