@@ -1,3 +1,25 @@
+# Sistema corrente: Home, Carriera e Trofei ricostruite
+
+16 ottobre 2026. Per queste tre pagine, `assets/css/rebuilt.css` e i componenti `r-*` sostituiscono le composizioni precedenti. `site.css` continua a definire lo shell condiviso, i font, la navigazione e le altre pagine.
+
+## Architettura dei percorsi
+
+- Home: introduzione → tre destinazioni fotografiche (Carriera, Trofei, Record) → tre numeri → percorso Argentina. Nessun secondo menu di squadre o azioni concorrenti nella testata.
+- Carriera: indice locale con quattro capitoli → articoli cronologici sempre visibili → profilo → nazionale. Ogni club conduce alla propria sezione Trofei con un collegamento esplicito. Gli ID originali dei capitoli restano validi.
+- Trofei: indice locale Club / Argentina / Premi → competizioni e quantità sempre visibili → edizioni vinte espandibili → finale del 2011. I club collegano al rispettivo capitolo Carriera. Le vecchie ancore dei gruppi sono conservate.
+
+## Componenti e regole
+
+Larghezza massima 1160 px, testo narrativo massimo 64 caratteri circa per riga, griglie con colonne `minmax(0,…)`. Margini 32 px desktop e 20/16 px mobile. Raggi principali 24–32 px. Superfici piatte bianco, carta e azzurro; blu inchiostro per il testo. DM Sans per lettura e sezioni, Barlow Condensed per l’apertura della Home.
+
+Mobile: percorsi Home in righe con miniatura, capitoli in due colonne adattabili, articoli e trofei in una colonna. Contenuti primari senza accordion; solo elenchi di anni e fonti sono facoltativi. Immagini narrative ingrandibili con i controlli già esistenti. Focus visibile, etichette testuali, elementi interattivi di almeno 44 px. Ingressi di 240 ms limitati alle testate; movimento ridotto e uso da tastiera disattivano le animazioni. Nessun contenuto dipende dal movimento o da JavaScript per essere letto.
+
+La navigazione mobile fluttuante e il ripristino della cronologia rimangono condivisi con Record, Argentina e Crediti. Tutte le pagine caricano il nuovo foglio per supportare anche i passaggi tramite navigatore client.
+
+---
+
+## Rapporti precedenti (storici)
+
 # Messi — Editoriale arrotondato
 
 La maglia argentina e la tipografia sportiva definiscono il linguaggio del sito. Tutte le sei pagine condividono il sistema; i contenuti cambiano composizione secondo il loro ruolo.

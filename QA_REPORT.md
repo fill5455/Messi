@@ -1,3 +1,20 @@
+# Ricostruzione Home, Carriera e Trofei — 16 ottobre 2026, 00:08 UTC+2
+
+Le tre pagine hanno nuovo markup, componenti `r-*` e foglio `rebuilt.css`. Non si tratta di un ulteriore spostamento delle vecchie schede. Lo snapshot verificato è `1e7fbff7f17a6a2cf525c4ac8ebd309b9e76b184`; le finiture successive conservano un’ancora storica, esplicitano il titolo Trofei e aggiungono lo stemma Newell’s già presente negli asset.
+
+## Verifiche eseguite
+
+- Sei pagine × sei larghezze 320–1440 px × testo 100% e 200%: 72 scenari senza overflow, immagini mancanti, sovrapposizione della navigazione o violazioni axe nei tag WCAG selezionati.
+- Sei pagine × quattro viewport bassi con testo 200%: 24 scenari senza anomalie rilevate.
+- Tutti i 40 dettagli apribili a 320 px con testo 200%: nessuna anomalia rilevata. I capitoli Carriera e le competizioni Trofei sono ora sempre visibili; gli anni e le fonti restano nei dettagli.
+- Percorso reale Home → Carriera → Barcellona → Trofei del Barcellona → Carriera → Indietro: destinazioni e titoli corretti, ritorno alla sezione Trofei con le edizioni aperte conservate.
+- Osservazione visiva Home desktop/mobile, Trofei mobile e capitolo Barcellona desktop. Immagini, contesto e collegamenti presenti nel rendering reale.
+- ID dei vecchi approfondimenti Carriera e Trofei confrontati con gli ID attuali: conservati tutti. Test navigazione e accordion superati. Controllo riferimenti, ancore, attributi e cache; diff senza errori.
+
+Limiti: Chrome cloud e viewport in iframe; non verificati Safari, dispositivi fisici o lettori di schermo. Nessuna certificazione WCAG e nessun nuovo punteggio prestazionale. Rapporti precedenti archiviati sotto.
+
+---
+
 # Riordino delle pagine interne — 15 ottobre 2026, 23:59 UTC+2
 
 Revisione verificata in Chrome cloud: `6ce3e0051f98df55cad1e98c383e67f8d9f638d9`.
