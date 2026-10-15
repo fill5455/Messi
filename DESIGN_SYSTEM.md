@@ -39,3 +39,7 @@ I Trofei sono separati in pannelli per club, riconoscibili dallo stemma; gli ste
 ## Composizione di lettura — revisione 15 ottobre, 23:50 UTC+2
 
 La homepage usa una superficie blu inchiostro con ritratto affiancato al titolo su mobile; testo e azione occupano righe complete, senza una fotografia a tutta larghezza prima dei percorsi principali. Le destinazioni hanno icona, titolo, descrizione breve e freccia. La barra mobile usa una superficie scura, quattro etichette e una selezione azzurra. Le pagine interne usano testate bianche compatte e indici verticali a larghezza completa su mobile. Titoli dei pannelli e sezioni usano DM Sans per una lettura omogenea; Barlow Condensed resta nel marchio e nel titolo di apertura.
+
+## Ordine delle pagine interne — 15 ottobre 2026
+
+Le pagine interne condividono una colonna di lettura di massimo 1000 px, un indice breve e sezioni numerate. Carriera: profilo sintetico → tappe cronologiche → nazionale; nessuna sidebar con un ordine diverso su desktop. Trofei: club → Argentina → premi individuali → finale del 2011, con competizione, numero di titoli e anni su righe distinte. Argentina: elenco cronologico compatto → Copa América → Mondiale. Record: istruzioni e strumenti in un pannello, risultati in una sola colonna, numero prima del contesto e azioni dopo la descrizione. Crediti: progetto → fotografie → stemmi. Gli approfondimenti conservano gli ID originali e i collegamenti diretti.

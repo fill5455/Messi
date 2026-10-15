@@ -1,3 +1,19 @@
+# Riordino delle pagine interne — 15 ottobre 2026, 23:59 UTC+2
+
+Revisione verificata in Chrome cloud: `6ce3e0051f98df55cad1e98c383e67f8d9f638d9`.
+
+- 72 scenari, sei pagine × sei larghezze da 320 a 1440 px × testo 100% e 200%: nessun overflow, immagine mancante, sovrapposizione della barra o violazione axe nei tag WCAG selezionati.
+- Tutti i 28 approfondimenti aperti a 320 px con testo 200%: nessuna anomalia rilevata.
+- Osservazione del nuovo ordine Carriera su mobile, della sezione Club nei Trofei e del layout Record su desktop.
+- Ricerca reale `Mondiali`: un risultato, coerente con i dati presenti.
+- 165 riferimenti/ancore/attributi/versioni cache verificati. ID degli approfondimenti e numero dei record confrontati con la versione precedente e conservati. Test navigazione e accordion superati; diff senza errori.
+
+Correzioni dopo il primo controllo: profilo raccolto in una scheda senza debordamenti al 200%; contrasto della navigazione stabile durante i cambi di breakpoint, senza transizione di colore.
+
+Limiti: Chrome cloud con viewport in iframe; non verificati Safari, dispositivi fisici o lettori di schermo. Nessuna certificazione WCAG o misura affidabile dei Core Web Vitals. Seguono i rapporti storici.
+
+---
+
 # Ricomposizione visiva — 15 ottobre 2026, 23:50 UTC+2
 
 La revisione `d13d3ed` modifica l’apertura della homepage, superfici, barra mobile, titoli, indici e pannelli delle sei pagine. Verifiche effettivamente eseguite:
