@@ -1,3 +1,18 @@
+# Gerarchia visiva, icone e spazi — 16 ottobre 2026, 00:31 UTC+2
+
+Verifica dello snapshot `99a5505c8e085208497dabf9f6f82129f2f1f604` e rifinitura dello spazio tra nome e cognome nella testata desktop.
+
+- 72 scenari: sei pagine × sei larghezze 320–1440 px × testo 100% e 200%, senza overflow, immagini mancanti, sovrapposizione della barra o violazioni axe nei tag WCAG selezionati.
+- 24 scenari su viewport bassi con testo 200%: nessuna anomalia rilevata.
+- 40 dettagli apribili, tutti aperti a 320 px con testo 200%: nessuna anomalia rilevata.
+- Home a 390×844: lettura termina a 752 px; i quattro percorsi iniziano a 389/573 px e terminano a 561/745 px. Tutte le scelte sono visibili sopra la barra mobile senza scorrere.
+- Osservazione visiva Home mobile e desktop, Carriera mobile e capitolo Barcellona desktop, Trofei mobile. Controllate gerarchia, icone, stemmi, colonne testo/media, badge conteggi e densità delle righe.
+- 170 riferimenti/ancore/attributi/cache controllati; test navigazione e accordion superati; diff senza errori.
+
+Chrome cloud con viewport in iframe. Non verificati Safari, dispositivi fisici o lettori di schermo. Nessuna certificazione WCAG o nuovo punteggio prestazionale. Seguono i rapporti storici.
+
+---
+
 # Ricostruzione Home, Carriera e Trofei — 16 ottobre 2026, 00:08 UTC+2
 
 Le tre pagine hanno nuovo markup, componenti `r-*` e foglio `rebuilt.css`. Non si tratta di un ulteriore spostamento delle vecchie schede. Lo snapshot verificato è `1e7fbff7f17a6a2cf525c4ac8ebd309b9e76b184`; le finiture successive conservano un’ancora storica, esplicitano il titolo Trofei e aggiungono lo stemma Newell’s già presente negli asset.

@@ -1,3 +1,25 @@
+# Composizione visiva corrente — 16 ottobre 2026
+
+Questa revisione corregge l’ingombro delle aperture e l’uniformità eccessiva dei blocchi di Home, Carriera e Trofei. Usa componenti `r-*` e icone SVG locali `ui-*` nel foglio `assets/css/rebuilt.css`.
+
+## Ordine e posizioni
+
+- Home mobile: apertura compatta → quattro percorsi in griglia 2×2 (quando lo spazio del testo lo permette) → numeri → nazionale. A 390×844 i quattro collegamenti rientrano nell’area di lettura prima della barra mobile.
+- Carriera: icona pagina → scorciatoie con stemmi → capitoli con stemma a sinistra, titolo sopra il periodo e testata distinta. Desktop: testo e cronologia a sinistra, foto e dati a destra, collegamento ai trofei su una riga completa. Mobile: stessa gerarchia in una colonna.
+- Trofei: icona pagina → categorie con icone → intestazioni di sezione → schede squadra. Ogni competizione ha simbolo, nome, conteggio in badge e anni espandibili. Desktop: due colonne per le competizioni; mobile: una.
+
+## Segnali visivi
+
+Libro = carriera, coppa = trofei, grafico = record, bandiera = nazionale, pallone = gol, calendario = presenze/periodi, stella = premi. Icona accanto all’etichetta; nessuna funzione dipende dall’icona o dal colore. I percorsi Home hanno accenti blu, oro, viola e verde con testo scuro; superfici principali bianche o carta. Bordi, ombre leggere e testate colorate distinguono i livelli senza gradienti.
+
+## Ritmo e accessibilità
+
+Passi principali 16/24/32 px, spazi interni più contenuti sui telefoni. Target di almeno 44 px, focus visibile e testo al 200% gestito con ricomposizione delle griglie. Il feedback di pressione usa 1 px di spostamento solo senza movimento ridotto. Lo shell condiviso conserva la barra mobile fluttuante e la cronologia di lettura.
+
+---
+
+## Documentazione precedente (storica)
+
 # Sistema corrente: Home, Carriera e Trofei ricostruite
 
 16 ottobre 2026. Per queste tre pagine, `assets/css/rebuilt.css` e i componenti `r-*` sostituiscono le composizioni precedenti. `site.css` continua a definire lo shell condiviso, i font, la navigazione e le altre pagine.
