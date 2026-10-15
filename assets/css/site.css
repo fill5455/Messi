@@ -796,3 +796,5 @@ main{padding-bottom:32px}
  .profile{gap:12px}
 }
 @media(prefers-reduced-motion:reduce){.destination,.chapter,.nav-link{transition:none}}
+
+@media(min-width:800px){.ios-tabbar{background:#fff}.nav-link:not([aria-current]){background:#fff;color:var(--ink)}.nav-link:not([aria-current]):hover{background:var(--sky-soft)}}
