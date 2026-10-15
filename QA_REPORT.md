@@ -1,3 +1,25 @@
+# Identità e schede espandibili — 16 ottobre 2026
+
+Revisione di identità e movimento verificata in Chrome cloud. La matrice completa usa `0fc641f`; le ultime rifiniture di input sono state ricontrollate con test logici e interazioni browser su `fa4db795`.
+
+| Controllo eseguito | Risultato |
+| --- | --- |
+| Sei pagine × sei larghezze 320–1440 px × testo 100% e 200% | 72 scenari senza overflow, immagini mancanti, sovrapposizione della barra o violazioni axe nei tag WCAG selezionati |
+| Sei pagine × quattro viewport bassi, testo 200% | 24 scenari senza anomalie rilevate |
+| Tutti i dettagli a 320 px, testo 200% | 44 dettagli aperti senza anomalie rilevate |
+| Riquadro Home → Trofei | View Transition attiva osservata; destinazione Trofei, coppa condivisa, tema oro attivo |
+| Squadra → espansione desktop e mobile | Scheda originale a larghezza completa, altre tre schede sostituite dal contenuto contestuale; nessun dialogo |
+| Chiusura dopo espansione completa | Quattro schede nuovamente visibili, hash rimosso, stato di transizione ripulito |
+| Anni delle vittorie, apertura e seconda pressione | Intento di chiusura osservato; stato finale chiuso, altezza e overflow temporanei rimossi |
+| Test logici movimento | Inversione dall’altezza corrente, ultimo intento prima dello snapshot, preferenza ridotta, tastiera immediata e ripristino della posizione superati |
+| Integrità | 348 riferimenti locali/ancore/attributi/versioni cache; icone della navigazione coerenti sulle sei pagine; simboli SVG verificati; test navigazione e accordion superati |
+
+Durante il primo controllo sono emersi tre breadcrumb privi di etichetta dopo la sostituzione degli SVG e un overflow del footer a 320 px con testo 200%. Entrambi corretti e ricontrollati nella matrice completa.
+
+Limiti: browser Chrome cloud, viewport in iframe; Safari, lettori di schermo e dispositivi fisici non verificati. I test logici coprono gli intenti ravvicinati; il comportamento dei tocchi durante le snapshot transition richiede ancora riscontro su dispositivi fisici. La preferenza di movimento ridotto è verificata con test logici, non cambiando le impostazioni del sistema cloud. Nei browser senza View Transitions resta un passaggio semplice e funzionale. Nessuna certificazione WCAG o nuovo punteggio prestazionale.
+
+---
+
 # Gerarchia visiva, icone e spazi — 16 ottobre 2026, 00:31 UTC+2
 
 Verifica dello snapshot `99a5505c8e085208497dabf9f6f82129f2f1f604` e rifinitura dello spazio tra nome e cognome nella testata desktop.

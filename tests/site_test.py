@@ -3,6 +3,7 @@ from pathlib import Path
 from html.parser import HTMLParser
 from urllib.parse import urlsplit, unquote
 import hashlib, re
+import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 class Page(HTMLParser):
@@ -46,6 +47,8 @@ for name,p in pages.items():
         assert path.is_file(), f'Missing {href} from {name}'
         if url.fragment and path.name in pages:
             assert unquote(url.fragment) in pages[path.name].ids, f'Missing anchor {href} from {name}'
+        if url.fragment and path.suffix=='.svg':
+            assert any(e.get('id')==unquote(url.fragment) for e in ET.parse(path).iter()), f'Missing icon: {href}'
         version=re.search(r'(?:^|&)v=([a-f0-9]+)',url.query)
         if version: assert hashlib.sha256(path.read_bytes()).hexdigest().startswith(version[1]), f'Stale version: {href}'
         count+=1

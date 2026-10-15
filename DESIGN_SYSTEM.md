@@ -1,3 +1,21 @@
+# Identità e interazione correnti
+
+16 ottobre 2026. La fonte corrente per palette, simboli e comportamento è [APP_IDENTITY.md](APP_IDENTITY.md). Le icone condivise sono in `assets/icons.svg`, i colori semantici e gli stati in `assets/css/identity.css`, le espansioni in `assets/js/card-motion.mjs`.
+
+Carriera, Trofei, Record e Argentina hanno ciascuno lo stesso simbolo e colore in Home, navigazione, testate, collegamenti e footer. Le squadre usano i propri stemmi e si espandono nella stessa area della griglia, con ritorno esplicito. Questa revisione sostituisce il precedente modello di capitoli sempre aperti.
+
+| Prima | Adesso | Motivo |
+| --- | --- | --- |
+| SVG copiati e colori assegnati per singolo componente | Sprite condivisa e token per argomento | Identità ripetibile attraverso le pagine |
+| Squadra → scorrimento a un blocco già aperto | Scheda → espansione contestuale della scheda stessa | Legame visibile fra selezione e contenuto |
+| Cambio pagina immediato dai riquadri Home | Transizione condivisa fra riquadro e testata | Continuità spaziale e conferma della destinazione |
+| Dettagli nativi senza interpolazione | Apertura e chiusura locali, reversibili | Passaggio di stato più leggibile |
+| Movimento generale | Durate per funzione, tastiera e preferenza ridotta immediate | Fluidità senza rallentare ogni interazione |
+
+---
+
+## Documentazione precedente (storica)
+
 # Composizione visiva corrente — 16 ottobre 2026
 
 Questa revisione corregge l’ingombro delle aperture e l’uniformità eccessiva dei blocchi di Home, Carriera e Trofei. Usa componenti `r-*` e icone SVG locali `ui-*` nel foglio `assets/css/rebuilt.css`.
