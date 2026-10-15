@@ -650,3 +650,17 @@ main:focus{outline:none}
 .page-title-row{flex-wrap:wrap}
 .page-title-row h1{flex:1 1 10rem}
 @media(max-width:799px){.ios-tabbar{grid-template-columns:repeat(auto-fit,minmax(min(100%,4rem),1fr))}}
+/* Interior pages lead with the reading task; the photo is a visual landmark. */
+@media(max-width:699px){
+ .page-heading:has(.heading-photo){display:flex;flex-wrap:wrap;align-items:center;gap:16px}
+ .page-heading:has(.heading-photo) .heading-copy{flex:1 1 10rem;min-width:0}
+ .page-heading:has(.heading-photo) .page-title-row{display:block}
+ .page-heading:has(.heading-photo) .page-symbol{display:none}
+ .page-heading:has(.heading-photo) h1{font-size:2rem;line-height:1.15}
+ .page-heading:has(.heading-photo) .heading-photo{flex:0 1 88px;width:88px;margin:0}
+ .page-heading:has(.heading-photo) .heading-photo img{width:88px;height:128px;border-radius:12px;object-fit:cover}
+ .page-heading:has(.portrait-photo) .portrait-photo img{object-fit:contain}
+ .page-heading:has(.heading-photo) .heading-photo figcaption{display:none}
+ .page-index{padding-top:16px}
+ .page-section{padding-top:24px}
+}

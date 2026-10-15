@@ -27,3 +27,11 @@ Sotto 700 px il layout usa una sola colonna: testata ordinata in titolo, testo, 
 La gerarchia di lettura usa DM Sans per titoli di sezione e approfondimenti anche sul desktop. Indici interni guidano alle sezioni; gli approfondimenti iniziano chiusi e preservano lo stato durante la navigazione. Ingressi fotografici di 240 ms, feedback di 180 ms e disclosure di 200 ms, con cancellazione e rispetto del movimento ridotto. I contenuti rimangono disponibili senza animazioni o JavaScript.
 
 Le animazioni di ingresso interessano la testata e i capitoli fotografici; i blocchi di lettura restano stabili. Tastiera e movimento ridotto interrompono il movimento. Sotto 500 px di altezza l’interfaccia compatta intestazione, navigazione e testate per lasciare spazio alla lettura. Ricerca e filtri dei Record si riflettono nei parametri `q` e `f`, conservando hash e altri parametri del collegamento.
+
+## Orientamento e navigazione mobile
+
+La barra mobile è un dock fluttuante, staccato di 12 px dai bordi e sopra l’area sicura, con quattro destinazioni stabili, etichette e icone SVG. Solo la pagina realmente attiva viene evidenziata. Argentina e Crediti conservano un titolo persistente e un percorso Home → pagina, senza indicare un’altra pagina come corrente.
+
+Ogni nuova navigazione parte dall’inizio. La scheda già attiva riporta in alto. Indietro/Avanti ripristinano la singola voce della cronologia, inclusi posizione di lettura, approfondimenti e filtri. Gli indici con freccia in basso spostano alla sezione nella stessa pagina; i collegamenti con freccia a destra aprono un percorso diverso.
+
+I Trofei sono separati in pannelli per club, riconoscibili dallo stemma; gli stessi stemmi accompagnano i capitoli fotografici e i crediti. Le icone decorative hanno `aria-hidden`; i nomi visibili restano la fonte dell’etichetta accessibile.
