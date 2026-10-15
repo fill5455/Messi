@@ -382,3 +382,8 @@
  .r-editions summary{font-size:.6875rem}
 }
 @media(prefers-reduced-motion:reduce){.ui-cue,.r-stop,.r-award-card{transition:none}}
+
+.rebuilt-page[data-page=trofei] .ui-page-cue{background:#fcf4dc;color:#795414;border:1px solid #e7d69d}
+.r-award-section:has(#national-trophies)>.r-section-head>.ui-cue{background:#e6f4ee;color:#25674b}
+.r-award-section:has(#individual-awards)>.r-section-head>.ui-cue{background:#f0ecfa;color:#5d4386}
+@media(prefers-reduced-motion:no-preference){.r-route:active,.team-shortcut:active{transform:translateY(1px)}}
