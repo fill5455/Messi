@@ -118,9 +118,10 @@ export function installApp(doc=document,host=window) {
       (state.open||[]).forEach(id=>{const d=doc.getElementById(id);if(d?.tagName==='DETAILS')d.open=true;});
       feedback.refresh();features.mount(state);currentURL=new URL(host.location.href);
       region.scrollTop=state.scroll||0;
-      if(currentURL.hash)revealHash();
+      const restoredPosition=options.history==='none'&&typeof state.scroll==='number';
+      if(currentURL.hash&&!restoredPosition)revealHash();
       measure();
-      if(keyboard&&!currentURL.hash)doc.getElementById('contenuto')?.focus({preventScroll:true});
+      if(keyboard&&(!currentURL.hash||restoredPosition))doc.getElementById('contenuto')?.focus({preventScroll:true});
       if(live)live.textContent=`Pagina ${header.querySelector('.current-page')?.textContent||''}`;
     });
   };
