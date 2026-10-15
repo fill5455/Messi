@@ -1,3 +1,4 @@
+import { installCardMotion } from './card-motion.mjs?v=41a8f768e5';
 import { installFeedback } from './motion.mjs?v=e83343bb17';
 import { installFeatures } from './features.mjs?v=71a813bf33';
 
@@ -41,8 +42,21 @@ export function installApp(doc=document,host=window) {
   let currentURL=new URL(host.location.href), clearance=112, keyboard=true;
   const live=doc.querySelector('.navigation-status');
   const reduced=feedback.reduced;
-  const cancelTransition=()=>{};
-  const mutate=async update=>{update();};
+  const cardMotion=installCardMotion(doc,host,{reduced});
+  let routeTransition=null,routeNodes=[];
+  const clearRoute=()=>{routeNodes.forEach(n=>n.style.removeProperty('view-transition-name'));routeNodes=[];delete doc.documentElement.dataset.routeTransition;};
+  const cancelTransition=()=>{routeTransition?.skipTransition();routeTransition=null;clearRoute();};
+  const mutate=async(update,origin=null)=>{
+    if(!origin?.isConnected||keyboard||reduced.matches||!doc.startViewTransition){update();return;}
+    cancelTransition();origin.style.viewTransitionName='route-card';routeNodes=[origin];doc.documentElement.dataset.routeTransition='true';
+    const transition=doc.startViewTransition(()=>{
+      update();const destination=doc.querySelector('main .r-heading, main .page-heading');
+      if(destination){destination.style.viewTransitionName='route-card';routeNodes.push(destination);}
+    });
+    routeTransition=transition;
+    transition.finished.catch(()=>{}).finally(()=>{if(routeTransition===transition){clearRoute();routeTransition=null;}});
+    await transition.updateCallbackDone;
+  };
   mutate.cancel=cancelTransition;
   const features=installFeatures(doc,host,{mutate,reduced});
   const selectedFile=url=>{
@@ -106,7 +120,7 @@ export function installApp(doc=document,host=window) {
       remember();
       const destinationEntry=options.history==='push'?newEntry():(host.history.state?.messiEntry||newEntry());
       const state=options.history==='none'?(pageState.get(destinationEntry)||{}):{};
-      features.closeOverlay(true);feedback.settle();
+      features.closeOverlay(true);feedback.settle();cardMotion.settle();
       region.innerHTML=page.querySelector('.screen-scroll').innerHTML;
       header.innerHTML=page.querySelector('.app-header').innerHTML;
       doc.title=page.title;
@@ -116,21 +130,21 @@ export function installApp(doc=document,host=window) {
       currentEntry=destinationEntry;
       currentURL=new URL(url.href);select(currentURL);
       (state.open||[]).forEach(id=>{const d=doc.getElementById(id);if(d?.tagName==='DETAILS')d.open=true;});
-      feedback.refresh();features.mount(state);currentURL=new URL(host.location.href);
+      feedback.refresh();cardMotion.refresh();features.mount(state);currentURL=new URL(host.location.href);
       region.scrollTop=state.scroll||0;
       const restoredPosition=options.history==='none'&&typeof state.scroll==='number';
       if(currentURL.hash&&!restoredPosition)revealHash();
       measure();
       if(keyboard&&(!currentURL.hash||restoredPosition))doc.getElementById('contenuto')?.focus({preventScroll:true});
       if(live)live.textContent=`Pagina ${header.querySelector('.current-page')?.textContent||''}`;
-    });
+    },options.origin);
   };
   const navigator=createNavigator({load,render,cancelTransition,busy:loading=>{
     header.classList.toggle('is-loading',loading);nav.setAttribute('aria-busy',String(loading));region.setAttribute('aria-busy',String(loading));
     if(loading&&live)live.textContent='Caricamento della pagina…';
   },fallback:url=>host.location.assign(url.href)});
-  const go=(url,history='push')=>{
-    remember();navigator.go(url,{history});
+  const go=(url,history='push',origin=null)=>{
+    remember();navigator.go(url,{history,origin});
   };
   doc.addEventListener('keydown',()=>{keyboard=true;});doc.addEventListener('pointerdown',()=>{keyboard=false;});
   doc.addEventListener('click',event=>{
@@ -153,7 +167,7 @@ export function installApp(doc=document,host=window) {
     if(pageKey(url)===pageKey(currentURL)&&url.search===new URL(host.location.href).search&&url.hash){
       remember();currentEntry=newEntry();host.history.pushState({messi:true,messiEntry:currentEntry},'',url.href);currentURL=url;revealHash();return;
     }
-    go(url);
+    go(url,'push',anchor.matches('.r-route')?anchor:null);
   });
   host.addEventListener('popstate',()=>go(new URL(host.location.href),'none'));
   host.addEventListener('hashchange',()=>{
