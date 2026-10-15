@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {createNavigator} from '../assets/js/app.mjs';
-import {createFavorites,matchesRecord} from '../assets/js/features.mjs';
+import {createFavorites,matchesRecord,readRecordState,recordStateURL} from '../assets/js/features.mjs';
 
 const deferred=()=>{let resolve,reject;const promise=new Promise((yes,no)=>{resolve=yes;reject=no;});return {promise,resolve,reject};};
 const requests=new Map(),renders=[],busy=[],fallbacks=[];
@@ -35,3 +35,14 @@ const record={id:'record-gol',category:'gol',title:'Più gol in una stagione',pe
 assert(matchesRecord(record,'piu 2012 73','gol'));assert(!matchesRecord(record,'73','premi'));
 assert(!matchesRecord(record,'73','salvati'));assert(matchesRecord(record,'73','salvati',new Set(['record-gol'])));
 console.log('PASS validated storage, safe snapshots, session fallback, clearing, accent/year search and saved/category filters');
+
+const address=new URL('https://example.test/record.html?utm_source=link&q=2012&f=gol#record-91');
+assert.deepEqual(readRecordState(address),{query:'2012',filter:'gol'});
+const changed=recordStateURL(address,{query:'  Pallone d’Oro  ',filter:'premi'});
+assert.equal(changed.hash,'#record-91');assert.equal(changed.searchParams.get('utm_source'),'link');
+assert.deepEqual(readRecordState(changed),{query:'Pallone d’Oro',filter:'premi'});
+const reset=recordStateURL(changed,{});
+assert.equal(reset.searchParams.has('q'),false);assert.equal(reset.searchParams.has('f'),false);
+assert.equal(readRecordState('https://example.test/record.html?f=invalid').filter,'tutti');
+assert.equal(readRecordState('https://example.test/record.html?q='+'a'.repeat(200)).query.length,80);
+console.log('PASS shareable search state, URL encoding, invalid filters, bounded queries and preserved URL context');

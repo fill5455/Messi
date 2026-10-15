@@ -74,7 +74,7 @@ export class Spring {
 /** Native disclosures, cancellable entrance motion and direct control feedback. */
 export function installFeedback(root, host = window) {
   const reduced = host.matchMedia('(prefers-reduced-motion: reduce)');
-  let observer = null;
+  let observer = null, keyboardInput = false;
   const animations = new Set(), seen = new WeakSet();
   const stopMotion = () => {
     observer?.disconnect(); observer = null;
@@ -82,12 +82,12 @@ export function installFeedback(root, host = window) {
     animations.clear();
   };
   const enter = (node, delay = 0) => {
-    if (reduced.matches || !node.animate || seen.has(node)) return;
+    if (keyboardInput || reduced.matches || !node.animate || seen.has(node)) return;
     seen.add(node);
     const animation = node.animate([
-      { opacity: .65, transform: 'translateY(12px)' },
+      { opacity: .88, transform: 'translateY(8px)' },
       { opacity: 1, transform: 'translateY(0)' }
-    ], { duration: 340, delay, easing: 'cubic-bezier(.2,.8,.2,1)' });
+    ], { duration: 240, delay, easing: 'cubic-bezier(.2,.8,.2,1)' });
     animations.add(animation);
     animation.finished.then(() => animations.delete(animation)).catch(() => animations.delete(animation));
   };
@@ -96,9 +96,11 @@ export function installFeedback(root, host = window) {
   const controls = '.destination, summary, .primary-button, .chapter, button';
   root.addEventListener('pointerdown', event => {
     if (!event.isPrimary || event.button !== 0) return;
+    keyboardInput=false;root.documentElement?.classList.remove('keyboard-input');
     release(); pressed = event.target.closest(controls);
     if (pressed && !pressed.disabled) pressed.classList.add('is-pressed');
   });
+  root.addEventListener('keydown',()=>{keyboardInput=true;root.documentElement?.classList.add('keyboard-input');release();stopMotion();});
   host.addEventListener('pointerup', release);
   host.addEventListener('pointercancel', release);
   host.addEventListener('blur', release);
@@ -112,7 +114,7 @@ export function installFeedback(root, host = window) {
   };
   const refresh = () => {
     release(); stopMotion();
-    if (reduced.matches || !root.querySelectorAll) return;
+    if (keyboardInput || reduced.matches || !root.querySelectorAll) return;
     const heading = root.querySelector('.profile, .page-heading');
     if (heading) enter(heading);
     if (!host.IntersectionObserver) return;
@@ -121,10 +123,10 @@ export function installFeedback(root, host = window) {
       for (const entry of entries) {
         if (!entry.isIntersecting) continue;
         observer?.unobserve(entry.target);
-        enter(entry.target, delay); delay = Math.min(delay + 45, 135);
+        enter(entry.target, delay); delay = Math.min(delay + 30, 90);
       }
     }, { root: root.querySelector('.screen-scroll'), threshold: .1 });
-    root.querySelectorAll('.destination, .chapter, .content-detail, .record-row, .event-list>li, .home-facts, .reading-card').forEach(node => observer.observe(node));
+    root.querySelectorAll('.chapter, .worldcup-feature figure').forEach(node => observer.observe(node));
   };
   reduced.addEventListener?.('change', () => { if (reduced.matches) stopMotion(); else refresh(); });
   host.addEventListener('pagehide', stopMotion);

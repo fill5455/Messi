@@ -1,5 +1,5 @@
-import { installFeedback } from './motion.mjs?v=74964ec467';
-import { installFeatures } from './features.mjs?v=95cf4ac336';
+import { installFeedback } from './motion.mjs?v=b547626a08';
+import { installFeatures } from './features.mjs?v=bf0d6fa0cf';
 
 /** Latest navigation wins, including when an older fetch or transition finishes late. */
 export function createNavigator({load,render,busy=()=>{},cancelTransition=()=>{},fallback=()=>{}}) {
@@ -56,6 +56,7 @@ export function installApp(doc=document,host=window) {
   const measure=()=>{
     if(host.visualViewport && host.visualViewport.scale===1)surface.style.height=`${Math.round(host.visualViewport.height)}px`;
     else surface.style.removeProperty('height');
+    surface.classList.toggle('is-compact',host.innerWidth<800 && (host.visualViewport?.height||host.innerHeight)<500);
     clearance=host.matchMedia('(min-width: 800px)').matches?24:Math.ceil(nav.getBoundingClientRect().height+(parseFloat(host.getComputedStyle(nav).bottom)||0)+16);
     surface.style.setProperty('--nav-clearance',`${clearance}px`);
     requestAnimationFrame(()=>{if(region.contains(doc.activeElement))ensureVisible(doc.activeElement);});
@@ -119,7 +120,7 @@ export function installApp(doc=document,host=window) {
   };
   const navigator=createNavigator({load,render,cancelTransition,busy:loading=>{
     header.classList.toggle('is-loading',loading);nav.setAttribute('aria-busy',String(loading));region.setAttribute('aria-busy',String(loading));
-    if(loading&&live)live.textContent='Caricamento della pagina';
+    if(loading&&live)live.textContent='Caricamento della pagina…';
   },fallback:url=>host.location.assign(url.href)});
   const go=(url,history='push')=>{
     remember();navigator.go(url,{history});
@@ -134,7 +135,11 @@ export function installApp(doc=document,host=window) {
     }
     const url=new URL(anchor.getAttribute('href'),host.location.href);
     if(!allowed(url))return;
-    event.preventDefault();go(url);
+    event.preventDefault();
+    if(pageKey(url)===pageKey(currentURL)&&url.search===new URL(host.location.href).search&&url.hash){
+      remember();host.history.pushState({messi:true},'',url.href);currentURL=url;revealHash();return;
+    }
+    go(url);
   });
   host.addEventListener('popstate',()=>go(new URL(host.location.href),'none'));
   host.addEventListener('hashchange',()=>{

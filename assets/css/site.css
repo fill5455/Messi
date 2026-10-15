@@ -261,7 +261,7 @@ main:focus{outline:none}
  .record-top{gap:16px}
  .record-number{font-size:3.5rem}
 }
-@media(hover:hover){
+@media(hover:hover) and (pointer:fine){
  .nav-link:not([aria-current=page]):hover{background:var(--sky-soft)}
  .primary-button:hover{background:var(--accent);border-color:var(--accent)}
  .worldcup-feature .primary-button:hover{background:var(--sky);color:var(--ink)}
@@ -324,7 +324,7 @@ main:focus{outline:none}
  .hero-origin{order:initial;flex:initial;font-size:.875rem;line-height:1.6}
  .hero-portrait{order:initial;flex:initial;max-width:none;width:100%;margin-top:24px;align-self:stretch}
  .hero-portrait img{width:100%;height:auto;aspect-ratio:3/2;object-position:50% 28%}
- .hero-portrait figcaption{font-size:.8125rem;line-height:1.5}
+ .hero-portrait figcaption{font-size:.875rem;line-height:1.5}
  .home-facts,.home-navigation,.home-chapters{padding:28px var(--inset)}
  .home-facts h2{margin-bottom:20px}
  .home-facts .fact-list{display:flex;flex-direction:column;gap:0}
@@ -355,7 +355,7 @@ main:focus{outline:none}
  .heading-photo img{height:auto;aspect-ratio:3/2}
  .portrait-photo{width:100%;justify-self:auto}
  .portrait-photo img{height:220px;width:100%;aspect-ratio:auto;object-fit:contain}
- .heading-photo figcaption{padding-top:10px;font-size:.8125rem}
+ .heading-photo figcaption{padding-top:10px;font-size:.875rem}
  .heading-text-only{border:0;background:var(--sky-soft)}
  .page-section{padding:28px 0}
  .section-label{font:700 1.75rem/1.2 var(--font-body);margin-bottom:12px;padding-inline:6px}
@@ -411,7 +411,7 @@ main:focus{outline:none}
 }
 @media(max-width:799px){
  .ios-tabbar{gap:4px;padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:var(--white)}
- .nav-link{flex-direction:column;gap:5px;min-height:60px;padding:8px 4px;font-size:.8125rem;line-height:1.3;white-space:normal}
+ .nav-link{flex-direction:column;gap:5px;min-height:60px;padding:8px 4px;font-size:.875rem;line-height:1.3;white-space:normal}
  .nav-link .ios-icon{display:block;width:20px;height:20px}
 }
 
@@ -447,7 +447,7 @@ main:focus{outline:none}
  .profile{padding:24px 20px}
  .profile p,.detail-body>p,.record-meaning,.reading-card>p,.section-intro p{font-size:1.0625rem;line-height:1.8}
  .hero-portrait img{aspect-ratio:auto;height:180px;object-position:50% 28%}
- .hero-origin{font-size:.8125rem}
+ .hero-origin{font-size:.875rem}
  .hero-copy{gap:14px}
  .home-navigation{margin-top:20px;padding:24px 20px}
  .section-intro{margin-bottom:16px}
@@ -462,7 +462,7 @@ main:focus{outline:none}
  .page-index a{padding:10px 12px;font-size:.875rem}
  .heading-photo img{height:160px;aspect-ratio:auto;object-fit:cover}
  .portrait-photo img{height:180px;object-fit:contain}
- .heading-photo figcaption{font-size:.8125rem}
+ .heading-photo figcaption{font-size:.875rem}
  .section-label{font-size:1.625rem;line-height:1.3;margin-bottom:12px}
  .content-detail[open]>summary{margin-bottom:20px}
  .detail-body{padding-inline:18px}
@@ -481,16 +481,12 @@ main:focus{outline:none}
 .is-pressed{transform:scale(.985)}
 .nav-link .ios-icon{transition:transform 220ms cubic-bezier(.2,.8,.2,1)}
 .nav-link[aria-current=page] .ios-icon{transform:translateY(-2px)}
-@media(hover:hover){.chapter:hover,.destination:hover{transform:translateY(-3px)}.primary-button:hover>svg{transform:translateX(4px)}}
+@media(hover:hover) and (pointer:fine){.chapter:hover,.destination:hover{transform:translateY(-3px)}.primary-button:hover>svg{transform:translateX(4px)}}
 .primary-button>svg{transition:transform 180ms ease-out}
 @media(prefers-reduced-motion:no-preference){
- @keyframes disclosure-enter{from{opacity:.55;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
- .content-detail[open]>.detail-body{animation:disclosure-enter 260ms cubic-bezier(.2,.8,.2,1)}
- @supports(interpolate-size:allow-keywords){
-  .content-detail{interpolate-size:allow-keywords}
-  .content-detail::details-content{height:0;overflow:clip;transition:height 280ms cubic-bezier(.2,.8,.2,1),content-visibility 280ms allow-discrete}
-  .content-detail[open]::details-content{height:auto}
- }
+ @keyframes disclosure-enter{from{opacity:.85;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+ .content-detail[open]>.detail-body{animation:disclosure-enter 200ms cubic-bezier(.2,.8,.2,1)}
+
 }
 @media(prefers-reduced-motion:reduce){.is-pressed,.nav-link[aria-current=page] .ios-icon,.chapter:hover,.destination:hover,.primary-button:hover>svg{transform:none!important}}
 
@@ -502,3 +498,35 @@ main:focus{outline:none}
 
 /* The mobile reading viewport ends above navigation instead of behind it. */
 @media(max-width:799px){.screen-scroll{margin-bottom:calc(var(--nav-clearance) - 16px);padding-bottom:24px;scroll-padding:24px}}
+
+/* Fine reading details and short-viewport ergonomics. */
+:root{--ease-out:cubic-bezier(.2,.8,.2,1)}
+.detail-body>p+p{margin-top:4px}
+.credit-links{gap:12px 24px}
+.credit-links a{line-height:1.6}
+.keyboard-input .detail-body{animation:none!important}
+.keyboard-input .content-detail>summary>svg{transition:none}
+.utility-dialog{overscroll-behavior:contain;scrollbar-gutter:stable}
+.photo-error{padding:24px;background:var(--sky-soft);border-radius:var(--radius-sm);line-height:1.75}
+@media(max-width:799px){
+ .ios-surface.is-compact .app-header{display:none}
+ .ios-surface.is-compact .nav-link{min-height:44px;padding:8px 4px;gap:0}
+ .ios-surface.is-compact .nav-link .ios-icon{display:none}
+ .ios-surface.is-compact main{padding-top:12px}
+}
+@media(max-width:799px) and (max-height:499px){
+ .app-header{display:none}
+ .nav-link{min-height:44px;padding:8px 4px;gap:0}
+ .nav-link .ios-icon{display:none}
+ main{padding-top:12px}
+}
+@media print{
+ html,body{overflow:visible;background:#fff}
+ .ios-surface{height:auto!important;display:block}
+ .app-header,.ios-tabbar,.app-footer,.page-index,.record-tools,.record-actions,.toast,.photo-zoom{display:none!important}
+ .screen-scroll{overflow:visible;margin:0;padding:0}
+ main{max-width:none;padding:0}
+ .profile,.page-heading,.worldcup-feature{break-inside:avoid}
+ .content-detail,.record-row,.event-list>li{break-inside:avoid}
+ .utility-dialog{display:none}
+}
