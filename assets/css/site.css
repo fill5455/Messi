@@ -664,3 +664,135 @@ main:focus{outline:none}
  .page-index{padding-top:16px}
  .page-section{padding-top:24px}
 }
+
+/* Reading composition: clear page openings, compact mobile overview, calm content. */
+:root{--paper:#eef3f6;--line:#d5e0e5;--sky-soft:#e5f2f8;--radius-lg:32px}
+.app-header{background:#fff;border-bottom:0}
+.brand span,.footer-brand span{border-radius:10px}
+h2{font-family:var(--font-body);font-size:clamp(1.625rem,3vw,2.25rem);line-height:1.2;letter-spacing:-.035em}
+h3{line-height:1.35}
+.primary-button{border-radius:16px}
+main{padding-bottom:32px}
+.profile{background:var(--ink);color:#fff;border-radius:32px;overflow:hidden}
+.profile p,.hero-origin{color:#dcebf1}
+.profile .primary-button{background:var(--sky);color:var(--ink);border-color:var(--sky)}
+.hero-portrait img{border-radius:24px}
+.hero-portrait figcaption{color:#dcebf1}
+.hero-eyebrow{display:block;font-size:.8125rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sky);margin-bottom:16px}
+.home-navigation{margin-top:12px;background:transparent}
+.home-navigation .section-intro p{font-size:1rem}
+.destination-list{border:0}
+.destination{background:#fff;border:1px solid var(--line);border-radius:24px;min-width:0}
+.destination-copy strong{font-family:var(--font-body);font-size:1.5rem;line-height:1.2;letter-spacing:-.03em}
+.destination-symbol{background:var(--sky-soft);border-radius:16px;width:52px;height:52px}
+.home-facts .fact-list{gap:12px}
+.home-facts .fact-list>div{background:#fff;border-radius:24px;border:1px solid var(--line);padding:24px}
+.chapter{background:#fff;border:1px solid var(--line);border-radius:24px;padding:12px 12px 24px}
+.chapter>img{border-radius:16px}
+.chapter-meta,.chapter-title,.chapter>span:last-child{padding-inline:8px}
+.chapter-title{font-family:var(--font-body);font-size:1.5rem;line-height:1.3}
+.page-heading,.heading-text-only{background:#fff;border:1px solid var(--line);border-radius:28px}
+.page-heading h1{font-family:var(--font-body);font-size:clamp(2.25rem,5vw,4rem);letter-spacing:-.05em;line-height:1.1}
+.page-heading p{font-size:1.0625rem;color:var(--secondary);max-width:44ch}
+.page-symbol{background:var(--sky-soft)}
+.heading-photo img{border-radius:20px}
+.page-index p{font-size:.8125rem;text-transform:uppercase;letter-spacing:.06em}
+.page-index>div{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,12rem),1fr));gap:8px}
+.page-index a{display:flex;justify-content:space-between;padding:14px 16px;border-radius:16px;min-height:52px;color:var(--ink)}
+.page-index a>svg{color:var(--accent)}
+.section-label{font-family:var(--font-body);font-size:1.625rem;line-height:1.25;letter-spacing:-.03em;margin-bottom:12px}
+.section-help{line-height:1.7;margin-bottom:20px}
+.detail-list,.trophy-clubs{gap:12px}
+.content-detail{border-radius:24px;overflow:clip}
+.content-detail>summary{padding:24px;min-height:100px}
+.summary-copy>strong{font-family:var(--font-body);font-size:1.25rem;line-height:1.35;letter-spacing:-.02em;margin-bottom:4px}
+.summary-copy>span{font-size:.9375rem}
+.content-detail>summary>svg{background:var(--sky-soft);box-sizing:content-box;padding:10px;border-radius:50%;width:16px;height:16px}
+.content-detail[open]{border-color:#8bb8ca}
+.content-detail[open]>summary{background:#f1f8fb;margin-bottom:20px}
+.detail-body{padding:0 24px 28px}
+.detail-body>p{line-height:1.85;max-width:62ch}
+.record-row{border-radius:24px;padding:24px;background:#fff}
+.event-list{gap:16px;border:0}
+.event-list>li{border:1px solid var(--line);border-radius:24px;background:#fff;padding:24px}
+.breadcrumb{color:var(--secondary)}
+.app-footer{background:#e5edf1;border-radius:32px 32px 0 0;margin-top:32px}
+@media(min-width:800px){
+ .ios-tabbar{gap:4px}
+ .nav-link{gap:8px;border-radius:16px}
+ .nav-link>svg{width:18px;height:18px}
+ .profile{margin-top:8px;padding:48px;gap:48px;grid-template-columns:minmax(0,1.1fr) minmax(0,.8fr)}
+ .profile h1{font-size:clamp(4rem,8vw,7rem)}
+ .hero-portrait img{height:430px;object-fit:cover;object-position:50% 25%}
+ .home-navigation .destination{padding:24px;align-content:start;gap:16px}
+ .home-navigation .destination>svg{width:24px;height:24px}
+ .page-heading{padding:32px;grid-template-columns:minmax(0,1fr) 180px;gap:32px}
+ .heading-photo img,.portrait-photo img{height:180px;object-fit:cover;aspect-ratio:1}
+ .heading-photo figcaption{font-size:.75rem}
+ .career-layout{grid-template-columns:minmax(0,1fr) 300px}
+ .career-aside .page-section{background:#fff;border:1px solid var(--line);border-radius:24px}
+}
+@media(max-width:799px){
+ main{padding:16px 16px 24px}
+ .app-header{padding:10px 20px;min-height:68px}
+ .current-page{font-size:.875rem}
+ .ios-tabbar{background:var(--ink);border:1px solid var(--ink);border-radius:30px;padding:6px;bottom:calc(14px + env(safe-area-inset-bottom));left:16px;right:16px;gap:2px;box-shadow:0 8px 24px #14313e24}
+ .nav-link{color:#d8e8ef;border-radius:24px;min-height:64px;font-size:.8125rem;padding:8px 2px;gap:5px}
+ .nav-link[aria-current]{background:var(--sky);color:var(--ink)}
+ .nav-link>svg{width:22px;height:22px}
+ .nav-link:focus-visible{outline-color:#fff}
+ .profile{display:grid;grid-template-columns:minmax(0,1fr) 96px;gap:20px 12px;padding:24px;border-radius:28px}
+ .hero-copy{display:contents}
+ .hero-eyebrow{grid-column:1/-1;margin:0;font-size:.75rem}
+ .profile h1{grid-column:1;grid-row:2;font:700 2.625rem/1 var(--font-display);letter-spacing:0;align-self:center;margin:0}
+ .profile h1 br{display:block}
+ .hero-portrait{grid-column:2;grid-row:2;align-self:center;margin:0;width:100%;max-width:none}
+ .hero-portrait img{width:100%;height:128px;aspect-ratio:auto;object-fit:cover;border-radius:18px}
+ .hero-portrait figcaption{display:none}
+ .profile p{grid-column:1/-1;font-size:1rem;line-height:1.65}
+ .profile .primary-button{grid-column:1/-1;width:100%;min-height:48px}
+ .hero-origin{grid-column:1/-1;font-size:.75rem;line-height:1.5}
+ .home-navigation{padding:28px 0 8px;margin:0}
+ .home-navigation .section-intro{padding:0 4px;gap:8px;margin-bottom:16px}
+ .home-navigation .section-intro h2{font-size:1.5rem}
+ .home-navigation .section-intro p{display:none}
+ .home-navigation .destination-list{gap:10px}
+ .home-navigation .destination{padding:16px;gap:14px;min-height:88px;border-radius:22px;display:flex;flex-wrap:nowrap}
+ .destination-copy strong{font-size:1.125rem;margin-bottom:4px}
+ .destination-copy>span{font-size:.875rem;line-height:1.5}
+ .destination-symbol{width:44px;height:44px;flex-shrink:0}
+ .home-navigation .destination>svg{width:20px;height:20px;align-self:center;margin:0}
+ .home-facts,.home-chapters{padding:32px 0}
+ .home-facts .fact-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,8rem),1fr));gap:10px}
+ .home-facts .fact-list>div{display:flex;flex-direction:column-reverse;align-items:flex-start;gap:8px;padding:20px;border:1px solid var(--line)}
+ .home-facts .fact-list dd{font-size:2rem}
+ .home-facts .fact-list dt{font-size:.875rem}
+ .page-heading:has(.heading-photo),.page-heading{padding:24px;gap:16px;border-radius:24px}
+ .page-heading:has(.heading-photo) .heading-copy{flex:1 1 10rem}
+ .page-heading:has(.heading-photo) h1,.page-heading h1{font-size:2rem}
+ .page-heading:has(.heading-photo) .heading-photo{flex:0 1 64px;width:64px}
+ .page-heading:has(.heading-photo) .heading-photo img{width:64px;height:80px;border-radius:16px}
+ .page-title-row{gap:12px}
+ .page-heading p{font-size:.9375rem;line-height:1.7}
+ .page-index{padding:20px 0 0}
+ .page-index>div{grid-template-columns:1fr}
+ .page-index a{font-size:.875rem;padding:12px 16px;min-height:48px}
+ .page-section{padding:28px 0 0}
+ .content-detail>summary{padding:20px 16px;min-height:96px;gap:12px}
+ .summary-copy>strong{font-size:1.125rem}
+ .summary-copy>span{font-size:.875rem;line-height:1.5}
+ .team-badge{width:36px;height:44px}
+ .detail-body{padding:0 20px 24px}
+ .detail-body>p{font-size:1rem;line-height:1.85}
+ .career-aside .page-section{padding:24px;background:#fff;border:1px solid var(--line);border-radius:24px;margin-top:24px}
+ .worldcup-feature{padding:24px;border-radius:28px}
+ .event-list>li{padding:20px}
+ .breadcrumb{padding:0 4px 8px}
+}
+@media(max-width:799px) and (max-height:499px){
+ .app-header{min-height:36px;padding:4px 16px}
+ .nav-link{min-height:44px;padding:8px 2px}
+ .ios-tabbar{border-radius:24px}
+ .profile{gap:12px}
+}
+@media(prefers-reduced-motion:reduce){.destination,.chapter,.nav-link{transition:none}}
