@@ -73,3 +73,8 @@ html[data-card-motion=ready] .team-card-back{display:inline-flex}
 ::view-transition-old(route-card){animation:card-snapshot-out 150ms ease-out both}
 ::view-transition-new(route-card){animation:card-snapshot-in 280ms 50ms var(--ease-soft) both;object-position:top}
 [data-route-transition]::view-transition-group(root){animation-duration:180ms;animation-timing-function:var(--ease-soft)}
+
+.app-footer nav{grid-template-columns:repeat(auto-fit,minmax(min(100%,10rem),1fr))}
+.app-footer nav a[data-topic]{min-width:0;max-width:100%;white-space:normal;line-height:1.5}
+.app-footer nav a>span{min-width:0;overflow-wrap:anywhere}
+.footer-brand{max-width:100%;flex-wrap:wrap;gap:8px;font-size:2rem}

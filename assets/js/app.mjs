@@ -1,4 +1,4 @@
-import { installCardMotion } from './card-motion.mjs?v=41a8f768e5';
+import { installCardMotion } from './card-motion.mjs?v=ded7eefd63';
 import { installFeedback } from './motion.mjs?v=e83343bb17';
 import { installFeatures } from './features.mjs?v=71a813bf33';
 

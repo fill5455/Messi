@@ -1,12 +1,12 @@
 /** Spatial card expansion and interruptible native disclosure motion. No overlay or portal. */
 export function installCardMotion(doc,host,{reduced}) {
   const running=new Map();
-  let transition=null,revision=0;
+  let transition=null,revision=0,commitTeam=null;
   const immediate=()=>reduced.matches||doc.documentElement.classList.contains('keyboard-input');
   const region=()=>doc.querySelector('.screen-scroll');
   const finish=detail=>running.get(detail)?.finish();
   const settle=()=>{
-    revision++;transition?.skipTransition();transition=null;
+    commitTeam?.();commitTeam=null;revision++;transition?.skipTransition();transition=null;
     [...running.values()].forEach(state=>state.finish());
     doc.querySelectorAll('[data-expand-card]').forEach(d=>d.style.removeProperty('view-transition-name'));
     delete doc.documentElement.dataset.cardTransition;
@@ -32,11 +32,12 @@ export function installCardMotion(doc,host,{reduced}) {
     if(open&&!stage.dataset.returnScroll)stage.dataset.returnScroll=String(region()?.scrollTop||0);
     const update=()=>{
       if(ticket!==revision||!detail.isConnected)return;
+      commitTeam=null;
       stage.querySelectorAll(':scope > details').forEach(d=>{d.open=d===detail&&open;});
       const url=new URL(host.location.href);
       if(open)url.hash=detail.id;else if(url.hash===`#${detail.id}`)url.hash='';
       host.history.replaceState(host.history.state,'',url.href);
-      if(!open){const y=Number(stage.dataset.returnScroll);if(region()&&Number.isFinite(y))region().scrollTop=y;delete stage.dataset.returnScroll;}
+      if(!open){const scroll=region();const y=Number(stage.dataset.returnScroll);if(scroll&&Number.isFinite(y))scroll.scrollTop=y;else if(scroll&&stage.getBoundingClientRect)scroll.scrollTop+=stage.getBoundingClientRect().top-scroll.getBoundingClientRect().top-16;delete stage.dataset.returnScroll;}
     };
     if(instant||immediate()||!doc.startViewTransition){
       update();
@@ -46,7 +47,7 @@ export function installCardMotion(doc,host,{reduced}) {
     detail.style.viewTransitionName='selected-team';
     doc.documentElement.dataset.cardTransition='true';
     try{
-      const active=doc.startViewTransition(update);transition=active;
+      commitTeam=update;const active=doc.startViewTransition(update);transition=active;
       active.finished.catch(()=>{}).finally(()=>{
         if(ticket!==revision)return;
         detail.style.removeProperty('view-transition-name');delete doc.documentElement.dataset.cardTransition;transition=null;
@@ -64,6 +65,10 @@ export function installCardMotion(doc,host,{reduced}) {
     const open=detail.dataset.openTarget?detail.dataset.openTarget==='false':!detail.open;
     if(detail.hasAttribute('data-expand-card'))team(detail,open,event.detail===0);else resize(detail,open,event.detail===0);
   });
+  doc.addEventListener('toggle',event=>{
+    const detail=event.target;if(!detail.matches?.('[data-expand-card]')||!detail.open)return;
+    detail.parentElement.querySelectorAll(':scope > details[open]').forEach(other=>{if(other!==detail)other.open=false;});
+  },true);
   doc.addEventListener('keydown',event=>{
     if(event.key!=='Escape'||doc.querySelector('dialog[open]'))return;
     const active=doc.querySelector('.team-stage > details[open]');
