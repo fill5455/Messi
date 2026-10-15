@@ -1,4 +1,4 @@
-import { installFeedback } from './motion.mjs?v=b547626a08';
+import { installFeedback } from './motion.mjs?v=e83343bb17';
 import { installFeatures } from './features.mjs?v=8a1744376d';
 
 /** Latest navigation wins, including when an older fetch or transition finishes late. */

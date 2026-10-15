@@ -115,7 +115,7 @@ export function installFeedback(root, host = window) {
   const refresh = () => {
     release(); stopMotion();
     if (keyboardInput || reduced.matches || !root.querySelectorAll) return;
-    const heading = root.querySelector('.profile, .page-heading');
+    const heading = root.querySelector('.r-home-hero, .r-heading, .profile, .page-heading');
     if (heading) enter(heading);
     if (!host.IntersectionObserver) return;
     observer = new host.IntersectionObserver(entries => {
