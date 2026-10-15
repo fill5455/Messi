@@ -1,5 +1,5 @@
 import { installFeedback } from './motion.mjs?v=b547626a08';
-import { installFeatures } from './features.mjs?v=bf0d6fa0cf';
+import { installFeatures } from './features.mjs?v=8a1744376d';
 
 /** Latest navigation wins, including when an older fetch or transition finishes late. */
 export function createNavigator({load,render,busy=()=>{},cancelTransition=()=>{},fallback=()=>{}}) {
@@ -73,7 +73,7 @@ export function installApp(doc=document,host=window) {
     let id;try{id=decodeURIComponent(currentURL.hash.slice(1));}catch{return;}
     if(!id)return;
     const target=doc.getElementById(id);if(!target)return;
-    if(target.matches('[data-record]'))features.showAll();
+    if(target.matches('[data-record]')&&target.hidden)features.showAll();
     feedback.reveal(target,true);
     target.scrollIntoView({block:'start',behavior:'auto'});
     if(keyboard){if(!target.hasAttribute('tabindex'))target.setAttribute('tabindex','-1');target.focus({preventScroll:true});}
@@ -110,7 +110,7 @@ export function installApp(doc=document,host=window) {
       if(options.history==='push')host.history.pushState({messi:true},'',url.href);
       currentURL=new URL(url.href);select(currentURL);
       (state.open||[]).forEach(id=>{const d=doc.getElementById(id);if(d?.tagName==='DETAILS')d.open=true;});
-      feedback.refresh();features.mount(state);
+      feedback.refresh();features.mount(state);currentURL=new URL(host.location.href);
       region.scrollTop=state.scroll||0;
       if(currentURL.hash)revealHash();
       measure();
@@ -148,7 +148,7 @@ export function installApp(doc=document,host=window) {
   host.addEventListener('pagehide',()=>{remember();navigator.cancel();});
   host.addEventListener('pageshow',()=>{select(new URL(host.location.href));measure();});
   host.history.scrollRestoration='manual';
-  select(currentURL);features.mount();revealHash();feedback.refresh();
+  select(currentURL);features.mount();currentURL=new URL(host.location.href);revealHash();feedback.refresh();
   return {go,navigator,features,feedback};
 }
 if(typeof document!=='undefined')installApp();

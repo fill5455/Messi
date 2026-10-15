@@ -65,6 +65,7 @@ export function installFeatures(doc,host,{mutate,reduced}) {
   });
   const syncAddress=()=>{
     const next=recordStateURL(host.location.href,{query:input.value,filter});
+    try{const id=decodeURIComponent(next.hash.slice(1));if(rows.some(row=>row.id===id&&row.hidden))next.hash='';}catch{/* Preserve malformed fragments for native navigation. */}
     if(next.href!==host.location.href){try{host.history.replaceState(host.history.state,'',next.href);}catch{/* Local-file previews may deny History writes; filtering still works. */}}
   };
   const applyFilter=()=>{
