@@ -33,6 +33,10 @@ export function installApp(doc=document,host=window) {
   const navLinks=[...nav.querySelectorAll('a[data-href]')];
   const feedback=installFeedback(doc,host);
   const rawPages=new Map(), pageState=new Map();
+  let entrySequence=0;
+  const newEntry=()=>`messi-${Date.now().toString(36)}-${++entrySequence}`;
+  let currentEntry=host.history.state?.messiEntry||newEntry();
+  try{host.history.replaceState({...host.history.state,messi:true,messiEntry:currentEntry},'',host.location.href);}catch{/* Native links remain available in restricted local previews. */}
   const pageKey=url=>url.pathname.endsWith('/')?url.pathname+'index.html':url.pathname;
   let currentURL=new URL(host.location.href), clearance=112, keyboard=true;
   const live=doc.querySelector('.navigation-status');
@@ -43,7 +47,7 @@ export function installApp(doc=document,host=window) {
   const features=installFeatures(doc,host,{mutate,reduced});
   const selectedFile=url=>{
     const file=url.pathname.split('/').pop()||'index.html';
-    return file==='argentina.html'?'carriera.html':file==='credits.html'?'index.html':file;
+    return file;
   };
   const select=url=>{navLinks.forEach(link=>{if(link.dataset.href===selectedFile(url))link.setAttribute('aria-current',link.dataset.href===(url.pathname.split('/').pop()||'index.html')?'page':'location');else link.removeAttribute('aria-current');});};
   function ensureVisible(target) {
@@ -64,7 +68,7 @@ export function installApp(doc=document,host=window) {
   if(typeof ResizeObserver!=='undefined')new ResizeObserver(measure).observe(nav);
   host.addEventListener('resize',measure);host.visualViewport?.addEventListener('resize',measure);measure();
   region.addEventListener('focusin',event=>ensureVisible(event.target));
-  const remember=()=>pageState.set(pageKey(currentURL),{
+  const remember=()=>pageState.set(currentEntry,{
     scroll:region.scrollTop,
     open:[...region.querySelectorAll('details[id][open]')].filter(d=>d.dataset.openTarget!=='false').map(d=>d.id),
     ...features.collect()
@@ -100,14 +104,16 @@ export function installApp(doc=document,host=window) {
     await mutate(()=>{
       if(!options.current())return;
       remember();
-      const state=pageState.get(pageKey(url))||{};
+      const destinationEntry=options.history==='push'?newEntry():(host.history.state?.messiEntry||newEntry());
+      const state=options.history==='none'?(pageState.get(destinationEntry)||{}):{};
       features.closeOverlay(true);feedback.settle();
       region.innerHTML=page.querySelector('.screen-scroll').innerHTML;
       header.innerHTML=page.querySelector('.app-header').innerHTML;
       doc.title=page.title;
       const meta=doc.querySelector('meta[name="description"]'), nextMeta=page.querySelector('meta[name="description"]');
       if(meta&&nextMeta)meta.content=nextMeta.content;
-      if(options.history==='push')host.history.pushState({messi:true},'',url.href);
+      if(options.history==='push')host.history.pushState({messi:true,messiEntry:destinationEntry},'',url.href);
+      currentEntry=destinationEntry;
       currentURL=new URL(url.href);select(currentURL);
       (state.open||[]).forEach(id=>{const d=doc.getElementById(id);if(d?.tagName==='DETAILS')d.open=true;});
       feedback.refresh();features.mount(state);currentURL=new URL(host.location.href);
@@ -136,8 +142,15 @@ export function installApp(doc=document,host=window) {
     const url=new URL(anchor.getAttribute('href'),host.location.href);
     if(!allowed(url))return;
     event.preventDefault();
+    if(anchor.closest('.ios-tabbar')&&pageKey(url)===pageKey(currentURL)){
+      feedback.settle();region.scrollTop=0;
+      const topURL=new URL(host.location.href);topURL.hash='';
+      host.history.replaceState(host.history.state,'',topURL.href);currentURL=topURL;
+      if(keyboard)doc.getElementById('contenuto')?.focus({preventScroll:true});
+      return;
+    }
     if(pageKey(url)===pageKey(currentURL)&&url.search===new URL(host.location.href).search&&url.hash){
-      remember();host.history.pushState({messi:true},'',url.href);currentURL=url;revealHash();return;
+      remember();currentEntry=newEntry();host.history.pushState({messi:true,messiEntry:currentEntry},'',url.href);currentURL=url;revealHash();return;
     }
     go(url);
   });
