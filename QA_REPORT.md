@@ -1,3 +1,18 @@
+# Ricomposizione visiva — 15 ottobre 2026, 23:50 UTC+2
+
+La revisione `d13d3ed` modifica l’apertura della homepage, superfici, barra mobile, titoli, indici e pannelli delle sei pagine. Verifiche effettivamente eseguite:
+
+- 72 scenari (sei pagine, sei larghezze, testo 100% e 200%): nessun overflow, immagine mancante o sovrapposizione; 70 scenari senza violazioni axe selezionate. I due scenari Home desktop segnalavano il contrasto della navigazione.
+- Correzione `fbaa5d3`: superficie esplicita per la navigazione desktop; Home a 1440 px ricontrollata al 100% e 200%, senza violazioni axe selezionate o overflow.
+- 24 scenari su schermi bassi con testo 200% sulla correzione finale: nessuna anomalia rilevata.
+- Tutti i 28 approfondimenti a 320 px con testo 200% sulla correzione finale: nessuna anomalia rilevata.
+- Osservazione in browser della homepage mobile e desktop e della pagina Trofei mobile: nuova composizione effettivamente renderizzata.
+- 163 riferimenti locali, ancore, attributi e versioni cache controllati; test navigazione e accordion superati; diff senza errori.
+
+Test eseguiti in Chrome cloud tramite iframe. Non verificati dispositivi fisici, Safari o lettori di schermo. Nessun nuovo punteggio prestazionale: il ridimensionamento della fixture altera le metriche di layout. I risultati sottostanti sono storici.
+
+---
+
 # Navigazione mobile e leggibilità — 15 ottobre 2026
 
 Revisione verificata in Chrome cloud sullo snapshot `f3821376b0c4e799e9943b7c80e96d3b12841d98`.
