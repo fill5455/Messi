@@ -2,7 +2,7 @@
 
 Sito HTML/CSS/JavaScript dedicato a Lionel Messi. Sei pagine con superfici piene e arrotondate, layout di lettura dedicato al mobile, azzurro Argentina, tipografia Barlow Condensed + DM Sans ospitata localmente, fotografie reali e navigazione tramite link nativi.
 
-La Home racconta il profilo, i numeri e i capitoli fotografici. Carriera presenta tappe e profilo laterale; Trofei raggruppa il palmarès; Record mantiene ricerca, filtri, salvataggi e condivisione. Argentina e Crediti completano il sito.
+La Home racconta il profilo, i numeri e i capitoli fotografici. Carriera presenta tappe e profilo laterale; Trofei raggruppa il palmarès; Record mantiene ricerca, filtri, salvataggi e condivisione; i parametri `q` e `f` rendono ripristinabile e condivisibile la ricerca. Argentina e Crediti completano il sito.
 
 Niente ombre, gradienti, vetro, lenti animate o CSS esterno. Gli accordion sono nativi; foto e link restano utilizzabili senza JavaScript. Le fotografie complete e le attribuzioni sono conservate; le anteprime leggere sono registrate in `credits.json`. Licenze dei font in `assets/fonts/`.
 

@@ -45,7 +45,7 @@ export function installApp(doc=document,host=window) {
     const file=url.pathname.split('/').pop()||'index.html';
     return file==='argentina.html'?'carriera.html':file==='credits.html'?'index.html':file;
   };
-  const select=url=>{navLinks.forEach(link=>{if(link.dataset.href===selectedFile(url))link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');});};
+  const select=url=>{navLinks.forEach(link=>{if(link.dataset.href===selectedFile(url))link.setAttribute('aria-current',link.dataset.href===(url.pathname.split('/').pop()||'index.html')?'page':'location');else link.removeAttribute('aria-current');});};
   function ensureVisible(target) {
     if(!target?.matches('a,button,input,summary,[tabindex="0"]'))return;
     const viewport=region.getBoundingClientRect(),bounds=target.getBoundingClientRect();
