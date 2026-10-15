@@ -1,5 +1,5 @@
 import { installFeedback } from './motion.mjs?v=e83343bb17';
-import { installFeatures } from './features.mjs?v=8a1744376d';
+import { installFeatures } from './features.mjs?v=71a813bf33';
 
 /** Latest navigation wins, including when an older fetch or transition finishes late. */
 export function createNavigator({load,render,busy=()=>{},cancelTransition=()=>{},fallback=()=>{}}) {

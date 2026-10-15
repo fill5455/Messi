@@ -1,4 +1,4 @@
-import { Spring } from './motion.mjs?v=b547626a08';
+import { Spring } from './motion.mjs?v=e83343bb17';
 
 // Bounded projection and resistance use CSS pixels and pixels/second.
 export function rubberBand(value,min,max,range=64) {
