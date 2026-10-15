@@ -8,7 +8,7 @@ export function installCardMotion(doc,host,{reduced}) {
   const settle=()=>{
     commitTeam?.();commitTeam=null;revision++;transition?.skipTransition();transition=null;
     [...running.values()].forEach(state=>state.finish());
-    doc.querySelectorAll('[data-expand-card]').forEach(d=>d.style.removeProperty('view-transition-name'));
+    doc.querySelectorAll('[data-expand-card]').forEach(d=>{d.style.removeProperty('view-transition-name');delete d.dataset.openTarget;});
     delete doc.documentElement.dataset.cardTransition;
   };
   function resize(detail,open,instant=false) {
@@ -28,7 +28,7 @@ export function installCardMotion(doc,host,{reduced}) {
   }
   function team(detail,open,instant=false) {
     transition?.skipTransition();const ticket=++revision;
-    const stage=detail.closest('.team-stage');
+    const stage=detail.closest('.team-stage');detail.dataset.openTarget=String(open);
     if(open&&!stage.dataset.returnScroll)stage.dataset.returnScroll=String(region()?.scrollTop||0);
     const update=()=>{
       if(ticket!==revision||!detail.isConnected)return;
@@ -40,7 +40,7 @@ export function installCardMotion(doc,host,{reduced}) {
       if(!open){const scroll=region();const y=Number(stage.dataset.returnScroll);if(scroll&&Number.isFinite(y))scroll.scrollTop=y;else if(scroll&&stage.getBoundingClientRect)scroll.scrollTop+=stage.getBoundingClientRect().top-scroll.getBoundingClientRect().top-16;delete stage.dataset.returnScroll;}
     };
     if(instant||immediate()||!doc.startViewTransition){
-      update();
+      update();delete detail.dataset.openTarget;
       if(!instant&&!immediate()&&open)detail.querySelector('.team-card-body')?.animate?.([{opacity:.25,transform:'translateY(6px)'},{opacity:1,transform:'none'}],{duration:260,easing:'cubic-bezier(.22,1,.36,1)'});
       return;
     }
@@ -50,10 +50,11 @@ export function installCardMotion(doc,host,{reduced}) {
       commitTeam=update;const active=doc.startViewTransition(update);transition=active;
       active.finished.catch(()=>{}).finally(()=>{
         if(ticket!==revision)return;
-        detail.style.removeProperty('view-transition-name');delete doc.documentElement.dataset.cardTransition;transition=null;
+        detail.style.removeProperty('view-transition-name');delete detail.dataset.openTarget;delete doc.documentElement.dataset.cardTransition;transition=null;
       });
-    }catch{update();detail.style.removeProperty('view-transition-name');delete doc.documentElement.dataset.cardTransition;}
+    }catch{update();detail.style.removeProperty('view-transition-name');delete detail.dataset.openTarget;delete doc.documentElement.dataset.cardTransition;}
   }
+  doc.addEventListener('pointerdown',()=>{transition?.skipTransition();},true);
   doc.addEventListener('click',event=>{
     if(event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.altKey||event.shiftKey)return;
     const close=event.target.closest('[data-close-card]');

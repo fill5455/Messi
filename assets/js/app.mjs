@@ -1,4 +1,4 @@
-import { installCardMotion } from './card-motion.mjs?v=ded7eefd63';
+import { installCardMotion } from './card-motion.mjs?v=0e65ded1d8';
 import { installFeedback } from './motion.mjs?v=e83343bb17';
 import { installFeatures } from './features.mjs?v=71a813bf33';
 
@@ -46,6 +46,7 @@ export function installApp(doc=document,host=window) {
   let routeTransition=null,routeNodes=[];
   const clearRoute=()=>{routeNodes.forEach(n=>n.style.removeProperty('view-transition-name'));routeNodes=[];delete doc.documentElement.dataset.routeTransition;};
   const cancelTransition=()=>{routeTransition?.skipTransition();routeTransition=null;clearRoute();};
+  doc.addEventListener('pointerdown',()=>routeTransition?.skipTransition(),true);
   const mutate=async(update,origin=null)=>{
     if(!origin?.isConnected||keyboard||reduced.matches||!doc.startViewTransition){update();return;}
     cancelTransition();origin.style.viewTransitionName='route-card';routeNodes=[origin];doc.documentElement.dataset.routeTransition='true';

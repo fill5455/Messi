@@ -21,3 +21,11 @@ const team={id:'barcellona',open:false,isConnected:true,dataset:{},style:{remove
 motion.team(team,true,true);assert.equal(team.open,true);assert.equal(other.open,false);assert.equal(new URL(host.location.href).hash,'#barcellona');
 region.scrollTop=820;motion.team(team,false,true);assert.equal(team.open,false);assert.equal(region.scrollTop,44);assert.equal(new URL(host.location.href).hash,'');assert.equal(host.history.state.messiEntry,'entry');
 console.log('PASS team expands in its original stage, closes siblings, preserves history identity and restores grid reading position');
+// A second intent must win even before a View Transition's update callback starts.
+const transitions=[];doc.startViewTransition=update=>{let resolve;const t={update,skipped:false,finished:new Promise(r=>{resolve=r;}),skipTransition(){this.skipped=true;resolve();},complete(){resolve();}};transitions.push(t);return t;};
+reduced.matches=false;team.open=false;motion.team(team,true);motion.team(team,false);
+assert.equal(transitions[0].skipped,true);assert.equal(team.dataset.openTarget,'false');
+transitions[0].update();assert.equal(team.open,false);transitions[1].update();assert.equal(team.open,false);transitions[1].complete();await Promise.resolve();await Promise.resolve();
+assert.equal(team.dataset.openTarget,undefined);
+motion.team(team,true);reduced.matches=true;doc.querySelectorAll=()=>[team];preferenceChange();assert.equal(team.open,true);assert.equal(team.dataset.openTarget,undefined);
+console.log('PASS latest card intent wins before snapshot update; reduced motion commits pending intent and removes transition state');
