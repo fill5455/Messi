@@ -7,7 +7,7 @@ import hashlib, re
 ROOT = Path(__file__).resolve().parents[1]
 class Page(HTMLParser):
     def __init__(self, path):
-        super().__init__(); self.path=path; self.ids=[]; self.links=[]; self.assets=[]; self.h1=0; self.main=0; self.tabs=[]
+        super().__init__(); self.path=path; self.ids=[]; self.links=[]; self.assets=[]; self.h1=0; self.main=0; self.tabs=[]; self.current_nav=None; self.nav_icons={}
         self.feed(path.read_text())
     def handle_starttag(self, tag, attrs):
         a=dict(attrs)
@@ -16,14 +16,20 @@ class Page(HTMLParser):
         if tag=='h1': self.h1+=1
         if tag=='main': self.main+=1; assert a.get('aria-labelledby')
         if tag=='a':
+            self.current_nav=a.get('data-href')
             self.links.append(a.get('href',''))
             if 'data-href' in a: self.tabs.append(a['data-href'])
             if a.get('target')=='_blank': assert {'noopener','noreferrer'}<=set(a.get('rel','').split()), self.path
         if tag in ('img','script') and 'src' in a: self.assets.append(a['src'])
-        if tag=='use' and 'href' in a: self.assets.append(a['href'])
+        if tag=='use' and 'href' in a:
+            self.assets.append(a['href'])
+            if self.current_nav: self.nav_icons[self.current_nav]=a['href'].split('#')[-1]
         if tag=='img': assert 'alt' in a and int(a.get('width',0))>0 and int(a.get('height',0))>0, self.path
         if tag=='link' and a.get('rel') in ('stylesheet','icon'): self.assets.append(a['href'])
         if tag=='input' and 'data-href' in a: self.tabs.append(a['data-href'])
+
+    def handle_endtag(self, tag):
+        if tag=='a': self.current_nav=None
 
 pages={p.name:Page(p) for p in ROOT.glob('*.html')}
 assert len(pages)==6
@@ -31,6 +37,7 @@ count=0
 for name,p in pages.items():
     assert p.h1==p.main==1, name
     assert len(p.ids)==len(set(p.ids)), f'Duplicate ID: {name}'
+    assert p.nav_icons=={'index.html':'home','carriera.html':'book','trofei.html':'cup','record.html':'chart'}, f'Inconsistent topic icons: {name}'
     assert set(p.tabs)=={'index.html','carriera.html','trofei.html','record.html'} and len(p.tabs)==4
     for href in p.links+p.assets:
         url=urlsplit(href)

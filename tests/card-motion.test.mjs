@@ -14,7 +14,8 @@ visualHeight=250;motion.resize(detail,false);assert(animations[0].cancelled);ass
 animations[1].complete();await Promise.resolve();assert.equal(detail.open,false);assert.equal(detail.style.overflow,'');assert.equal(detail.dataset.openTarget,undefined);
 visualHeight=120;motion.resize(detail,true);reduced.matches=true;preferenceChange();assert(animations[2].cancelled);assert.equal(detail.open,true);
 const count=animations.length;motion.resize(detail,false);assert.equal(animations.length,count);assert.equal(detail.open,false);
-console.log('PASS interrupted disclosure reverses from its live height; reduced motion settles and prevents animation');
+reduced.matches=false;doc.documentElement.classList.contains=()=>true;motion.resize(detail,true);assert.equal(animations.length,count);doc.documentElement.classList.contains=()=>false;
+console.log('PASS interrupted disclosure reverses from its live height; reduced motion settles; keyboard actions remain immediate');
 const other={open:true};const stage={dataset:{},querySelectorAll:()=>[team,other]};
 const team={id:'barcellona',open:false,isConnected:true,dataset:{},style:{removeProperty(){}},closest:()=>stage,querySelector:()=>null};
 motion.team(team,true,true);assert.equal(team.open,true);assert.equal(other.open,false);assert.equal(new URL(host.location.href).hash,'#barcellona');

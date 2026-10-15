@@ -78,3 +78,4 @@ html[data-card-motion=ready] .team-card-back{display:inline-flex}
 .app-footer nav a[data-topic]{min-width:0;max-width:100%;white-space:normal;line-height:1.5}
 .app-footer nav a>span{min-width:0;overflow-wrap:anywhere}
 .footer-brand{max-width:100%;flex-wrap:wrap;gap:8px;font-size:2rem}
+[data-card-transition]::view-transition-group(*),[data-card-transition]::view-transition-image-pair(*),[data-card-transition]::view-transition-old(*),[data-card-transition]::view-transition-new(*),[data-route-transition]::view-transition-group(*),[data-route-transition]::view-transition-image-pair(*),[data-route-transition]::view-transition-old(*),[data-route-transition]::view-transition-new(*){pointer-events:none}
