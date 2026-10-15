@@ -809,9 +809,10 @@ main{padding-bottom:32px}
 .reading-page .page-index{padding:24px 24px 0}
 .reading-page .page-index>div{display:flex;flex-wrap:wrap;gap:8px}
 .reading-page .page-index a{flex:0 1 auto;gap:16px;min-height:44px;padding:10px 14px;font-size:.875rem}
-.profile-overview .fact-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,12rem),1fr));gap:12px;border:0;background:transparent;padding:0}
-.profile-overview .fact-list>div{display:flex;flex-direction:column;gap:6px;align-items:flex-start;border:0;background:#fff;border-radius:16px;padding:16px}
-.profile-overview .fact-list dt{font-size:.8125rem;color:var(--secondary)}
+.profile-overview .fact-list{display:block;border:1px solid var(--line);background:#fff;padding:4px 20px;border-radius:20px}
+.profile-overview .fact-list>div{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,8rem),1fr));gap:8px 16px;align-items:center;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:14px 0}
+.profile-overview .fact-list dt{flex:initial;font-size:.875rem;color:var(--secondary)}
+.profile-overview .fact-list>div:last-child{border-bottom:0}
 .profile-overview .fact-list dd{font-size:1rem;text-align:left}
 .reading-page .next-destination .destination-list{display:block}
 .reading-page .next-destination .destination{display:flex;gap:16px;padding:20px;align-items:center;flex-wrap:nowrap}
