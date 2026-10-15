@@ -1,3 +1,19 @@
+# Navigazione mobile e leggibilità — 15 ottobre 2026
+
+Revisione verificata in Chrome cloud sullo snapshot `f3821376b0c4e799e9943b7c80e96d3b12841d98`.
+
+- Sei pagine × sei larghezze da 320 a 1440 px × testo 100% e 200%: 72 scenari senza overflow, immagini mancanti, sovrapposizione della navigazione o violazioni axe nei tag WCAG selezionati.
+- Revisione precedente `55d87fd`: 24 scenari su schermi bassi con testo 200% e tutti i 28 approfondimenti a 320 px con testo 200%, senza anomalie rilevate.
+- Osservazione visiva delle intestazioni mobile compatte, fotografie, percorso della pagina e barra inferiore fluttuante.
+- Navigazione reale: una nuova destinazione parte dall’inizio; Indietro ripristina apertura e posizione di lettura. Nel percorso Carriera con ancora, posizione prima e dopo il ritorno: 2097 px.
+- Controlli locali: 163 riferimenti/ancore/attributi/versioni cache; test navigazione e accordion; diff senza errori.
+
+La barra mobile è fluttuante, con quattro destinazioni, etichette visibili e stato corrente. Su schermi bassi usa una variante compatta. Le pagine secondarie mostrano il loro nome e il percorso Home; nessuna scheda principale viene evidenziata impropriamente. I trofei dei club sono separati in pannelli con stemma. Fotografie e icone riutilizzano il patrimonio del sito e SVG locali.
+
+Limiti: non verificati Safari/WebKit, dispositivi fisici e lettori di schermo. Nessuna certificazione WCAG o nuovo punteggio Core Web Vitals. I risultati precedenti sotto sono storici e non sostituiscono i controlli di questa revisione.
+
+---
+
 # Verifica corrente — 15 ottobre 2026, 14:34 UTC+2
 
 Revisione delle sei pagine HTML con identità flat e arrotondata conservata. Le verifiche a matrice hanno coperto le revisioni `9d6cf6c` e `8f1c28f`; il comportamento finale di indirizzi, ancore, ricaricamento e ritorno dalla Carriera è stato verificato in browser su `77f4c37`.
